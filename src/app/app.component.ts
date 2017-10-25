@@ -6,6 +6,7 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,9 @@ import {
 })
 
 export class AppComponent {
+  constructor(private router: Router) { }
   public menuState: String = 'out';
+
   toggleMenu() {
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
   }

@@ -4,6 +4,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageContentComponent } from './page-content/page-content.component';
@@ -20,7 +22,8 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

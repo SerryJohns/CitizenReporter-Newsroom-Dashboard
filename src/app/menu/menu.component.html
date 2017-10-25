@@ -4,7 +4,7 @@
 
 <ul>
   <li *ngFor="let menu of dataMenu">
-    <a href="#">
+    <a routerLink="#">
       <span><img src="../../assets/images/icons/{{ menu.icon }}" class="menu-icon"/></span>
       {{ menu.name }}
     </a>
@@ -17,7 +17,7 @@
 
 <ul>
   <li>
-    <a href="#">
+    <a routerLink="#">
       <span><img src="../../assets/images/icons/envelope_icon.png" class="menu-icon"/></span>
       Notifications
     </a>
