@@ -6,10 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
-import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { PageContentComponent } from './page-content/page-content.component';
-import { PageHeaderComponent } from './page-header/page-header.component';
+import { AppComponent } from './components/app/app.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { PageContentComponent } from './components/page-content/page-content.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 @NgModule({
   declarations: [

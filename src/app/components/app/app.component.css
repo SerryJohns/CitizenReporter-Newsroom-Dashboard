@@ -28,7 +28,7 @@
     margin-left: 20px;
     border-radius: 5px;
     float: left;
-    background-image: url("../assets/images/icons/app_icon.png");
+    background-image: url("../../../assets/images/icons/app_icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: auto;
@@ -41,7 +41,7 @@
     height: 100%;
     float: right;
     background-color: #64BBE2;
-    background-image: url("../assets/images/icons/toggle_back.png");
+    background-image: url("../../../assets/images/icons/toggle_back.png");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: auto;
