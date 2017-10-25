@@ -1,12 +1,9 @@
+<!-- Side bar -->
 <div class="side-toggle bg-blue" [@sideMenuToggle]="menuState">
     <div class="app-icon"></div>
     <div class="toggle-btn bg-light-blue" (click)="toggleMenu()"></div>
 </div>
-
-<!-- Side bar -->
-<div>
-  <app-menu [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
-</div>
+<app-menu [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
 
 <!-- Page content -->
 <div id="content">
