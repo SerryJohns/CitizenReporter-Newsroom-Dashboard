@@ -1,9 +1,7 @@
 :host {
-  background: #1a2580;
-  color: #fff;
   position: fixed;
   top: 55px;
-  left: -250px;
+  left: 0px;
   right: auto;
   bottom: 0;
   width: 20%;
@@ -18,3 +16,7 @@ ul {
     padding-top: 10px;
     list-style: none;
   }
+
+.active {
+    opacity: unset;
+}

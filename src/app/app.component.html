@@ -1,13 +1,24 @@
-<div>
-  <button (click)="toggleMenu()">
-    <span> toggle </span>
-  </button>
+<div class="side-toggle bg-blue" [@sideMenuToggle]="menuState">
+    <div class="app-icon"></div>
+    <div class="toggle-btn bg-light-blue" (click)="toggleMenu()"></div>
 </div>
+
+<!-- Side bar -->
 <div>
-  <!-- Side bar -->
-  <app-menu [@slideInOut]="menuState"></app-menu>
-  <!-- Page content -->
-  <div>
-    <p> Body </p>
+  <app-menu [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
+</div>
+
+<!-- Page content -->
+<div id="content">
+  <div class="page-content" [class.page-content-wide] = "menuState === 'in'">
+
+    <div id="page-header">
+      <app-page-header></app-page-header>
+    </div>
+
+    <div class="jumbotron">
+      <app-page-content></app-page-content>
+    </div>
+
   </div>
 </div>
