@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Menu, DATA_MENU } from './menu';
 
 @Component({
   selector: 'app-menu',
@@ -8,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   constructor() { }
+  dataMenu: Menu[];
 
   ngOnInit() {
+    this.dataMenu = DATA_MENU;
   }
 
 }

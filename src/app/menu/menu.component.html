@@ -3,31 +3,10 @@
 </div>
 
 <ul>
-  <li class="active">
+  <li *ngFor="let menu of dataMenu">
     <a href="#">
-      <span><img src="../../assets/images/icons/chart_icon.png" class="menu-icon"/></span>
-      Overview
-    </a>
-  </li>
-
-  <li>
-    <a href="#">
-      <span><img src="../../assets/images/icons/eye_icon.png" class="menu-icon"/></span>
-      Analytics
-    </a>
-  </li>
-
-  <li>
-    <a href="#">
-      <span><img src="../../assets/images/icons/clock_icon.png" class="menu-icon"/></span>
-      Stories
-    </a>
-  </li>
-
-  <li>
-    <a href="#">
-      <span><img src="../../assets/images/icons/tag_icon.png" class="menu-icon"/></span>
-      Assignments
+      <span><img src="../../assets/images/icons/{{ menu.icon }}" class="menu-icon"/></span>
+      {{ menu.name }}
     </a>
   </li>
 </ul>
