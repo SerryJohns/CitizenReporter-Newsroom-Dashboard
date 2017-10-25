@@ -9,11 +9,14 @@
 
 }
 
+.menu-header {
+    padding-top: 40px;
+}
+
 ul {
     font-size: 16px;
     line-height: 3;
-    font-weight: bold;
-    padding-top: 10px;
+    font-weight: 400;
     list-style: none;
 }
 
