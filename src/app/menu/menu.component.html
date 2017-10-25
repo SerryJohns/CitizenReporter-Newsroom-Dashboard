@@ -3,7 +3,7 @@
 </div>
 
 <ul>
-  <li *ngFor="let menu of dataMenu">
+  <li *ngFor="let menu of dataMenu" [class.active]="selectedMenu === menu.name" (click)="onMenuClick(menu)">
     <a routerLink="{{ menu.url }}">
       <span><img src="../../assets/images/icons/{{ menu.icon }}" class="menu-icon"/></span>
       {{ menu.name }}
@@ -16,7 +16,7 @@
 </div>
 
 <ul>
-    <li *ngFor="let menu of notifationMenu">
+    <li *ngFor="let menu of notifationMenu" [class.active]="selectedMenu === menu.name" (click)="onMenuClick(menu)">
       <a routerLink="{{ menu.url }}">
         <span><img src="../../assets/images/icons/{{ menu.icon }}" class="menu-icon"/></span>
         {{ menu.name }}

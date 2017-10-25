@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu, DATA_MENU, NOTIFICATION_MENU } from './menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,13 +9,19 @@ import { Menu, DATA_MENU, NOTIFICATION_MENU } from './menu';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   dataMenu: Menu[];
   notifationMenu: Menu[];
+  selectedMenu: String;
 
   ngOnInit() {
     this.dataMenu = DATA_MENU;
     this.notifationMenu = NOTIFICATION_MENU;
+  }
+
+  onMenuClick(menu: Menu) {
+    this.selectedMenu = menu.name;
+    this.router.navigate([menu.url]);
   }
 
 }
