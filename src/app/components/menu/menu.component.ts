@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Menu } from './menu.model';
-import { DATA_MENU, NOTIFICATION_MENU } from './mock-menus';
 import { Router } from '@angular/router';
+
+import { Menu } from './menu.model';
+import { dataMenu, notificationMenu } from './mock-menus';
 
 @Component({
   selector: 'app-menu',
@@ -16,8 +17,8 @@ export class MenuComponent implements OnInit {
   selectedMenu: String;
 
   ngOnInit() {
-    this.dataMenu = DATA_MENU;
-    this.notificationMenu = NOTIFICATION_MENU;
+    this.dataMenu = dataMenu;
+    this.notificationMenu = notificationMenu;
   }
 
   onMenuClick(menu: Menu) {

@@ -21,6 +21,15 @@ import { Router } from '@angular/router';
         transform: 'translateX(0)'
       })),
       transition('in <=> out', animate('400ms ease-in-out'))
+    ]),
+    trigger('toggleIcon', [
+      state('in', style({
+        transform: 'rotate(180deg)'
+      })),
+      state('out', style({
+        transform: 'rotate(0deg)'
+      })),
+      transition('* <=> *', animate('400ms ease-in-out'))
     ])
   ]
 })

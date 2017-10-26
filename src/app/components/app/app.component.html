@@ -1,7 +1,7 @@
 <!-- Side bar -->
 <div class="side-toggle bg-blue" [@sideMenuToggle]="menuState">
     <div class="app-icon"></div>
-    <div class="toggle-btn bg-light-blue" (click)="toggleMenu()"></div>
+    <div class="toggle-btn bg-light-blue" [@toggleIcon]="menuState" (click)="toggleMenu()"></div>
 </div>
 
 <app-menu [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
