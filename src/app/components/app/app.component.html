@@ -4,7 +4,7 @@
     <div class="toggle-btn bg-light-blue" [@toggleIcon]="menuState" (click)="toggleMenu()"></div>
 </div>
 
-<app-menu [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
+<app-menu [toggleState]="menuState" [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
 
 <!-- Page content -->
 <div id="content">

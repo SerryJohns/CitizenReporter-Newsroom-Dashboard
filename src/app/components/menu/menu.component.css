@@ -30,14 +30,13 @@ ul li a {
     color: #ffffff;
     display: block;
     text-decoration: none;
-}
-
-ul li :hover {
-    opacity: unset;
-    background-color: #26273B;
     width: 250px;
     margin-left: -40px;
     padding-left: 40px;
+}
+
+ul li :hover {
+    background-color: #26273B;
 }
 
 .active {
@@ -50,4 +49,8 @@ ul li :hover {
     min-width: 20px;
     max-width: 20px;
     margin-right: 15px;
+}
+
+.right-icon {
+    float: right;
 }

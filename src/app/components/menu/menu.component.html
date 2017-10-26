@@ -5,8 +5,11 @@
 <ul>
   <li *ngFor="let menu of dataMenu" [class.active]="selectedMenu === menu.name" (click)="onMenuClick(menu)">
     <a routerLink="{{ menu.url }}">
-      <span><img src="../../assets/images/icons/{{ menu.icon }}" class="menu-icon"/></span>
+      <span><img src="{{ menu.icon }}" class="menu-icon"/></span>
       {{ menu.name }}
+      <span class="right-icon" [@showSideIcons]="toggleState">
+        <img src="{{ menu.icon }}" class="menu-icon"/>
+      </span>
     </a>
   </li>
 </ul>
@@ -18,8 +21,11 @@
 <ul>
     <li *ngFor="let menu of notificationMenu" [class.active]="selectedMenu === menu.name" (click)="onMenuClick(menu)">
       <a routerLink="{{ menu.url }}">
-        <span><img src="../../assets/images/icons/{{ menu.icon }}" class="menu-icon"/></span>
+        <span><img src="{{ menu.icon }}" class="menu-icon"/></span>
         {{ menu.name }}
+        <span class="right-icon" [@showSideIcons]="toggleState">
+            <img src="{{ menu.icon }}" class="menu-icon"/>
+        </span>
       </a>
     </li>
   </ul>
