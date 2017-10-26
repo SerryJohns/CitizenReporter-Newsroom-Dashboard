@@ -1,9 +1,4 @@
-export class Menu {
-    id: number;
-    name: String;
-    url: String;
-    icon: String;
-}
+import { Menu } from './menu.model';
 
 export const DATA_MENU: Menu[] = [
     { id: 1, name: 'Overview', icon: 'chart_icon.png', url: ''},
