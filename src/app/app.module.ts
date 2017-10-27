@@ -10,6 +10,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PageContentComponent } from './components/page-content/page-content.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { StoriesComponent } from './components/stories/stories.component';
+import { ParseConfig } from './services/parse-config';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { StoriesComponent } from './components/stories/stories.component';
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ ParseConfig ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
