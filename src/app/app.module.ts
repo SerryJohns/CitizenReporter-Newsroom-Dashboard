@@ -9,13 +9,15 @@ import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PageContentComponent } from './components/page-content/page-content.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { StoriesComponent } from './components/stories/stories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     PageContentComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    StoriesComponent
   ],
   imports: [
     BrowserModule,
