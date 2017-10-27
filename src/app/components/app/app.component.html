@@ -1,0 +1,21 @@
+<!-- Side bar -->
+<div class="side-toggle bg-blue" [@sideMenuToggle]="menuState">
+    <div class="app-icon"></div>
+    <div class="toggle-btn bg-light-blue" [@toggleIcon]="menuState" (click)="toggleMenu()"></div>
+</div>
+
+<app-menu [toggleState]="menuState" [@sideMenuToggle]="menuState" class="bg-purple text-white"></app-menu>
+
+<!-- Page content -->
+<div id="content">
+  <div class="page-content" [class.page-content-wide] = "menuState === 'in'">
+
+    <div id="page-header">
+      <app-page-header></app-page-header>
+    </div>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

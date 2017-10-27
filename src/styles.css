@@ -1,1 +1,131 @@
 /* You can add global styles to this file, and also import other style files */
+h1 {
+	font-family: "Helvetica Neue";
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+h2 {
+	font-family: "Helvetica Neue";
+	font-size: 15px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+    line-height: 18.7px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+h3 {
+	font-family: "Helvetica Neue";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+
+p {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 19.6px;
+}
+
+blockquote {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+pre {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+
+#app-body {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    color: #1D1D1D;
+    background-color: #DEE9EE;
+}
+
+.text-white {
+    color: #FFFFFF;
+}
+
+.bg-blue {
+    background-color: #46A9D4;
+}
+
+.bg-light-blue {
+    background-color: #ABE6FF;
+}
+
+.text-blue {
+    color: #46A9D4;
+}
+
+.bg-purple {
+    background-color: #505275
+}
+
+.bg-purple li {
+    opacity: 0.46;
+}
+
+.bg-dark-purple {
+    background-color: #484A69;
+}
+
+.bg-red {
+    background-color: #ED684A;
+}
+
+.text-red {
+    color: #ED684A;
+}
+
+.text-light-red {
+    color: #CF917A;
+}
+
+.bg-light-red {
+    background-color: #CF917A ;
+}
+
+.bg-green {
+    background-color: #3EC556;
+}
+
+.text-green {
+    color: #3EC556;
+}
+
+bg-gray {
+    background-color: #D0D0D0;
+}
+
+text-gray {
+    color: #D0D0D0;
+}
+
+bg-light-grey {
+    background-color: #C3C3C3;
+}
+
+text-light-gray {
+    color: #C3C3C3;
+}
