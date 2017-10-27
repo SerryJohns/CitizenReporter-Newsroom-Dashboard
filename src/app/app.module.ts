@@ -3,10 +3,6 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { ParseConfig } from './services/parse-config';
-import { FilterPipe } from './pipes/filter.pipe';
-
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -17,6 +13,9 @@ import { StoryMediaComponent } from './components/story-media/story-media.compon
 import { PushNotificationsComponent } from './components/push-notifications/push-notifications.component';
 import { AssignmentsComponent } from './components/assignments/assignments.component';
 import { CreateAssignmentComponent } from './components/create-assignment/create-assignment.component';
+import { ParseConfig } from './services/parse-config';
+import { FilterPipe } from './pipes/filter.pipe';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,8 @@ import { CreateAssignmentComponent } from './components/create-assignment/create
     PushNotificationsComponent,
     FilterPipe,
     AssignmentsComponent,
-    CreateAssignmentComponent
+    CreateAssignmentComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
