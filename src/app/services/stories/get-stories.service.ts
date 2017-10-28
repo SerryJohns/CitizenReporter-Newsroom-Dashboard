@@ -16,10 +16,10 @@ export class GetStoriesService {
       observer => {
         query.find().then(function(stories) {
           stories.map(item => observer.next(toStory(item)))
-          .catch(err => observer.error(`Error: ${err}`));
+          .catch(err => observer.error(`Error: ${ err }`));
           observer.complete();
         }, function(error) {
-          observer.error(`Error: ${error}`);
+          observer.error(`Error: ${ error }`);
         });
       }
     );

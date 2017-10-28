@@ -1,4 +1,5 @@
 import { Story } from '../../components/stories/story.model';
+import { Parse } from 'parse';
 
 export function toStory(story: any): Story {
     return <Story>({
@@ -7,7 +8,7 @@ export function toStory(story: any): Story {
       media: story.get('media'), // TODO assign array
       localID: story.get('localID'),
       summary: story.get('summary'),
-      author: story.get('author'),
+      author: getAuthorName(story.get('author')),
       assignment: story.get('assignment'),
       updatedAt: story.get('updatedAt'),
       cachedLocation: story.get('cachedLocation'),
@@ -18,3 +19,15 @@ export function toStory(story: any): Story {
       who: story.get('who')
     });
   }
+
+function getAuthorName(authorId: String): String {
+  const userObj: any = Parse.Object.extend('User');
+  const query: any = new Parse.Query(userObj);
+  query.get(authorId).then(
+    function(author){
+      return `${ author.get('first_name') } ${ author.get('last_name') }`;
+    }, function(object, error) {
+      console.log(`Error: ${ object } : ${ error }`);
+    });
+  return;
+}
