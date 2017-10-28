@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Parse } from 'parse';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { Story } from './../../components/stories/story.model';
 
@@ -13,9 +15,8 @@ export class GetStoriesService {
       observer => {
         const toStory = (anyStory: any) => this.toStory(anyStory);
         query.find().then(function(stories) {
-          stories.forEach(item => {
-            observer.next(toStory(item));
-          });
+          stories.map(item => observer.next(toStory(item)))
+          .catch(err => observer.error(`Error: ${err}`));
           observer.complete();
         }, function(error) {
           observer.error(`Error: ${error}`);
