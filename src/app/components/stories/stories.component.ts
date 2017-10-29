@@ -60,8 +60,8 @@ export class StoriesComponent implements OnInit {
         this.offset = this.nextOffset;
         break;
       default:
-        const myOffset = ((page * this.limit) - this.limit);
-        this.offset = myOffset > 1 ? myOffset + 1 : 0;
+        const myOffset = ((page - 1) * this.limit);
+        this.offset = myOffset > 1 ? myOffset : 0;
         break;
     }
     console.log(this.offset);
