@@ -3,16 +3,20 @@ import { GetStoriesService } from './../../services/stories/get-stories.service'
 import { Story } from './story.model';
 import { setName } from '../../services/stories/story-utils';
 import { Paginator } from './paginator.model';
+import { PaginateService } from '../../services/pagination/paginate.service';
 
 @Component({
   selector: 'app-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.css'],
-  providers: [ GetStoriesService ]
+  providers: [ GetStoriesService, PaginateService ]
 })
 export class StoriesComponent implements OnInit {
 
-  constructor(private storiesService: GetStoriesService ) { }
+  constructor(
+    private storiesService: GetStoriesService,
+    private paginateService: PaginateService) { }
+
   title = 'Stories';
   stories: Story[] = [];
   selectedStory: Story;
@@ -26,7 +30,7 @@ export class StoriesComponent implements OnInit {
   paginator: Paginator;
 
   ngOnInit() {
-    this.limit = 1;
+    this.limit = 6;
     this.offset = 0;
     this.loadStories();
   }
@@ -38,7 +42,7 @@ export class StoriesComponent implements OnInit {
     this.stories = [];
     this.storiesService.countStories().then(
       (count) => {
-        this.paginator = this.paginateData(count, this.limit, this.offset);
+        this.paginator = this.paginateService.paginateData(count, this.limit, this.offset);
         this.totalCount = count;
         this.totalPages = this.paginator.totalPages;
         this.currentPage = this.paginator.currentPage;
@@ -71,48 +75,10 @@ export class StoriesComponent implements OnInit {
         break;
     }
     if (!this.offset || this.offset < 0) {
-      this.offset = 0;
+      this.offset = 0; // avoid negative offsets
     } else if (this.offset >= this.totalCount) {
-      this.offset = prevOffset;
+      this.offset = prevOffset; // offset shouldn't be greater than the itemCount
     }
     this.loadStories();
-  }
-
-  paginateData(totalCount: number, limit: number, offset: number): Paginator {
-    const pages: number[] = []; // stores the page numbers of the results
-    const totalPages: number = Math.ceil(totalCount / limit);
-    const currentPage = this.findPage(totalPages, limit, offset);
-    if (currentPage < 1) {
-      return;
-    }
-    // display all pages if the total pages are less or equal to 10
-    if (totalPages <= 10) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      // adjust pagination numbers for large pages
-      for (let startPage = (currentPage - 4),
-        i = startPage > 0 ? startPage : 1,
-        tempEnd = currentPage + 5,
-        endPage = tempEnd <= totalPages ? tempEnd : totalPages;
-        i <= endPage; i++) {
-        pages.push(i);
-      }
-    }
-    return <Paginator>{
-      totalPages: totalPages,
-      currentPage: currentPage,
-      pages: pages
-    };
-  }
-
-  findPage(pages: number, limit: number, offset: number): number {
-    for (let i = 1; i <= pages; i++) {
-      if (offset < (limit * i)) {
-        return i;
-      }
-    }
-    return;
   }
 }
