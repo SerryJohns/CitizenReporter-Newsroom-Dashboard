@@ -26,6 +26,23 @@
               <td> {{ story.summary }} </td>
             </tr>
           </table>
+          <nav>
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" (click)="loadMoreStories(-1)">
+                    Previous
+                  </a>
+                </li>
+                <li class="page-item" *ngFor="let page of pages">
+                  <a class="page-link" (click)="loadMoreStories(page)"> {{ page }}</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" (click)="loadMoreStories(0)">
+                    Next
+                  </a>
+                </li>
+              </ul>
+            </nav>
         </div>
       </div>
     </div>

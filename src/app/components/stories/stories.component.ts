@@ -12,28 +12,85 @@ import { setName } from '../../services/stories/story-utils';
 export class StoriesComponent implements OnInit {
 
   constructor(private storiesService: GetStoriesService ) { }
-  title = 'Assignments';
+  title = 'Stories';
   stories: Story[] = [];
   selectedStory: Story;
 
+  nextOffset: number;
+  prevOffset: number;
+  limit: number;
+  offset: number;
+  totalPages: number;
+  totalCount: number;
+  currentPage: number;
+  pages: number [];
+
   ngOnInit() {
+    this.limit = 2;
+    this.offset = 0;
     this.loadStories();
   }
 
   loadStories(): void {
-    this.storiesService.getStories()
-    .subscribe(
-      story => {
-        this.stories.push(story);
+    this.storiesService.countStories().then(
+      (count) => {
+        this.totalCount = count;
+        this.paginateData(count, this.limit, this.offset);
+        this.storiesService.getStories(this.limit, this.offset)
+        .subscribe(
+          story => this.stories.push(story),
+          err => console.log(err)
+        );
       },
-      err => console.log(err),
-      () => console.log('complete')
+      (err) => console.log(`Error: ${ err }`)
     );
-    console.log(this.stories);
   }
 
   clickStory(story: Story): void {
     this.selectedStory = story;
   }
 
+  loadMoreStories(page) {
+    console.log(`Loading: ${page}`);
+  }
+
+  paginateData(totalCount: number, limit: number, offset: number): void {
+    let newStart: number;
+    let nextStart: number;
+    let prevStart: number;
+    const totalPages: number = Math.ceil(totalCount / limit);
+    const currentPage = this.findPage(totalPages, limit, offset);
+    if (currentPage < 1) {
+      return;
+    }
+
+    if (currentPage < totalPages) {
+      newStart = (currentPage * limit) + 1;
+      nextStart = newStart <= totalCount ? newStart : totalCount;
+    }
+
+    if (currentPage > 1) {
+      newStart = offset - limit;
+      prevStart = newStart > 1 ? newStart : 0;
+    }
+
+    this.pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      this.pages.push(i);
+    }
+    this.nextOffset = nextStart;
+    this.prevOffset = prevStart;
+    this.totalPages = totalPages;
+    this.totalCount = totalCount;
+    this.currentPage = currentPage;
+  }
+
+  findPage(pages: number, limit: number, value: number): number {
+    for (let i = 1; i <= pages; i++) {
+      if (value <= (limit * i)) {
+        return i;
+      }
+    }
+    return;
+  }
 }
