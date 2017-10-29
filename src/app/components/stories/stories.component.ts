@@ -32,6 +32,7 @@ export class StoriesComponent implements OnInit {
   }
 
   loadStories(): void {
+    this.stories = [];
     this.storiesService.countStories().then(
       (count) => {
         this.totalCount = count;
@@ -51,7 +52,20 @@ export class StoriesComponent implements OnInit {
   }
 
   loadMoreStories(page) {
-    console.log(`Loading: ${page}`);
+    switch (page) {
+      case -1:
+        this.offset = this.prevOffset;
+        break;
+      case 0:
+        this.offset = this.nextOffset;
+        break;
+      default:
+        const myOffset = ((page * this.limit) - this.limit);
+        this.offset = myOffset > 1 ? myOffset + 1 : 0;
+        break;
+    }
+    console.log(this.offset);
+    this.loadStories();
   }
 
   paginateData(totalCount: number, limit: number, offset: number): void {
@@ -78,11 +92,12 @@ export class StoriesComponent implements OnInit {
     for (let i = 1; i <= totalPages; i++) {
       this.pages.push(i);
     }
-    this.nextOffset = nextStart;
-    this.prevOffset = prevStart;
+    this.nextOffset = nextStart - 1;
+    this.prevOffset = prevStart - 1;
     this.totalPages = totalPages;
     this.totalCount = totalCount;
     this.currentPage = currentPage;
+    console.log(nextStart, prevStart, totalPages, totalCount, currentPage);
   }
 
   findPage(pages: number, limit: number, value: number): number {
