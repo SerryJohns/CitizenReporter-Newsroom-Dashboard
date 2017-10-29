@@ -5,12 +5,15 @@
 }
 
 .selected-row {
-    background-color: #484A69 !important;
-    color: #FFFFFF;
+    background-color:#E9ECEF !important;
     cursor: pointer;
 }
 
 .card-body {
     padding: 20px;
     overflow: scroll;
+}
+
+.selected-page {
+    background-color: #E9ECEF !important;
 }

@@ -34,7 +34,7 @@
                   </a>
                 </li>
                 <li class="page-item" *ngFor="let page of pages">
-                  <a class="page-link" (click)="loadMoreStories(page)"> {{ page }}</a>
+                  <a class="page-link" [class.selected-page]="currentPage === page" (click)="loadMoreStories(page)"> {{ page }}</a>
                 </li>
                 <li class="page-item">
                   <a class="page-link" (click)="loadMoreStories(0)">
@@ -49,6 +49,13 @@
   </div>
 
   <div class="col-md-4 col-12">
-    <div class="jumbotron">side text</div>
+    <div class="card">
+      <div class="card-header bg-blue text-white text-center">Attached Media Files</div>
+      <div class="card-block">
+        <div class="card-body">
+          body
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -30,7 +30,7 @@ export class StoriesComponent implements OnInit {
   paginator: Paginator;
 
   ngOnInit() {
-    this.limit = 6;
+    this.limit = 4;
     this.offset = 0;
     this.loadStories();
   }
