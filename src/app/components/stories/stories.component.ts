@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetStoriesService } from './../../services/stories/get-stories.service';
 import { Story } from './story.model';
 import { setName } from '../../services/stories/story-utils';
+import { Paginator } from './paginator.model';
 
 @Component({
   selector: 'app-stories',
@@ -16,27 +17,32 @@ export class StoriesComponent implements OnInit {
   stories: Story[] = [];
   selectedStory: Story;
 
-  nextOffset: number;
-  prevOffset: number;
   limit: number;
   offset: number;
   totalPages: number;
   totalCount: number;
   currentPage: number;
   pages: number [];
+  paginator: Paginator;
 
   ngOnInit() {
-    this.limit = 2;
+    this.limit = 1;
     this.offset = 0;
     this.loadStories();
   }
 
   loadStories(): void {
+    // first gets the total count of the stories,
+    // then queries the data basing on the limit and offest
+    // paginates the result
     this.stories = [];
     this.storiesService.countStories().then(
       (count) => {
+        this.paginator = this.paginateData(count, this.limit, this.offset);
         this.totalCount = count;
-        this.paginateData(count, this.limit, this.offset);
+        this.totalPages = this.paginator.totalPages;
+        this.currentPage = this.paginator.currentPage;
+        this.pages = this.paginator.pages;
         this.storiesService.getStories(this.limit, this.offset)
         .subscribe(
           story => this.stories.push(story),
@@ -52,57 +58,58 @@ export class StoriesComponent implements OnInit {
   }
 
   loadMoreStories(page) {
+    const prevOffset: number = this.offset;
     switch (page) {
       case -1:
-        this.offset = this.prevOffset;
+        this.offset = ((this.currentPage - 2) * this.limit);
         break;
       case 0:
-        this.offset = this.nextOffset;
+        this.offset = ((this.currentPage) * this.limit);
         break;
       default:
-        const myOffset = ((page - 1) * this.limit);
-        this.offset = myOffset > 1 ? myOffset : 0;
+        this.offset = ((page - 1) * this.limit);
         break;
     }
-    console.log(this.offset);
+    if (!this.offset || this.offset < 0) {
+      this.offset = 0;
+    } else if (this.offset >= this.totalCount) {
+      this.offset = prevOffset;
+    }
     this.loadStories();
   }
 
-  paginateData(totalCount: number, limit: number, offset: number): void {
-    let newStart: number;
-    let nextStart: number;
-    let prevStart: number;
+  paginateData(totalCount: number, limit: number, offset: number): Paginator {
+    const pages: number[] = []; // stores the page numbers of the results
     const totalPages: number = Math.ceil(totalCount / limit);
     const currentPage = this.findPage(totalPages, limit, offset);
     if (currentPage < 1) {
       return;
     }
-
-    if (currentPage < totalPages) {
-      newStart = (currentPage * limit) + 1;
-      nextStart = newStart <= totalCount ? newStart : totalCount;
+    // display all pages if the total pages are less or equal to 10
+    if (totalPages <= 10) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // adjust pagination numbers for large pages
+      for (let startPage = (currentPage - 4),
+        i = startPage > 0 ? startPage : 1,
+        tempEnd = currentPage + 5,
+        endPage = tempEnd <= totalPages ? tempEnd : totalPages;
+        i <= endPage; i++) {
+        pages.push(i);
+      }
     }
-
-    if (currentPage > 1) {
-      newStart = offset - limit;
-      prevStart = newStart > 1 ? newStart : 0;
-    }
-
-    this.pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      this.pages.push(i);
-    }
-    this.nextOffset = nextStart - 1;
-    this.prevOffset = prevStart - 1;
-    this.totalPages = totalPages;
-    this.totalCount = totalCount;
-    this.currentPage = currentPage;
-    console.log(nextStart, prevStart, totalPages, totalCount, currentPage);
+    return <Paginator>{
+      totalPages: totalPages,
+      currentPage: currentPage,
+      pages: pages
+    };
   }
 
-  findPage(pages: number, limit: number, value: number): number {
+  findPage(pages: number, limit: number, offset: number): number {
     for (let i = 1; i <= pages; i++) {
-      if (value <= (limit * i)) {
+      if (offset < (limit * i)) {
         return i;
       }
     }
