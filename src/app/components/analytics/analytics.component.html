@@ -1,3 +1,88 @@
-<p>
-  analytics works!
-</p>
+<div class="container" id="fill-height">
+
+  <!-- Users and Downloads -->
+  <div class="row" id="user-and-downloads">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Users and Downloads</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <!-- Downloads -->
+            <div class="col-md-3">
+              <app-vertical-bar-chart></app-vertical-bar-chart>
+            </div>
+
+            <!-- Downloads today -->
+            <div class="col-md-3">
+              <app-pie-chart></app-pie-chart>
+            </div>
+
+            <!-- Users -->
+            <div class="col-md-3">
+              <app-vertical-bar-chart></app-vertical-bar-chart>
+            </div>
+
+            <!-- Users today -->
+            <div class="col-md-3">
+              <app-pie-chart></app-pie-chart>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics -->
+  <div class="row" id="statistics">
+    <div class="col-md-5">
+      <!-- General statistics -->
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">General Statistics</span>
+            </div>
+          </div>
+        </div>
+        <div class="general-statistics">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <h1 class="blue-text">+34</h1>
+              <h3 class="white-text">Users this week</h3>
+            </div>
+            <div class="col-md-6 text-center">
+              <h1 class="orange-text">4</h1>
+              <h3 class="white-text">Downloads this week</h3>
+            </div>
+          </div>
+          <app-vertical-bar-chart></app-vertical-bar-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+
+      <!-- Overall Statistics -->
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Overall statistics</span>
+            </div>
+          </div>
+        </div>
+          <app-line-chart></app-line-chart>
+      </div>
+    </div>
+  </div>
+</div>

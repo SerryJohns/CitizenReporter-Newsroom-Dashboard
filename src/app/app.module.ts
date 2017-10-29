@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -16,6 +17,9 @@ import { CreateAssignmentComponent } from './components/create-assignment/create
 import { ParseConfig } from './services/parse-config';
 import { FilterPipe } from './pipes/filter.pipe';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +31,21 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
     StoryMediaComponent,
     PushNotificationsComponent,
     FilterPipe,
+<<<<<<< HEAD
     AssignmentsComponent,
     CreateAssignmentComponent,
     AnalyticsComponent
+=======
+    AnalyticsComponent,
+    VerticalBarChartComponent,
+    PieChartComponent,
+    LineChartComponent
+>>>>>>> Display graphs from raw data
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgxChartsModule,
     FormsModule,
     NgbModule.forRoot(),
     AppRoutingModule,

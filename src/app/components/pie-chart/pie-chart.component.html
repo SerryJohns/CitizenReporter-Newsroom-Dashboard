@@ -1,3 +1,19 @@
-<p>
-  pie-chart works!
-</p>
+<!--<ngx-charts-advanced-pie-chart-->
+  <!--[view]="view"-->
+  <!--[scheme]="colorScheme"-->
+  <!--[results]="single"-->
+  <!--[gradient]="gradient"-->
+  <!--(select)="onSelect($event)">-->
+<!--</ngx-charts-advanced-pie-chart>-->
+
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
