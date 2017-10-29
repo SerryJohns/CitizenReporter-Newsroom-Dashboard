@@ -1,5 +1,6 @@
 import { Story } from '../../components/stories/story.model';
 import { Parse } from 'parse';
+import { Observable } from 'rxjs/Observable';
 
 export function toStory(story: any): Story {
     return <Story>({
@@ -8,7 +9,7 @@ export function toStory(story: any): Story {
       media: story.get('media'), // TODO assign array
       localID: story.get('localID'),
       summary: story.get('summary'),
-      author: getAuthorName(story.get('author')),
+      author: story.get('author'),
       assignment: story.get('assignment'),
       updatedAt: story.get('updatedAt'),
       cachedLocation: story.get('cachedLocation'),
@@ -20,14 +21,22 @@ export function toStory(story: any): Story {
     });
   }
 
-function getAuthorName(authorId: String): String {
+export function setName(authorId: String): String {
+  let authorName: String;
+  getAuthorName(authorId).subscribe(
+    name => { authorName = name;  console.log(authorName); },
+    err => console.log(err)
+  );
+  return authorName;
+}
+
+function getAuthorName(authorId: String): Observable<String> {
   const userObj: any = Parse.Object.extend('User');
   const query: any = new Parse.Query(userObj);
-  query.get(authorId).then(
-    function(author){
-      return `${ author.get('first_name') } ${ author.get('last_name') }`;
-    }, function(object, error) {
-      console.log(`Error: ${ object } : ${ error }`);
-    });
-  return;
+  return Observable.create(observer => {
+    query.get(authorId).then(function(author) {
+      observer.next(`${ author.get('first_name') } ${ author.get('last_name') }`);
+      observer.complete();
+    }, function(err) { console.log(`Error: ${err}`); });
+  });
 }

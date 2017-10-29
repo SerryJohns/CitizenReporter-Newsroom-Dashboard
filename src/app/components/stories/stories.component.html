@@ -1,3 +1,37 @@
-<p>
-  stories works!
-</p>
+<div class="row">
+  <div class="col-md-8 col-12">
+    <div class="card">
+      <div class="card-header bg-blue text-white text-center">
+        <img class="card-menu-icon" src="./../../assets/images/icons/menu.png">
+        {{ title }}
+      </div>
+      <div class="card-block">
+        <div class="card-body">
+          <h2> Stories </h2>
+          <table class="table table-hover">
+            <tr class="table-header text-white">
+              <th> Title </th>
+              <th> Author </th>
+              <th> Location </th>
+              <th> Creation Date </th>
+              <th> Description </th>
+            </tr>
+            <tr *ngFor="let story of stories" class="story-row"
+            (click)="clickStory(story)"
+            [class.selected-row]="selectedStory === story">
+              <td> {{ story.title }} </td>
+              <td> {{ story.who }} </td>
+              <td> {{ story.cachedLocation }} </td>
+              <td> {{ story.createdAt | date: 'dd/MM/yyyy' }} </td>
+              <td> {{ story.summary }} </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-12">
+    <div class="jumbotron">side text</div>
+  </div>
+</div>

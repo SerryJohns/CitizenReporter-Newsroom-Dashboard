@@ -1,0 +1,16 @@
+.table-header {
+    background-color: #484A69 !important;
+    color: #A6A8B9 !important;
+    text-align: center;
+}
+
+.selected-row {
+    background-color: #484A69 !important;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.card-body {
+    padding: 20px;
+    overflow: scroll;
+}
