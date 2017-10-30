@@ -14,3 +14,9 @@ export class Story {
     sourceApp: String;
     who: String;
 }
+
+export class StoryMedia {
+    image: String[];
+    audio: String[];
+    video: String[];
+}

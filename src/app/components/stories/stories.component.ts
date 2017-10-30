@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { GetStoriesService } from './../../services/stories/get-stories.service';
-import { Story } from './story.model';
+import { Story, StoryMedia } from './story.model';
 import { setName } from '../../services/stories/story-utils';
 import { Paginator } from './paginator.model';
 import { PaginateService } from '../../services/pagination/paginate.service';
+import { StoryMediaService } from '../../services/stories/story-media.service';
 
 @Component({
   selector: 'app-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.css'],
-  providers: [ GetStoriesService, PaginateService ]
+  providers: [ GetStoriesService, PaginateService, StoryMediaService ]
 })
 export class StoriesComponent implements OnInit {
-
   constructor(
     private storiesService: GetStoriesService,
-    private paginateService: PaginateService) { }
+    private paginateService: PaginateService,
+    private storyMediaService: StoryMediaService
+  ) { }
 
   title = 'Stories';
   stories: Story[] = [];
   selectedStory: Story;
+  mediaFiles: StoryMedia = new StoryMedia();
 
   limit: number;
   offset: number;
@@ -58,7 +61,32 @@ export class StoriesComponent implements OnInit {
   }
 
   clickStory(story: Story): void {
+    // fetches the story media files from the parse server
+    // this.mediaFiles = [];
+    let result: StoryMedia = <StoryMedia>({ image: [], audio: [], video: [] });
     this.selectedStory = story;
+    this.storyMediaService.getMediaFiles(story.id).subscribe(
+      (url) => {
+        let ext = url.substr(url.lastIndexOf('.') + 1);
+        switch (ext) {
+          case 'jpg':
+            result.image.push(url);
+            break;
+          case 'wav':
+            result.audio.push(url);
+            break;
+          case 'mp4':
+            result.video.push(url);
+            break;
+          default:
+            break;
+        }
+      },
+      (err) => console.log(err),
+      () => {
+        this.mediaFiles = result;
+      }
+    );
   }
 
   loadMoreStories(page) {
@@ -81,4 +109,5 @@ export class StoriesComponent implements OnInit {
     }
     this.loadStories();
   }
+
 }

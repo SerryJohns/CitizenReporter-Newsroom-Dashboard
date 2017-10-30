@@ -1,3 +1,8 @@
-<p>
-  {{ story.media }}
-</p>
+<div>
+  <div *ngIf="mediaFiles.image">
+    <h2> Images </h2>
+    <div class="story-image story-loader">
+      <img *ngFor="let image of mediaFiles.image" class="rounded story-image" src="{{ image }}" />
+    </div>
+  </div>
+</div>
