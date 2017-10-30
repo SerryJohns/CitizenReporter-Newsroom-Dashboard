@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {single, multi} from './data';
 
 @Component({
@@ -10,8 +10,8 @@ export class LineChartComponent implements OnInit {
 
   single: any[];
   multi: any[];
-
-  view: any[] = [600, 300];
+  @Input() height: number;
+  @Input() width: number;
 
   // options
   showXAxis = true;

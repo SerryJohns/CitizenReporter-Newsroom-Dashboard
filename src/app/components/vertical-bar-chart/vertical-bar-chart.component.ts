@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {single, multi} from './data';
 
 @Component({
@@ -10,14 +10,13 @@ export class VerticalBarChartComponent implements OnInit {
 
   single: any[];
   multi: any[];
-
-  view: any[] = [300, 300];
+  @Input() height: number;
+  @Input() width: number;
 
   // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
   showXAxisLabel = true;
   xAxisLabel = 'Day';
   showYAxisLabel = true;
@@ -37,5 +36,4 @@ export class VerticalBarChartComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

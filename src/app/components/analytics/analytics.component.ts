@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalyticsComponent implements OnInit {
 
+  height = 200;
+  width = 300;
 
   constructor() {
   }

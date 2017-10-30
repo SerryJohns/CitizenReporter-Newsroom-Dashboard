@@ -17,21 +17,37 @@
           <div class="row">
             <!-- Downloads -->
             <div class="col-md-3">
-              <app-vertical-bar-chart></app-vertical-bar-chart>
+              <div class="row statistics-heading">
+                <h3 class="green-text">7465</h3>
+                <h3 class="gray-text">Total <br>Downloads</h3>
+              </div>
+              <app-vertical-bar-chart [width]="width" [height]="height"></app-vertical-bar-chart>
             </div>
 
             <!-- Downloads today -->
             <div class="col-md-3">
+              <div class="row statistics-heading">
+                <h3 class="green-text">20 </h3>
+                <h3 class="gray-text">Today </h3>
+              </div>
               <app-pie-chart></app-pie-chart>
             </div>
 
             <!-- Users -->
             <div class="col-md-3">
-              <app-vertical-bar-chart></app-vertical-bar-chart>
+              <div class="row statistics-heading">
+                <h3 class="users-orange-text">6920 </h3>
+                <h3 class="gray-text">Today <br>Users</h3>
+              </div>
+              <app-vertical-bar-chart [width]="width" [height]="height"></app-vertical-bar-chart>
             </div>
 
             <!-- Users today -->
             <div class="col-md-3">
+              <div class="row statistics-heading">
+                <h3 class="users-orange-text">20 </h3>
+                <h3 class="gray-text">Today </h3>
+              </div>
               <app-pie-chart></app-pie-chart>
             </div>
           </div>
@@ -55,7 +71,7 @@
           </div>
         </div>
         <div class="general-statistics">
-          <div class="row">
+          <div class="row" id="general-statistics-highlights">
             <div class="col-md-6 text-center">
               <h1 class="blue-text">+34</h1>
               <h3 class="white-text">Users this week</h3>
@@ -65,7 +81,8 @@
               <h3 class="white-text">Downloads this week</h3>
             </div>
           </div>
-          <app-vertical-bar-chart></app-vertical-bar-chart>
+          <h3 id="daily-overview">24 hour overview</h3>
+          <app-vertical-bar-chart [width]="350" [height]="200"></app-vertical-bar-chart>
         </div>
       </div>
     </div>
@@ -81,7 +98,7 @@
             </div>
           </div>
         </div>
-          <app-line-chart></app-line-chart>
+          <app-line-chart [width]="500" [height]="320"></app-line-chart>
       </div>
     </div>
   </div>

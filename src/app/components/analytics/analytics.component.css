@@ -48,3 +48,27 @@
 .orange-text {
   color: #CF917A;
 }
+#general-statistics-highlights {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#daily-overview {
+  margin-left: 40px;
+  color: #ffffff;
+}
+.statistics-heading {
+  padding-top: 30px;
+  margin-left: 40px;
+}
+.green-text {
+  color: #3EC556;
+  font-size: 34px;
+}
+.gray-text {
+  color: #484A69;
+  font-size: 12px;
+}
+.users-orange-text {
+  color: #ED684A;
+  font-size: 34px;
+}
