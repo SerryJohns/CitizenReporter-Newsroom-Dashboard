@@ -30,14 +30,14 @@
                 <h3 class="green-text">20 </h3>
                 <h3 class="gray-text">Today </h3>
               </div>
-              <app-pie-chart></app-pie-chart>
+              <app-pie-chart [firstColor]="green" [secondColor]="darkColor"></app-pie-chart>
             </div>
 
             <!-- Users -->
             <div class="col-md-3">
               <div class="row statistics-heading">
                 <h3 class="users-orange-text">6920 </h3>
-                <h3 class="gray-text">Today <br>Users</h3>
+                <h3 class="gray-text">Total <br>Users</h3>
               </div>
               <app-vertical-bar-chart [width]="width" [height]="height"></app-vertical-bar-chart>
             </div>
@@ -45,10 +45,10 @@
             <!-- Users today -->
             <div class="col-md-3">
               <div class="row statistics-heading">
-                <h3 class="users-orange-text">20 </h3>
+                <h3 class="users-orange-text">37 </h3>
                 <h3 class="gray-text">Today </h3>
               </div>
-              <app-pie-chart></app-pie-chart>
+              <app-pie-chart [firstColor]="orange" [secondColor]="darkColor"></app-pie-chart>
             </div>
           </div>
         </div>

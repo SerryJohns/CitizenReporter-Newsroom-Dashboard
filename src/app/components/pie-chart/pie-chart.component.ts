@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {single, multi} from './data';
 
 @Component({
@@ -8,17 +8,14 @@ import {single, multi} from './data';
 })
 export class PieChartComponent implements OnInit {
 
-
   single: any[];
   multi: any[];
 
   view: any[] = [200, 200];
   gradient = false;
   showLegend = false;
-
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
+  @Input() firstColor: string;
+  @Input() secondColor: string;
 
   // pie
   showLabels = false;
