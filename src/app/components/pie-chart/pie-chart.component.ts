@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {single, multi} from './data';
+import {single} from './data';
 
 @Component({
   selector: 'app-pie-chart',
@@ -9,7 +9,6 @@ import {single, multi} from './data';
 export class PieChartComponent implements OnInit {
 
   single: any[];
-  multi: any[];
 
   view: any[] = [200, 200];
   gradient = false;
@@ -17,20 +16,20 @@ export class PieChartComponent implements OnInit {
   @Input() firstColor: string;
   @Input() secondColor: string;
 
-  // pie
+  // pie-chart options
   showLabels = false;
   explodeSlices = false;
   doughnut = true;
 
   constructor() {
-    Object.assign(this, {single, multi});
+    Object.assign(this, {single});
   }
 
   onSelect(event) {
     console.log(event);
   }
 
-    ngOnInit() {
+  ngOnInit() {
   }
 
 }

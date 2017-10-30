@@ -36,7 +36,7 @@
             <!-- Users -->
             <div class="col-md-3">
               <div class="row statistics-heading">
-                <h3 class="users-orange-text">6920 </h3>
+                <h3 class="users-orange-text">{{totalUsers}} </h3>
                 <h3 class="gray-text">Total <br>Users</h3>
               </div>
               <app-vertical-bar-chart [width]="width" [height]="height"></app-vertical-bar-chart>
@@ -45,7 +45,7 @@
             <!-- Users today -->
             <div class="col-md-3">
               <div class="row statistics-heading">
-                <h3 class="users-orange-text">37 </h3>
+                <h3 class="users-orange-text">{{usersToday}} </h3>
                 <h3 class="gray-text">Today </h3>
               </div>
               <app-pie-chart [firstColor]="orange" [secondColor]="darkColor"></app-pie-chart>

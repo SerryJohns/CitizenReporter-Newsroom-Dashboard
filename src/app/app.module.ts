@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -44,6 +45,7 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     NgxChartsModule,
     FormsModule,
