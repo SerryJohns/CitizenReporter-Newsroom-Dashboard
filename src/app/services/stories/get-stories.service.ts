@@ -9,6 +9,7 @@ import { toStory } from './story-utils';
 
 @Injectable()
 export class GetStoriesService {
+
   getStories(limit: number, offset: number): Observable<Story> {
     const storiesObj: any = Parse.Object.extend('Story');
     const query: any = new Parse.Query(storiesObj);

@@ -7,7 +7,16 @@
       </div>
       <div class="card-block">
         <div class="card-body">
-          <h2> Stories </h2>
+          <div class="col-5 pull-right form-group">
+              <div class="input-group">
+                  <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString"/>
+                  <div class="input-group-addon">
+                    <i>
+                      <img class="filter-icon" src="./../../../assets/images/icons/filter-icon.png"  />
+                    </i>
+                  </div>
+              </div>
+          </div>
           <table class="table table-hover">
             <tr class="table-header text-white">
               <th> Title </th>
@@ -16,7 +25,8 @@
               <th> Creation Date </th>
               <th> Description </th>
             </tr>
-            <tr *ngFor="let story of stories" class="story-row"
+            <tr class="story-row"
+            *ngFor="let story of stories | filter : 'title' : searchString;"
             (click)="clickStory(story)"
             [class.selected-row]="selectedStory === story">
               <td> {{ story.title }} </td>

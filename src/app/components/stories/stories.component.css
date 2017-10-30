@@ -17,3 +17,8 @@
 .selected-page {
     background-color: #E9ECEF !important;
 }
+
+.filter-icon {
+    width: 20px;
+    opacity: 0.46;
+}

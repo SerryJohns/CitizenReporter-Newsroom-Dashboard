@@ -11,6 +11,7 @@ import { PageContentComponent } from './components/page-content/page-content.com
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { ParseConfig } from './services/parse-config';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ParseConfig } from './services/parse-config';
     MenuComponent,
     PageContentComponent,
     PageHeaderComponent,
-    StoriesComponent
+    StoriesComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
