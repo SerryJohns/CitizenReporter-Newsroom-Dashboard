@@ -10,6 +10,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PageContentComponent } from './components/page-content/page-content.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { StoriesComponent } from './components/stories/stories.component';
+import { StoryMediaComponent } from './components/story-media/story-media.component';
+
 import { ParseConfig } from './services/parse-config';
 import { FilterPipe } from './pipes/filter.pipe';
 
@@ -20,6 +22,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     PageContentComponent,
     PageHeaderComponent,
     StoriesComponent,
+    StoryMediaComponent,
     FilterPipe
   ],
   imports: [

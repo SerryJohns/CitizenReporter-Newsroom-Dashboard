@@ -9,7 +9,8 @@
         <div class="card-body">
           <div class="col-5 pull-right form-group">
               <div class="input-group">
-                  <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString"/>
+                  <input type="text" class="form-control" name="searchString" 
+                    placeholder="Type to search..." [(ngModel)]="searchString" />
                   <div class="input-group-addon">
                     <i>
                       <img class="filter-icon" src="./../../../assets/images/icons/filter-icon.png"  />
@@ -26,9 +27,9 @@
               <th> Description </th>
             </tr>
             <tr class="story-row"
-            *ngFor="let story of stories | filter : 'title' : searchString;"
-            (click)="clickStory(story)"
-            [class.selected-row]="selectedStory === story">
+              *ngFor="let story of stories | filter : 'title' : searchString;"
+              (click)="clickStory(story)"
+              [class.selected-row]="selectedStory === story">
               <td> {{ story.title }} </td>
               <td> {{ story.who }} </td>
               <td> {{ story.cachedLocation }} </td>
@@ -63,7 +64,7 @@
       <div class="card-header bg-blue text-white text-center">Attached Media Files</div>
       <div class="card-block">
         <div class="card-body">
-          body
+            <app-story-media [story]="selectedStory" *ngIf="selectedStory"></app-story-media>
         </div>
       </div>
     </div>
