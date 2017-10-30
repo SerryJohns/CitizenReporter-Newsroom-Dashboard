@@ -30,7 +30,7 @@
                 <h3 class="green-text">20 </h3>
                 <h3 class="gray-text">Today </h3>
               </div>
-              <app-pie-chart [firstColor]="green" [secondColor]="darkColor"></app-pie-chart>
+              <app-pie-chart [firstColor]="green" [secondColor]="darkColor" [totalUsers]="totalUsers" [usersToday]="usersToday"></app-pie-chart>
             </div>
 
             <!-- Users -->
@@ -48,7 +48,7 @@
                 <h3 class="users-orange-text">{{usersToday}} </h3>
                 <h3 class="gray-text">Today </h3>
               </div>
-              <app-pie-chart [firstColor]="orange" [secondColor]="darkColor"></app-pie-chart>
+              <app-pie-chart [firstColor]="orange" [secondColor]="darkColor" [totalUsers]="totalUsers" [usersToday]="usersToday"></app-pie-chart>
             </div>
           </div>
         </div>

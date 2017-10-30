@@ -1,20 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {single} from './data';
+import {
+  Component, OnInit, Input, OnChanges,
+  SimpleChange
+} from '@angular/core';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, OnChanges {
 
-  single: any[];
+  single: any[] = [
+    {
+      'name': 'Today',
+      'value': 0
+    },
+    {
+      'name': 'Total',
+      'value': 0
+    }
+  ];
 
   view: any[] = [200, 200];
   gradient = false;
   showLegend = false;
   @Input() firstColor: string;
   @Input() secondColor: string;
+  @Input() usersToday: number;
+  @Input() totalUsers: number;
+  currentUsers: number;
+  currentTotal: number;
 
   // pie-chart options
   showLabels = false;
@@ -22,7 +37,7 @@ export class PieChartComponent implements OnInit {
   doughnut = true;
 
   constructor() {
-    Object.assign(this, {single});
+    Object.assign(this, {single: this.single});
   }
 
   onSelect(event) {
@@ -31,5 +46,32 @@ export class PieChartComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+    for (const propName in changes) {
+      const simpleChange = changes[propName];
+      if (propName === 'usersToday') {
+        this.currentUsers = simpleChange.currentValue;
+      }
+      if (propName === 'totalUsers') {
+        this.currentTotal = simpleChange.currentValue;
+      }
+    }
+    this.updatePieChartData();
+  }
+
+  updatePieChartData() {
+    this.single = [
+      {
+        'name': 'Today',
+        'value': this.currentUsers || 0
+      },
+      {
+        'name': 'Total',
+        'value': this.currentTotal || 0
+      }
+    ];
+  }
+
 
 }
