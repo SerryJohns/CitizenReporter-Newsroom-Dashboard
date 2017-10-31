@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { EventsAnalyticsService } from '../../services/events-analytics.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-events-analytics',
@@ -7,7 +9,7 @@ import { EventsAnalyticsService } from '../../services/events-analytics.service'
   styleUrls: ['./events-analytics.component.css'],
   providers: [EventsAnalyticsService]
 })
-export class EventsAnalyticsComponent implements OnInit {
+export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
 
   analyticsSummary: any[] = [];
 
@@ -41,4 +43,16 @@ export class EventsAnalyticsComponent implements OnInit {
     });
 
   }
+
+  ngAfterViewInit() {
+    $('#radioBtn a').on('click', function(){
+        const sel = $(this).data('title');
+        const tog = $(this).data('toggle');
+        $('#' + tog).prop('value', sel);
+
+        $('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+        $('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+    });
+  }
+
 }
