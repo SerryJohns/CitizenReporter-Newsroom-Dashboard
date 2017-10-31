@@ -5,6 +5,8 @@ import {
 } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { formatDate, getHeaders, getWeekDateRange } from '../utils/utils';
+
 @Injectable()
 export class AudienceAnalyticsService {
 
@@ -15,7 +17,7 @@ export class AudienceAnalyticsService {
   public dailyUsersUrl = 'https://api-metrics.flurry.com/public/v1/data/appUsage/all' +
     '/app?metrics=newDevices&dateTime=' + this.getTodaysDateRange();
   public weeklyUsersUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
-    'appUsage/day/app?metrics=newDevices&dateTime=' + this.getWeekDateRange();
+    'appUsage/day/app?metrics=newDevices&dateTime=' + getWeekDateRange();
   public headers: Headers;
   public token = 'eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3' +
     'RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW' +
@@ -26,24 +28,8 @@ export class AudienceAnalyticsService {
   private previousDay: Date;
 
   constructor(private http: Http) {
-    // console.log('The current range is ' + this.getTodaysDateRange());
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Access-Control-Allow-Origin', '*');
+    this.headers = getHeaders();
     this.headers.set('Authorization', `Bearer ${this.token}`);
-  }
-
-  private static formatDate(date: Date) {
-    let dd: any = date.getDate();
-    let mm: any = date.getMonth() + 1;
-    const yyyy = date.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    return yyyy + '-' + mm + '-' + dd;
   }
 
   public getAppAnalyticsSummary() {
@@ -68,16 +54,7 @@ export class AudienceAnalyticsService {
     this.today = new Date();
     this.previousDay = new Date(this.today);
     this.previousDay.setDate(this.today.getDate() - 1);
-    return AudienceAnalyticsService.formatDate(this.previousDay)
-      + '/' + AudienceAnalyticsService.formatDate(this.today);
-  }
-
-  public getWeekDateRange() {
-    this.today = new Date();
-    this.previousDay = new Date(this.today);
-    this.previousDay.setDate(this.today.getDate() - 7);
-    return AudienceAnalyticsService.formatDate(this.previousDay)
-      + '/' + AudienceAnalyticsService.formatDate(this.today);
+    return formatDate(this.previousDay) + '/' + formatDate(this.today);
   }
 
 }
