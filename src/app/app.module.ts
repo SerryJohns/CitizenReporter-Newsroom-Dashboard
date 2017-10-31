@@ -21,6 +21,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { EventsAnalyticsComponent } from './components/events-analytics/events-analytics.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
     AnalyticsComponent,
     VerticalBarChartComponent,
     PieChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    EventsAnalyticsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,3 +55,5 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+
