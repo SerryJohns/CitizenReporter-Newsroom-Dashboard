@@ -15,3 +15,9 @@
 .top-10 {
     margin-top: 10px;
 }
+
+.attachment-header {
+    background-color: #47a8d4;
+    padding: 10px;
+    color: #FFFFFF;
+}
