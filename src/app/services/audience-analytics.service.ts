@@ -14,6 +14,8 @@ export class AudienceAnalyticsService {
     '&dateTime=2017-10-13/2017-10-15';
   public dailyUsersUrl = 'https://api-metrics.flurry.com/public/v1/data/appUsage/all' +
     '/app?metrics=newDevices&dateTime=' + this.getTodaysDateRange();
+  public weeklyUsersUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
+    'appUsage/day/app?metrics=newDevices&dateTime=' + this.getWeekDateRange();
   public headers: Headers;
   public token = 'eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3' +
     'RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW' +
@@ -21,7 +23,7 @@ export class AudienceAnalyticsService {
     'ImF1ZCI6IjQiLCJ0eXBlIjo0LCJqdGkiOiIyMjU4In0.dsr3hGkC3O8FUR_zVxMDZ6F' +
     'taU7r7dnWJ6sR82vcsDE';
   private today: Date;
-  private yesterday: Date;
+  private previousDay: Date;
 
   constructor(private http: Http) {
     // console.log('The current range is ' + this.getTodaysDateRange());
@@ -51,17 +53,30 @@ export class AudienceAnalyticsService {
   }
 
   public getTotalUsersToday() {
-    // this.dailyUsersUrl += this.getTodaysDateRange();
     return this.http.get(this.dailyUsersUrl, {
+      headers: this.headers
+    }).map((response) => response.json());
+  }
+
+  public getWeeklyUsers() {
+    return this.http.get(this.weeklyUsersUrl, {
       headers: this.headers
     }).map((response) => response.json());
   }
 
   public getTodaysDateRange() {
     this.today = new Date();
-    this.yesterday = new Date(this.today);
-    this.yesterday.setDate(this.today.getDate() - 1);
-    return AudienceAnalyticsService.formatDate(this.yesterday)
+    this.previousDay = new Date(this.today);
+    this.previousDay.setDate(this.today.getDate() - 1);
+    return AudienceAnalyticsService.formatDate(this.previousDay)
+      + '/' + AudienceAnalyticsService.formatDate(this.today);
+  }
+
+  public getWeekDateRange() {
+    this.today = new Date();
+    this.previousDay = new Date(this.today);
+    this.previousDay.setDate(this.today.getDate() - 7);
+    return AudienceAnalyticsService.formatDate(this.previousDay)
       + '/' + AudienceAnalyticsService.formatDate(this.today);
   }
 

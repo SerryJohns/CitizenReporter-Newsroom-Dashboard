@@ -19,8 +19,10 @@ export class AnalyticsComponent implements OnInit {
   orange = '#ED684A';
   totalUsers: number;
   usersToday: number;
+  showWeeklyGraph = false;
 
   appAnalyticsSummary: AppAnalyticsSummary;
+  weeklyAnalyticsSummary: AppAnalyticsSummary[];
 
   constructor(private _audienceAnalyticsService: AudienceAnalyticsService) {
   }
@@ -55,6 +57,21 @@ export class AnalyticsComponent implements OnInit {
         (error) => {
       console.log(error);
     });
+
+    this._audienceAnalyticsService.getWeeklyUsers()
+      .subscribe((data) => {
+      if (data.rows.length === 0) {
+        console.log('There are no users today');
+        this.usersToday = 0;
+      } else {
+        this.weeklyAnalyticsSummary = data.rows;
+        this.showWeeklyGraph = true;
+      }
+      },
+        (error) => {
+      console.log(error);
+    });
+
   }
 }
 
