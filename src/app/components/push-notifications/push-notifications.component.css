@@ -14,11 +14,6 @@
     background-color: #F3F6FA;
 }
 
-.notification-preview {
-    margin: 50px 60px;
-    padding: 20px;
-}
-
 .margin-10 {
     padding-top: 20px;
 }
@@ -40,6 +35,15 @@
     text-align: center;
 }
 
+.notification {
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 20px;
+    min-width: 180px;
+    max-width: 180px;
+    margin: 20px auto;
+}
+
 .notification-box {
     background: #FFFFFF;
     box-shadow: 0 1px 1px rgba(0,0,0,.24);
@@ -47,6 +51,11 @@
     min-height: 38px;
     max-height: 50px;
     overflow: hidden;
+}
+
+.notification-preview {
+    padding: 20px;
+    margin-top: 20px;
 }
 
 .app-icon {
@@ -75,10 +84,4 @@
     color: rgba(0,0,0,.5);
     font-size: 10px;
     text-align: left;
-}
-
-.notification {
-    margin-left: -10px;
-    margin-right: -10px;
-    margin-top: 20px;
 }
