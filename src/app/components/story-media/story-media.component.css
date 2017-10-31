@@ -9,7 +9,6 @@
 .story-image {
     width: 100%;
     min-height: 60px;
-    max-height: 180px;
 }
 
 .top-10 {
@@ -20,4 +19,9 @@
     background-color: #47a8d4;
     padding: 10px;
     color: #FFFFFF;
+}
+
+.content-scroll {
+    max-height: 650px;
+    overflow: scroll;
 }

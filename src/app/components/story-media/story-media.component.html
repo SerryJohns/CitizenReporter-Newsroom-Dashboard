@@ -1,4 +1,4 @@
-<div>
+<div class="content-scroll">
   <div *ngIf="mediaFiles.image?.length > 0">
     <h2 class="attachment-header"> Image Data </h2>
     <div class="rounded story-image story-loader top-10" *ngFor="let image of mediaFiles.image">
@@ -24,4 +24,8 @@
     </div>
   </div>
 
+  <div class="text-center" 
+    *ngIf="!mediaFiles.image?.length && !mediaFiles.video?.length && !mediaFiles.audio?.length">
+    No media files attached
+  </div>
 </div>

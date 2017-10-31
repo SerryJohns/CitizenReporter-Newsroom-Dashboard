@@ -22,3 +22,15 @@
     width: 20px;
     opacity: 0.46;
 }
+
+.content-scroll {
+    max-height: 650px;
+    overflow: scroll;
+}
+
+.left-15 {
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
