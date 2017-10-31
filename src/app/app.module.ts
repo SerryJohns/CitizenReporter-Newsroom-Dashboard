@@ -4,6 +4,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ParseConfig } from './services/parse-config';
+import { FilterPipe } from './pipes/filter.pipe';
+
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -11,9 +14,7 @@ import { PageContentComponent } from './components/page-content/page-content.com
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { StoryMediaComponent } from './components/story-media/story-media.component';
-
-import { ParseConfig } from './services/parse-config';
-import { FilterPipe } from './pipes/filter.pipe';
+import { PushNotificationsComponent } from './components/push-notifications/push-notifications.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     PageHeaderComponent,
     StoriesComponent,
     StoryMediaComponent,
+    PushNotificationsComponent,
     FilterPipe
   ],
   imports: [
