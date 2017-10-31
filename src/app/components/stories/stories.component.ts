@@ -26,7 +26,6 @@ export class StoriesComponent implements OnInit {
 
   limit: number;
   offset: number;
-  totalPages: number;
   totalCount: number;
   currentPage: number;
   pages: number [];
@@ -48,7 +47,6 @@ export class StoriesComponent implements OnInit {
       (count) => {
         this.paginator = this.paginateService.paginateData(count, this.limit, this.offset);
         this.totalCount = count;
-        this.totalPages = this.paginator.totalPages;
         this.currentPage = this.paginator.currentPage;
         this.pages = this.paginator.pages;
         this.storiesService.getStories(this.limit, this.offset)
