@@ -1,3 +1,62 @@
-<p>
-  push-notifications works!
-</p>
+<div class="row">
+  <div class="col-md-8 col-12">
+    <div class="card">
+      <div class="card-header bg-blue text-white text-center">
+        <img class="card-menu-icon" src="./../../assets/images/icons/menu.png">
+        Send push notification
+      </div>
+      <div class="card-block">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="message">MESSAGE</label>
+              <textarea name="message" id="message" cols="30" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="audience">AUDIENCE </label>
+              <select name="audience" id="audience" class="form-control">
+                <option value="all">All</option>
+                <option value="by">By</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="location">LOCATION</label>
+              <select name="location" id="location" class="form-control">
+                <option value="Kampala">Kampala</option>
+                <option value="Nairobi">Nairobi</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-lg-custom btn-outline-info pull-right">
+                  SEND
+                </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-12">
+      <div class="card">
+        <div class="card-header bg-blue text-white text-center">Preview</div>
+        <div class="card-block">
+          <div class="margin-10 custom-bg">
+            <div class="card-body custom-bg phone-image">
+              <div class="notification-preview text-center">
+                <div class="current-time"> {{ today | date: 'HH:mm' }} </div>
+                <div class="current-date"> {{ today | date: 'EEEE, MMMM dd' }} </div>
+                <div class="notification">
+                  <div class="notification-box">
+                    <div class="app-icon"></div>
+                    <div class="app-name">Citizen Reporter</div>
+                    <div class="app-time"></div>
+                    <div class="message"> Notification Data Notification Data Notification Data Notification Data </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
