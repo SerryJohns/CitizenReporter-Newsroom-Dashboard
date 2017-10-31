@@ -9,6 +9,9 @@ export class PushNotificationsComponent implements OnInit {
 
   constructor() { }
   today: Date = new Date();
+  message: String;
+  audience: String;
+  location: String;
 
   ngOnInit() {
   }
