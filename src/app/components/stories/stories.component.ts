@@ -62,12 +62,11 @@ export class StoriesComponent implements OnInit {
 
   clickStory(story: Story): void {
     // fetches the story media files from the parse server
-    // this.mediaFiles = [];
-    let result: StoryMedia = <StoryMedia>({ image: [], audio: [], video: [] });
+    const result: StoryMedia = <StoryMedia>({ image: [], audio: [], video: [] });
     this.selectedStory = story;
     this.storyMediaService.getMediaFiles(story.id).subscribe(
       (url) => {
-        let ext = url.substr(url.lastIndexOf('.') + 1);
+        const ext = url.substr(url.lastIndexOf('.') + 1);
         switch (ext) {
           case 'jpg':
             result.image.push(url);
@@ -78,14 +77,10 @@ export class StoriesComponent implements OnInit {
           case 'mp4':
             result.video.push(url);
             break;
-          default:
-            break;
         }
       },
       (err) => console.log(err),
-      () => {
-        this.mediaFiles = result;
-      }
+      () => this.mediaFiles = result
     );
   }
 

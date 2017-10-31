@@ -1,14 +1,14 @@
 <div>
   <div *ngIf="mediaFiles.image?.length > 0">
     <h2> Image Data </h2><hr/>
-    <div class="rounded story-image story-loader" *ngFor="let image of mediaFiles.image">
+    <div class="rounded story-image story-loader top-10" *ngFor="let image of mediaFiles.image">
       <img class="rounded story-image" src="{{ image }}"/>
     </div>
   </div>
 
   <div *ngIf="mediaFiles.video?.length > 0">
     <h2> Video Data </h2> <hr/>
-    <div *ngFor="let video of mediaFiles.video">
+    <div class="top-10" *ngFor="let video of mediaFiles.video">
       <video width="320" height="240" controls>
           <source src="{{ video }}" type="video/mp4">
       </video>
@@ -17,7 +17,7 @@
 
   <div *ngIf="mediaFiles.audio?.length > 0">
     <h2> Audio Data </h2><hr/>
-    <div *ngFor="let audio of mediaFiles.audio">
+    <div class="top-10" *ngFor="let audio of mediaFiles.audio">
       <audio controls>
         <source src="{{ audio }}" type="audio/mpeg">
       </audio>
