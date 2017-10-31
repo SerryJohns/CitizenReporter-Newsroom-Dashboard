@@ -87,20 +87,8 @@ export class StoriesComponent implements OnInit {
 
   loadMoreStories(page) {
     const prevOffset: number = this.offset;
-    switch (page) {
-      case -1:
-        this.offset = ((this.currentPage - 2) * this.limit);
-        break;
-      case 0:
-        this.offset = ((this.currentPage) * this.limit);
-        break;
-      default:
-        this.offset = ((page - 1) * this.limit);
-        break;
-    }
-    if (!this.offset || this.offset < 0) {
-      this.offset = 0; // avoid negative offsets
-    } else if (this.offset >= this.totalCount) {
+    this.offset = this.paginateService.getOffset(page, this.limit, this.currentPage);
+    if (this.offset >= this.totalCount) {
       this.offset = prevOffset; // offset shouldn't be greater than the itemCount
     }
     this.loadStories();

@@ -42,4 +42,23 @@ export class PaginateService {
     return;
   }
 
+  getOffset(page: number, limit: number, currentPage: number): number {
+    let offset: number;
+    switch (page) {
+      case -1:
+        offset = ((currentPage - 2) * limit);
+        break;
+      case 0:
+        offset = ((currentPage) * limit);
+        break;
+      default:
+        offset = ((page - 1) * limit);
+        break;
+    }
+    if (!offset || offset < 0) {
+      offset = 0; // avoid negative offsets
+    }
+    return offset;
+  }
+
 }
