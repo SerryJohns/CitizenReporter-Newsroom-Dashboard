@@ -13,6 +13,9 @@ const routes: Routes = [
   } },
   { path: 'stories',  component: StoriesComponent, data: {
     title: 'Stories'
+  } },
+  { path: 'push-notifications', component: PushNotificationsComponent, data: {
+    title: 'Notifications'
   } }
 ];
 
