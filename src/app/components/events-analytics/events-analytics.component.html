@@ -1,3 +1,36 @@
-<p>
-  events-analytics works!
-</p>
+<div class="container" id="fill-height">
+
+  <!-- Event summary -->
+  <div class="row">
+    <div class="col-md-12" id="events-summary">
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Events summary</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-hover">
+        <tr class="table-header text-white">
+          <th> Event Name </th>
+          <th> Total Event Occurrences </th>
+          <th> Average Time Per Device </th>
+          <th> Average Time Per Session </th>
+        </tr>
+        <tr class="story-row"
+          *ngFor="let event of analyticsSummary">
+          <td> {{ event.name }} </td>
+          <td> {{ event.occurrences }} </td>
+          <td> {{ event.averageTimePerDevice }} </td>
+          <td> {{ event.averageTimePerSession }} </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+

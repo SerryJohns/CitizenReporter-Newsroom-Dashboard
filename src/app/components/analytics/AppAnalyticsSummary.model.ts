@@ -9,5 +9,7 @@ export class AppAnalyticsSummary {
   public timeSpent: number;
   public averageTimePerDevice: number;
   public averageTimePerSession: number;
+  public occurrences: number;
   public dateTime: string;
+  public name: string;
 }
