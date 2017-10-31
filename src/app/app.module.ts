@@ -32,16 +32,13 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
     StoryMediaComponent,
     PushNotificationsComponent,
     FilterPipe,
-<<<<<<< HEAD
     AssignmentsComponent,
     CreateAssignmentComponent,
-    AnalyticsComponent
-=======
+    AnalyticsComponent,
     AnalyticsComponent,
     VerticalBarChartComponent,
     PieChartComponent,
     LineChartComponent
->>>>>>> Display graphs from raw data
   ],
   imports: [
     BrowserModule,
