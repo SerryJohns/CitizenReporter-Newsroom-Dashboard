@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PushNotificationsComponent implements OnInit {
 
   constructor() { }
+  today: Date = new Date();
 
   ngOnInit() {
   }

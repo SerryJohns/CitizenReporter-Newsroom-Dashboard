@@ -143,3 +143,8 @@ text-light-gray {
 .pull-left {
 	float: left;
 }
+
+.card-body {
+    padding: 20px;
+    overflow: scroll;
+}
