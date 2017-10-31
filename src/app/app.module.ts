@@ -30,7 +30,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     BrowserAnimationsModule,
     FormsModule,
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [ ParseConfig ],
   bootstrap: [ AppComponent ]
