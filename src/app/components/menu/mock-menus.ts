@@ -10,5 +10,5 @@ export const dataMenu: Menu[] = [
 ];
 
 export const notificationMenu: Menu[] = [
-    { id: 1, name: 'Notifications', icon: `${menuIconsPath}envelope_icon.png`, url: ''}
+    { id: 1, name: 'Notifications', icon: `${menuIconsPath}envelope_icon.png`, url: '/push-notifications'}
 ];
