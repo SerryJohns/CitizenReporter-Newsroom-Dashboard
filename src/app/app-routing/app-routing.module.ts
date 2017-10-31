@@ -7,6 +7,7 @@ import { AssignmentsComponent } from './../components/assignments/assignments.co
 import { PageContentComponent } from '../components/page-content/page-content.component';
 import { StoriesComponent } from '../components/stories/stories.component';
 import { AnalyticsComponent } from '../components/analytics/analytics.component';
+import { EventsAnalyticsComponent } from '../components/events-analytics/events-analytics.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
   } },
   { path: 'assignments', component: AssignmentsComponent , data: {
     title: 'Assignments'
-  } }
+  } },
+  { path: 'events-summary',  component: EventsAnalyticsComponent }
 ];
 
 @NgModule({

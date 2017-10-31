@@ -11,7 +11,7 @@ export const dataMenu: Menu[] = [
 
 export const analyticsMenu: Menu[] = [
     { id: 1, name: 'Overview', icon: `${menuIconsPath}chart_icon.png`, url: 'analytics'},
-    { id: 2, name: 'Event Summary', icon: `${menuIconsPath}summary.png`, url: ''},
+    { id: 2, name: 'Event Summary', icon: `${menuIconsPath}summary.png`, url: 'events-summary'},
     { id: 3, name: 'Event details', icon: `${menuIconsPath}details_icon.png`, url: ''},
 ];
 
