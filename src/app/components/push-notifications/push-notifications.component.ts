@@ -37,7 +37,7 @@ export class PushNotificationsComponent implements OnInit {
 
   sendPushNotification(): void {
     let audience: Audience;
-    if (!this.msg) {
+    if (!this.message) {
       this.msg = 'Please provide a push notification message!';
       this.success = false;
       return;
