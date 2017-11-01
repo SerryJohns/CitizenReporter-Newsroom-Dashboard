@@ -13,12 +13,15 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
 
   analyticsSummary: any[] = [];
   weeklyEvents: any[] = [];
+  monthlyEvents: any[] = [];
+  showPeriod = 'Week';
 
   constructor(private _eventsAnalyticsService: EventsAnalyticsService) { }
 
   ngOnInit() {
     this.getEventsAnalyticsData();
     this.getWeeklyAnalyticsData();
+    this.getMonthlyAnalyticsData();
   }
 
   ngAfterViewInit() {
@@ -54,7 +57,21 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
       } else {
         this.weeklyEvents = [];
         this.populateEventsData(data, this.weeklyEvents);
-        console.log('');
+      }
+      },
+        (error) => {
+      console.log(error);
+    });
+  }
+
+  public getMonthlyAnalyticsData () {
+    this._eventsAnalyticsService.getMonthlyEvents()
+      .subscribe((data) => {
+      if (data.rows.length === 0) {
+        console.log('There is no event data');
+      } else {
+        this.monthlyEvents = [];
+        this.populateEventsData(data, this.monthlyEvents);
       }
       },
         (error) => {
@@ -78,6 +95,16 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
       });
     }
     console.log('');
+  }
+
+  public togglePeriod(period) {
+    if (period === 'M') {
+      this.showPeriod = 'Month';
+    } else if (period === 'W') {
+      this.showPeriod = 'Week';
+    } else if (period === 'Y') {
+      this.showPeriod = 'Year';
+    }
   }
 
 }

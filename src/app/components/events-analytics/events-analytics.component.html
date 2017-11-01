@@ -1,55 +1,50 @@
-<div class="container" id="fill-height">
-  <!-- Event summary -->
-  <div class="row white-background">
-    <div class="col-md-12" id="events-summary">
-      <div class="card">
-        <div class="card-block content-header">
-          <div class="row">
-            <div class="header-container">
-              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
-              <span class="title">Events summary</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h1 id="title-description"> Event summary data as of 1st October, 2017 to date.</h1>
+<div class="container white-background" id="fill-height">
+
+  <div class="card">
+    <div class="card-block content-header">
       <div class="row">
-        <div class="col-md-6">
-          <table class="table table-hover">
-            <tr class="table-header text-white">
-              <th> Event Name </th>
-              <th> Total Event Occurrences </th>
-              <th> Average Time Per Device </th>
-              <th> Average Time Per Session </th>
-            </tr>
-            <tr class="story-row"
-              *ngFor="let event of analyticsSummary">
-              <td> {{ event.name }} </td>
-              <td> {{ event.occurrences }} </td>
-              <td> {{ event.averageTimePerDevice }} </td>
-              <td> {{ event.averageTimePerSession }} </td>
-            </tr>
-          </table>
+        <div class="header-container">
+          <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+          <span class="title">Events summary</span>
         </div>
-        <div class="col-md-6">
-
-          <div class="form-group center-div">
-            <div class="col-sm-7 col-md-7">
-              <div class="input-group">
-                <div id="radioBtn" class="btn-group">
-                  <a class="btn btn-primary btn-sm active cursor" data-toggle="fun" data-title="Y">Week</a>
-                            <a class="btn btn-primary btn-sm notActive cursor" data-toggle="fun" data-title="X">Month</a>
-                  <a class="btn btn-primary btn-sm notActive cursor" data-toggle="fun" data-title="N">Year</a>
-                </div>
-                <input type="hidden" name="fun" id="fun">
-              </div>
-            </div>
-          </div>
-
-          <app-line-chart [width]="500" [height]="320" [data]="weeklyEvents"></app-line-chart>
-        </div>
-
       </div>
     </div>
   </div>
+  <h1 id="title-description"> Event summary data as of 1st October, 2017 to date.</h1>
+
+
+  <!-- Event summary -->
+  <div class="row">
+    <div class="col-md-4" id="events-summary">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <tr class="table-header text-white">
+              <th> Event Name </th>
+              <th> Total Occurrences </th>
+            </tr>
+            <tr class="story-row" *ngFor="let event of analyticsSummary">
+              <td> {{ event.name }} </td>
+              <td> {{ event.occurrences }} </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group center-div">
+        <div class="col-sm-7 col-md-7">
+          <div class="input-group">
+            <div id="radioBtn" class="btn-group">
+              <a class="btn btn-primary btn-sm active cursor" data-toggle="fun" data-title="W" (click)="togglePeriod('W')">Week</a>
+              <a class="btn btn-primary btn-sm notActive cursor" data-toggle="fun" data-title="N" (click)="togglePeriod('M')">Month</a>
+            </div>
+            <input type="hidden" name="fun" id="fun">
+          </div>
+        </div>
+      </div>
+      <app-line-chart [width]="700" [height]="320" [weeklyEventsData]="weeklyEvents" [monthlyEventsData]="monthlyEvents" [showPeriod]="showPeriod"></app-line-chart>
+    </div>
+  </div>
 </div>
+

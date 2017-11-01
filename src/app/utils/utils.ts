@@ -33,8 +33,15 @@ export function getWeekDateRange() {
   return formatDate(previousDay) + '/' + formatDate(today);
 }
 
+export function getMonthDateRange() {
+  const today = new Date();
+  const previousDay = new Date(today);
+  previousDay.setDate(today.getDate() - 30);
+  return formatDate(previousDay) + '/' + formatDate(today);
+}
+
 export function getDayOfTheWeek(day: number) {
-  if(day === 0) {
+  if (day === 0) {
     return 'Mon';
   } else if (day === 1) {
     return 'Tue';

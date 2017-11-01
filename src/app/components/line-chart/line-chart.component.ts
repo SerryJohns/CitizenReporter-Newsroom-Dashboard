@@ -16,8 +16,12 @@ export class LineChartComponent implements OnInit, OnChanges {
   multi: any[];
   @Input() height: number;
   @Input() width: number;
-  @Input() data: any;
-  entries: any[];
+  @Input() weeklyEventsData: any;
+  @Input() monthlyEventsData: any;
+  @Input() showPeriod: string;
+  weeklyEntries: any[];
+  monthlyEntries: any[];
+  period: string;
 
   // options
   showXAxis = true;
@@ -48,15 +52,36 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-    for (const propName in changes) {
-      const simpleChange = changes[propName];
-      if (propName === 'data') {
-        this.populateWeeklyBarGraphData(simpleChange.currentValue);
+
+    if (
+      changes['weeklyEventsData']
+      && changes['weeklyEventsData'].previousValue !== changes['weeklyEventsData'].currentValue ) {
+        this.period = 'Week';
+        this.populateBarGraphData(changes['weeklyEventsData'].currentValue);
+        this.multi = this.weeklyEntries;
+    }
+    if (
+      changes['monthlyEventsData']
+      && changes['monthlyEventsData'].previousValue !== changes['monthlyEventsData'].currentValue ) {
+        this.period = 'Month';
+        this.populateBarGraphData(changes['monthlyEventsData'].currentValue);
+    }
+
+    if ( changes['showPeriod'] && changes['showPeriod'].previousValue !== changes['showPeriod'].currentValue ) {
+      this.showPeriod = changes['showPeriod'].currentValue;
+      if (this.showPeriod === 'Month') {
+        if (this.monthlyEntries) {
+          this.multi = this.monthlyEntries;
+        }
+      } else if (this.showPeriod === 'Week') {
+        if (this.weeklyEntries) {
+          this.multi = this.weeklyEntries;
+        }
       }
     }
   }
 
-  public populateWeeklyBarGraphData(appSummary: any) {
+  public populateBarGraphData(appSummary: any) {
     const eventsDictionary = {};
     const keys = [];
     if (appSummary) {
@@ -71,20 +96,19 @@ export class LineChartComponent implements OnInit, OnChanges {
           eventsDictionary[key] = seriesDictionary;
           keys.push(key);
         }
-        eventsDictionary[key][day.getDay()] = value;
+        eventsDictionary[key][day.getDate()] = value;
       }
       this.extrapolateValuesBasedOnDate(eventsDictionary, keys);
-      this.multi = this.entries;
     }
   }
 
   public extrapolateValuesBasedOnDate(dictionary: {}, keys: string[]) {
-    this.entries = [];
+    const entries = this.selectEntries ();
 
     for (let keyIterator = 0; keyIterator < keys.length; keyIterator++) {
       const key = keys[keyIterator];
       const serie = dictionary[key];
-      this.entries.push(
+      entries.push(
         {
           'name': key,
           'series': this.getEventSeriesData(serie)
@@ -92,24 +116,47 @@ export class LineChartComponent implements OnInit, OnChanges {
     }
   }
 
+  public selectEntries () {
+    if (this.period === 'Week') {
+      this.weeklyEntries = [];
+      return this.weeklyEntries;
+    } else if (this.period === 'Month') {
+      this.monthlyEntries = [];
+      return this.monthlyEntries;
+    }
+  }
+
   public getEventSeriesData (dictionary: {}) {
     const series = [];
     const date = new Date();
-    for (let iterator = 0; iterator < 7; iterator++) {
+    let iteratorLimit = 7;
+    if (this.period === 'Month') {
+      iteratorLimit = 30;
+    }
+    for (let iterator = 0; iterator < iteratorLimit; iterator++) {
       date.setDate(date.getDate() - 1);
-      const key = date.getDay();
+      const key = date.getDate();
       if (!(key in dictionary)) {
         dictionary[key] = 0;
       }
     }
-    for (let dayIterator = 7; dayIterator > 0; dayIterator--) {
-      const day = new Date();
+    for (let dayIterator = iteratorLimit; dayIterator > 0; dayIterator--) {
+      const day = new Date(new Date().getDate());
+
       day.setDate(new Date().getDate() - dayIterator);
-      const dayKey = day.getDay();
-      series.push(new Entry(
-        getDayOfTheWeek(dayKey), dictionary[dayKey]));
+      const dayDate = day.getDate();
+      const dayKey = this.getDayKey(day);
+      series.push(new Entry(dayKey, dictionary[dayDate]));
     }
     return series;
+  }
+
+  public getDayKey (day) {
+    if (this.period === 'Week') {
+      return getDayOfTheWeek(day.getDay());
+    } else if (this.period === 'Month') {
+      return day.getDate();
+    }
   }
 
 }

@@ -5,7 +5,7 @@ import {
 } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { formatDate, getHeaders, getWeekDateRange } from '../utils/utils';
+import { formatDate, getHeaders, getWeekDateRange, getMonthDateRange } from '../utils/utils';
 
 @Injectable()
 export class EventsAnalyticsService {
@@ -18,6 +18,10 @@ export class EventsAnalyticsService {
     'appEvent/day/app/event?metrics=activeDevices,newDevices,timeSpent,' +
     'averageTimePerDevice,averageTimePerSession,' +
     'occurrences&dateTime=' + getWeekDateRange();
+  public monthlyEventsUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
+    'appEvent/day/app/event?metrics=activeDevices,newDevices,timeSpent,' +
+    'averageTimePerDevice,averageTimePerSession,' +
+    'occurrences&dateTime=' + getMonthDateRange();
   public headers: Headers;
   public token = 'eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3' +
     'RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW' +
@@ -42,4 +46,9 @@ export class EventsAnalyticsService {
     }).map((response) => response.json());
   }
 
+  public getMonthlyEvents() {
+    return this.http.get(this.monthlyEventsUrl, {
+      headers: this.headers
+    }).map((response) => response.json());
+  }
 }
