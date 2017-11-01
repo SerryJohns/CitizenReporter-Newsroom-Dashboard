@@ -9,22 +9,30 @@ import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PageContentComponent } from './components/page-content/page-content.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { StoriesComponent } from './components/stories/stories.component';
+import { StoryMediaComponent } from './components/story-media/story-media.component';
+
+import { ParseConfig } from './services/parse-config';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     PageContentComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    StoriesComponent,
+    StoryMediaComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [ ParseConfig ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
