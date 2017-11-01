@@ -17,12 +17,16 @@ export class AnalyticsComponent implements OnInit {
   green = '#3EC556';
   darkColor = '#F7F7F7';
   orange = '#ED684A';
+  weeklyUsersChart = 'WeeklyUsers';
+  weeklyDownloadsChart = 'WeeklyDownloads';
+  dialyDownloadsChart = 'DailyDownloads';
   totalUsers: number;
   usersToday: number;
   showWeeklyGraph = false;
 
   appAnalyticsSummary: AppAnalyticsSummary;
-  weeklyAnalyticsSummary: AppAnalyticsSummary[];
+  weeklyUsers: AppAnalyticsSummary[];
+  weeklyDownloads: AppAnalyticsSummary[];
 
   constructor(private _audienceAnalyticsService: AudienceAnalyticsService) {
   }
@@ -64,7 +68,7 @@ export class AnalyticsComponent implements OnInit {
         console.log('There are no users today');
         this.usersToday = 0;
       } else {
-        this.weeklyAnalyticsSummary = data.rows;
+        this.weeklyUsers = data.rows;
         this.showWeeklyGraph = true;
       }
       },

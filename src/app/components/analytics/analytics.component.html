@@ -21,7 +21,7 @@
                 <h3 class="green-text">7465</h3>
                 <h3 class="gray-text">Total <br>Downloads</h3>
               </div>
-              <app-vertical-bar-chart *ngIf="showWeeklyGraph" [width]="width" [height]="height" [data]="weeklyAnalyticsSummary"></app-vertical-bar-chart>
+              <app-vertical-bar-chart *ngIf="showWeeklyGraph" [width]="width" [height]="height" [data]="weeklyUsers" [chart]="weeklyDownloadsChart"></app-vertical-bar-chart>
             </div>
 
             <!-- Downloads today -->
@@ -39,7 +39,7 @@
                 <h3 class="users-orange-text">{{totalUsers}} </h3>
                 <h3 class="gray-text">Total <br>Users</h3>
               </div>
-              <app-vertical-bar-chart *ngIf="showWeeklyGraph" [width]="width" [height]="height" [data]="weeklyAnalyticsSummary"></app-vertical-bar-chart>
+              <app-vertical-bar-chart *ngIf="showWeeklyGraph" [width]="width" [height]="height" [data]="weeklyUsers" [chart]="weeklyUsersChart"></app-vertical-bar-chart>
             </div>
 
             <!-- Users today -->
@@ -82,7 +82,7 @@
             </div>
           </div>
           <h3 id="daily-overview">24 hour overview</h3>
-          <app-vertical-bar-chart [width]="350" [height]="200"></app-vertical-bar-chart>
+          <app-vertical-bar-chart [width]="350" [height]="200" [chart]="dialyDownloadsChart"></app-vertical-bar-chart>
         </div>
       </div>
     </div>

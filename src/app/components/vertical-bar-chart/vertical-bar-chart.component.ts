@@ -18,6 +18,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   @Input() height: number;
   @Input() width: number;
   @Input() data: AppAnalyticsSummary[];
+  @Input() chart: string;
   entries: Entry[];
 
   // options
@@ -60,13 +61,21 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       for (let i = 0; i < appSummary.length; i++) {
         const formattedDate = (appSummary[i].dateTime).substring(0, 10);
         const day = new Date(formattedDate);
-        const value = appSummary[i].newDevices;
+        const value = this.getValue(appSummary[i]);
 
         // Add elements to extrapolation dictionary
         dictionary[day.getDay()] = value;
       }
       this.extrapolateValuesBasedOnDate(dictionary);
       this.single = this.entries;
+    }
+  }
+
+  public getValue(appSummary: AppAnalyticsSummary) {
+    if (this.chart === 'WeeklyUsers') {
+      return appSummary.activeDevices;
+    } else if (this.chart === 'WeeklyDownloads') {
+      return appSummary.newDevices;
     }
   }
 
