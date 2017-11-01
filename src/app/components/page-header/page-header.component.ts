@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-header',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHeaderComponent implements OnInit {
 
-  constructor() { }
+  pageTitle: '';
+
+  constructor(private route: ActivatedRoute) {
+    this.pageTitle = route.snapshot.data['title'];
+  }
 
   ngOnInit() {
   }

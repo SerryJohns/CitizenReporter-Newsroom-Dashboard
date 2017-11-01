@@ -7,8 +7,12 @@ import { StoriesComponent } from './../components/stories/stories.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',  component: PageContentComponent },
-  { path: 'stories',  component: StoriesComponent }
+  { path: 'home',  component: PageContentComponent, data: {
+    title: 'Overview'
+  } },
+  { path: 'stories',  component: StoriesComponent, data: {
+    title: 'Stories'
+  } }
 ];
 
 @NgModule({
