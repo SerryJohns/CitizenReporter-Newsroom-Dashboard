@@ -29,3 +29,7 @@
     margin-bottom: 25px;
     cursor: pointer;
 }
+
+.even-z-index {
+    z-index: 0;
+}
