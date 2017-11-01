@@ -5,6 +5,7 @@ import {
 import {single} from './data';
 import {AppAnalyticsSummary} from '../analytics/AppAnalyticsSummary.model';
 import {Entry} from './entry.model';
+import { getDayOfTheWeek } from '../../utils/utils';
 
 @Component({
   selector: 'app-vertical-bar-chart',
@@ -35,24 +36,6 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   constructor() {
     this.populateWeeklyBarGraphData(this.data);
     Object.assign(this, {single: single});
-  }
-
-  public static getDayOfTheWeek(day: number) {
-    if(day === 0) {
-      return 'Mon';
-    } else if (day === 1) {
-      return 'Tue';
-    } else if (day === 2) {
-      return 'Wed';
-    } else if (day === 3) {
-      return 'Thu';
-    } else if (day === 4) {
-      return 'Fri';
-    } else if (day === 5) {
-      return 'Sat';
-    } else{
-      return 'Sun';
-    }
   }
 
   onSelect(event) {
@@ -102,7 +85,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       day.setDate(new Date().getDate() - dayIterator);
       const dayKey = day.getDay();
       this.entries.push(new Entry(
-        VerticalBarChartComponent.getDayOfTheWeek(dayKey), dictionary[dayKey]));
+        getDayOfTheWeek(dayKey), dictionary[dayKey]));
     }
   }
 }

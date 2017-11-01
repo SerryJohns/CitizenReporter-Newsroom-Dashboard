@@ -32,3 +32,21 @@ export function getWeekDateRange() {
   previousDay.setDate(today.getDate() - 7);
   return formatDate(previousDay) + '/' + formatDate(today);
 }
+
+export function getDayOfTheWeek(day: number) {
+  if(day === 0) {
+    return 'Mon';
+  } else if (day === 1) {
+    return 'Tue';
+  } else if (day === 2) {
+    return 'Wed';
+  } else if (day === 3) {
+    return 'Thu';
+  } else if (day === 4) {
+    return 'Fri';
+  } else if (day === 5) {
+    return 'Sat';
+  } else{
+    return 'Sun';
+  }
+}

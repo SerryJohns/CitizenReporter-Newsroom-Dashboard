@@ -15,7 +15,7 @@ export class EventsAnalyticsService {
     'averageTimePerDevice,averageTimePerSession,occurrences&dateTime=' +
     '2017-10-01/' + formatDate(new Date());
   public weeklyEventsUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
-    'appEvent/all/app/event?metrics=activeDevices,newDevices,timeSpent,' +
+    'appEvent/day/app/event?metrics=activeDevices,newDevices,timeSpent,' +
     'averageTimePerDevice,averageTimePerSession,' +
     'occurrences&dateTime=' + getWeekDateRange();
   public headers: Headers;

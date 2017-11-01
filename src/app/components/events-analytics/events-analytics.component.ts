@@ -35,8 +35,9 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
     this._eventsAnalyticsService.getEventsSummary()
       .subscribe((data) => {
       if (data.rows.length === 0) {
-        console.log('There is event data');
+        console.log('There is no event data');
       } else {
+        this.analyticsSummary = [];
         this.populateEventsData(data, this.analyticsSummary);
       }
       },
@@ -49,8 +50,9 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
     this._eventsAnalyticsService.getWeeklyEvents()
       .subscribe((data) => {
       if (data.rows.length === 0) {
-        console.log('There is event data');
+        console.log('There is no event data');
       } else {
+        this.weeklyEvents = [];
         this.populateEventsData(data, this.weeklyEvents);
         console.log('');
       }
@@ -65,14 +67,17 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
       const row = rawData.rows[iterator]['event|name'];
       const occurrences = rawData.rows[iterator]['occurrences'];
       const averageTimePerDevice = rawData.rows[iterator]['averageTimePerDevice'];
+      const dateTime = rawData.rows[iterator]['dateTime'];
       const averageTimePerSession = rawData.rows[iterator]['averageTimePerSession'];
       outputArray.push({
         'name': row,
         'occurrences': occurrences,
         'averageTimePerDevice': averageTimePerDevice,
+        'dateTime': dateTime,
         'averageTimePerSession': averageTimePerSession
       });
     }
+    console.log('');
   }
 
 }
