@@ -10,7 +10,7 @@ import { AnalyticsComponent } from '../components/analytics/analytics.component'
 import { EventsAnalyticsComponent } from '../components/events-analytics/events-analytics.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/analytics', pathMatch: 'full' },
   { path: 'analytics',  component: AnalyticsComponent },
   {
     path: 'home',  component: PageContentComponent, data: {
