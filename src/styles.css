@@ -161,8 +161,9 @@ text-light-gray {
 	height: 40px;
     width: 40px;
 	position: absolute;
-	background-image: url("./assets/images/gifs/loading.gif");
+	background-image: url("./assets/images/gifs/loading-transparent.gif");
     background-repeat: no-repeat;
     background-position: center;
 	background-size: 60px;
+	border-radius: 50%;
 }
