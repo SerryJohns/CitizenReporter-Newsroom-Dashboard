@@ -21,6 +21,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   @Input() countryChart: string;
   entries: Entry[] = [];
   showLegend = false;
+  showProgressBar = true;
 
   // options
   showXAxis = true;
@@ -75,6 +76,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       }
       this.single = this.entries;
     }
+    this.showProgressBar = false;
   }
 
   public addToDictionary(appSummary: AppAnalyticsSummary, day: Date, dictionary: {}) {

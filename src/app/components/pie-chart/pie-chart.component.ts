@@ -30,6 +30,7 @@ export class PieChartComponent implements OnInit, OnChanges {
   @Input() totalUsers: number;
   currentUsers: number;
   currentTotal: number;
+  showProgressBar = true;
 
   // pie-chart options
   showLabels = false;
@@ -58,6 +59,7 @@ export class PieChartComponent implements OnInit, OnChanges {
       }
     }
     this.updatePieChartData();
+    this.showProgressBar = false;
   }
 
   updatePieChartData() {

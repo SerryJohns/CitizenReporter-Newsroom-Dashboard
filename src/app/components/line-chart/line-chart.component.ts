@@ -21,6 +21,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   weeklyEntries: any[];
   monthlyEntries: any[];
   period: string;
+  showProgressBar = true;
 
   // options
   showXAxis = true;
@@ -99,6 +100,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       }
       this.extrapolateValuesBasedOnDate(eventsDictionary, keys);
     }
+    this.showProgressBar = false;
   }
 
   public extrapolateValuesBasedOnDate(dictionary: {}, keys: string[]) {
