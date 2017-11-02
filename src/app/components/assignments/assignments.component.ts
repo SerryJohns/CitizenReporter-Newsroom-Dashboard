@@ -7,7 +7,8 @@ import { GetAssignmentsService } from '../../services/assignments/get-assignment
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
-  styleUrls: [ './assignments.component.css', './../stories/stories.component.css' ]
+  styleUrls: [ './assignments.component.css', './../stories/stories.component.css' ],
+  providers: [ PaginateService, GetAssignmentsService ]
 })
 export class AssignmentsComponent implements OnInit {
   constructor(
