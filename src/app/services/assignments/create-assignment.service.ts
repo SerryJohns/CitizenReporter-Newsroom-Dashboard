@@ -19,16 +19,15 @@ export class CreateAssignmentService {
             title: formData.title,
             author: formData.author,
             location: formData.location,
-            description: formData.location,
+            description: formData.description,
             deadline: formData.deadline,
             createdAt: new Date(),
             updatedAt: new Date()
-          },
-          (assignment) => {
-            console.log('created successfully');
-            observer.next(toAssignment(assignment));
-            observer.complete();
-          }, (obj, err) => observer.error(`Error: ${err}`)
+          }).then(
+            (assignment) => {
+              observer.next(toAssignment(assignment));
+              observer.complete();
+            }, (obj, err) => observer.error(`Error: ${err}`)
         );
       }
     );

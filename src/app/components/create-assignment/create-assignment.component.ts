@@ -17,7 +17,7 @@ export class CreateAssignmentComponent implements OnInit {
   author: String;
   location: String;
   description: String;
-  deadline: Date;
+  deadline: string;
   featureImage: File;
 
   @Output() outputMsg: EventEmitter<AlertMsg> = new EventEmitter<AlertMsg>();
@@ -26,26 +26,33 @@ export class CreateAssignmentComponent implements OnInit {
     this.showProgressBar = false;
   }
 
+  resetFields(): void {
+    this.title = this.author = this.description = this.deadline = this.location = null;
+  }
+
   createAssignment(): void {
     this.createAssignmentService.createAssignment({
       title: this.title,
       author: this.author,
       location: this.location,
       description: this.description,
-      deadline: this.deadline,
+      deadline: new Date(this.deadline),
       featureImage: this.featureImage
     }).subscribe(
       (assignment) => {
         this.outputMsg.emit(<AlertMsg>({
           type: 'success',
-          msg: 'Assignment Created successfully!'
+          msg: 'Assignment Created successfully!',
+          data: assignment
         }));
       }, (err) => {
         this.outputMsg.emit(<AlertMsg>({
           type: 'danger',
-          msg: `Error: ${ err }`
+          msg: `Error: ${ err }`,
+          data: null
         }));
-      }
+      },
+      () => this.resetFields()
     );
   }
 
