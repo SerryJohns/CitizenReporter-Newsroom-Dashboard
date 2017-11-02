@@ -5,7 +5,7 @@ import {
 } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { formatDate, getHeaders, getWeekDateRange, getMonthDateRange } from '../utils/utils';
+import { formatDate, getHeaders, getWeekDateRange, getMonthDateRange } from '../../utils/utils';
 
 @Injectable()
 export class EventsAnalyticsService {

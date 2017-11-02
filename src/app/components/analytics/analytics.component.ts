@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AudienceAnalyticsService } from '../../services/audience-analytics.service';
+import { AudienceAnalyticsService } from '../../services/audience-analytics/audience-analytics.service';
 import {
   AppAnalyticsSummary
 } from './AppAnalyticsSummary.model';

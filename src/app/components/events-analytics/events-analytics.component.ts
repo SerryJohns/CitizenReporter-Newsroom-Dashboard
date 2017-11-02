@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import { EventsAnalyticsService } from '../../services/events-analytics.service';
+import { EventsAnalyticsService } from '../../services/events-analytics/events-analytics.service';
 
 declare var $: any;
 
