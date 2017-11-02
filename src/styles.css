@@ -156,3 +156,13 @@ text-light-gray {
     background-position: center;
     background-size: 80px;
 }
+
+.transparent-loader {
+	height: 40px;
+    width: 40px;
+	position: absolute;
+	background-image: url("./assets/images/gifs/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+	background-size: 60px;
+}

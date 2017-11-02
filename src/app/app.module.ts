@@ -15,6 +15,8 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { StoriesComponent } from './components/stories/stories.component';
 import { StoryMediaComponent } from './components/story-media/story-media.component';
 import { PushNotificationsComponent } from './components/push-notifications/push-notifications.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { CreateAssignmentComponent } from './create-assignment/create-assignment.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PushNotificationsComponent } from './components/push-notifications/push
     StoriesComponent,
     StoryMediaComponent,
     PushNotificationsComponent,
-    FilterPipe
+    FilterPipe,
+    AssignmentsComponent,
+    CreateAssignmentComponent
   ],
   imports: [
     BrowserModule,

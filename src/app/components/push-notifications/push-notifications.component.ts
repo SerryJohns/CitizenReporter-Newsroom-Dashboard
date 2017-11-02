@@ -22,6 +22,7 @@ export class PushNotificationsComponent implements OnInit {
   audience: String;
   location: String;
   success: boolean;
+  showProgressBar: boolean;
   msg: String;
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class PushNotificationsComponent implements OnInit {
 
   closeAlert(): void {
     this.msg = null;
+    this.showProgressBar = false;
   }
 
   sendPushNotification(): void {
@@ -62,14 +64,16 @@ export class PushNotificationsComponent implements OnInit {
         });
         break;
     }
-
+    this.showProgressBar = true;
     this.sendPushNotificationsService.sendPushNotification(this.message, audience)
     .then((result) => {
       this.msg = 'Push notification sent successfully';
       this.success = true;
+      this.showProgressBar = false;
     }).catch((err) => {
       this.msg = err;
       this.success = false;
+      this.showProgressBar = false;
     });
   }
 

@@ -37,9 +37,10 @@
               </select>
             </div>
             <div class="form-group">
-                <button (click)="sendPushNotification()" type="button" class="btn btn-lg-custom btn-outline-info pull-right">
-                  SEND
-                </button>
+              <div *ngIf="showProgressBar" class="transparent-loader"></div>
+              <button (click)="sendPushNotification()" type="button" class="btn btn-lg-custom btn-outline-info pull-right">
+                SEND
+              </button>
             </div>
           </form>
         </div>
