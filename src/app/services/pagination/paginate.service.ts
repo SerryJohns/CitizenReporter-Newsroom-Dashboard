@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Paginator } from '../../components/stories/paginator.model';
+import { Paginator } from './../../models/paginator.model';
 
 @Injectable()
 export class PaginateService {

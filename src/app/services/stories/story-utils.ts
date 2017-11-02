@@ -1,4 +1,4 @@
-import { Story } from '../../components/stories/story.model';
+import { Story } from './../../models/story.model';
 import { Parse } from 'parse';
 import { Observable } from 'rxjs/Observable';
 
