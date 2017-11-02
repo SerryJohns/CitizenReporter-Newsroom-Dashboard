@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CreateAssignmentService } from '../../services/assignments/create-assignment.service';
+import { AlertMsg } from '../../models/alert-msg.model';
 
 @Component({
   selector: 'app-create-assignment',
@@ -16,7 +17,10 @@ export class CreateAssignmentComponent implements OnInit {
   author: String;
   location: String;
   description: String;
+  deadline: Date;
   featureImage: File;
+
+  @Output() outputMsg: EventEmitter<AlertMsg> = new EventEmitter<AlertMsg>();
 
   ngOnInit() {
     this.showProgressBar = false;
@@ -28,10 +32,20 @@ export class CreateAssignmentComponent implements OnInit {
       author: this.author,
       location: this.location,
       description: this.description,
+      deadline: this.deadline,
       featureImage: this.featureImage
     }).subscribe(
-      () => console.log('Assignment created successfully'),
-      (err) => console.log(`Error: ${ err }`)
+      (assignment) => {
+        this.outputMsg.emit(<AlertMsg>({
+          type: 'success',
+          msg: 'Assignment Created successfully!'
+        }));
+      }, (err) => {
+        this.outputMsg.emit(<AlertMsg>({
+          type: 'danger',
+          msg: `Error: ${ err }`
+        }));
+      }
     );
   }
 
@@ -40,7 +54,6 @@ export class CreateAssignmentComponent implements OnInit {
     if (fileList.length > 0) {
       this.featureImage = fileList[0];
     }
-    console.log(this.featureImage);
   }
 
 }

@@ -4,6 +4,7 @@ import { Assignment } from './assignment.model';
 import { Paginator } from './../stories/paginator.model';
 import { PaginateService } from './../../services/pagination/paginate.service';
 import { GetAssignmentsService } from '../../services/assignments/get-assignments.service';
+import { AlertMsg } from '../../models/alert-msg.model';
 
 @Component({
   selector: 'app-assignments',
@@ -20,6 +21,7 @@ export class AssignmentsComponent implements OnInit {
   title: String = 'Assignments';
   assignments: Assignment[] = [];
   selectedAssignment: Assignment;
+  alertType: String;
   msg: String;
 
   limit: number;
@@ -52,6 +54,14 @@ export class AssignmentsComponent implements OnInit {
     this.msg = null;
   }
 
+  receiveOutputMsg(event: AlertMsg) {
+    this.msg = event.msg;
+    this.alertType = event.type;
+    if (event.msg === 'success') {
+      this.loadAssignments();
+    }
+  }
+
   loadAssignments(): void {
     this.assignments = [];
     this.assignmentsService.countAssignments().then(
@@ -63,10 +73,16 @@ export class AssignmentsComponent implements OnInit {
         this.assignmentsService.getAssignments(this.limit, this.offset)
         .subscribe(
           assignment => this.assignments.push(assignment),
-          err => this.msg = err
+          err => {
+            this.msg = err;
+            this.alertType = 'danger';
+          }
         );
       },
-      (err) => this.msg = (`Error: ${ err }`),
+      (err) => {
+        this.msg = (`Error: ${ err }`);
+        this.alertType = 'danger';
+      }
     );
   }
 
