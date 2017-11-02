@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Assignment } from './assignment.model';
-import { Paginator } from './../stories/paginator.model';
+import { Assignment } from './../../models/assignment.model';
+import { Paginator } from './../../models/paginator.model';
 import { PaginateService } from './../../services/pagination/paginate.service';
 import { GetAssignmentsService } from '../../services/assignments/get-assignments.service';
 import { AlertMsg } from '../../models/alert-msg.model';

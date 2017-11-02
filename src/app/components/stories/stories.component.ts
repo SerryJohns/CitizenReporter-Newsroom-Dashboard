@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetStoriesService } from './../../services/stories/get-stories.service';
-import { Story, StoryMedia } from './story.model';
+import { Story, StoryMedia } from './../../models/story.model';
 import { setName } from '../../services/stories/story-utils';
-import { Paginator } from './paginator.model';
+import { Paginator } from './../../models/paginator.model';
 import { PaginateService } from '../../services/pagination/paginate.service';
 import { StoryMediaService } from '../../services/stories/story-media.service';
 

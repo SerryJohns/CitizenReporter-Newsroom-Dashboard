@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Story, StoryMedia } from '../stories/story.model';
+import { Story, StoryMedia } from './../../models/story.model';
 import { StoryMediaService } from '../../services/stories/story-media.service';
 
 @Component({
