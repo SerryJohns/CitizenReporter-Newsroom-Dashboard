@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateAssignmentService } from '../../services/assignments/create-assignment.service';
 
 @Component({
   selector: 'app-create-assignment',
   templateUrl: './create-assignment.component.html',
-  styleUrls: ['./create-assignment.component.css']
+  styleUrls: ['./create-assignment.component.css'],
+  providers: [ CreateAssignmentService ]
 })
 export class CreateAssignmentComponent implements OnInit {
 
-  constructor() { }
+  constructor( private createAssignmentService: CreateAssignmentService ) { }
 
   showProgressBar: boolean;
   title: String;
   author: String;
   location: String;
-  describe: String;
+  description: String;
   featureImage: File;
 
   ngOnInit() {
@@ -21,8 +23,16 @@ export class CreateAssignmentComponent implements OnInit {
   }
 
   createAssignment(): void {
-    console.log('creating');
-    console.log(this.featureImage);
+    this.createAssignmentService.createAssignment({
+      title: this.title,
+      author: this.author,
+      location: this.location,
+      description: this.description,
+      featureImage: this.featureImage
+    }).subscribe(
+      () => console.log('Assignment created successfully'),
+      (err) => console.log(`Error: ${ err }`)
+    );
   }
 
   fileChange(event) {
