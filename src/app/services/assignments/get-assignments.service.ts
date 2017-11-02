@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Parse } from 'parse';
 
-import { Assignment } from '../../components/assignments/assignment.model';
+import { Assignment } from './../../models/assignment.model';
 import { Observable } from 'rxjs/Observable';
 import { toAssignment } from './assignment-utils';
 

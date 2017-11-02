@@ -5,6 +5,7 @@ import { Paginator } from './../../models/paginator.model';
 import { PaginateService } from './../../services/pagination/paginate.service';
 import { GetAssignmentsService } from '../../services/assignments/get-assignments.service';
 import { AlertMsg } from '../../models/alert-msg.model';
+import { States } from '../../models/states.enum';
 
 @Component({
   selector: 'app-assignments',
@@ -57,7 +58,7 @@ export class AssignmentsComponent implements OnInit {
   receiveOutputMsg(event: AlertMsg) {
     this.msg = event.msg;
     this.alertType = event.type;
-    if (event.type === 'success') {
+    if (event.type === States[States.success] && event.data) {
       this.assignments.splice(0, 0, event.data);
     }
   }
