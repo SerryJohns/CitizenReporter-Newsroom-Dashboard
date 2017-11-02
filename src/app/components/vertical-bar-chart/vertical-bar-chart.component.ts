@@ -2,7 +2,6 @@ import {
   Component, OnInit, Input, OnChanges,
   SimpleChange
 } from '@angular/core';
-import {single} from './data';
 import {AppAnalyticsSummary} from '../analytics/AppAnalyticsSummary.model';
 import {Entry} from './entry.model';
 import { getDayOfTheWeek } from '../../utils/utils';
@@ -14,12 +13,14 @@ import { getDayOfTheWeek } from '../../utils/utils';
 })
 export class VerticalBarChartComponent implements OnInit, OnChanges {
 
-  single: any[];
+  single: any[] = [];
   @Input() height: number;
   @Input() width: number;
   @Input() data: AppAnalyticsSummary[];
   @Input() chart: string;
-  entries: Entry[];
+  @Input() countryChart: string;
+  entries: Entry[] = [];
+  showLegend = false;
 
   // options
   showXAxis = true;
@@ -36,7 +37,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
 
   constructor() {
     this.populateWeeklyBarGraphData(this.data);
-    Object.assign(this, {single: single});
+    Object.assign(this, {single: this.single});
   }
 
   onSelect(event) {
@@ -44,6 +45,12 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    if (this.countryChart === 'CountryChart') {
+      this.xAxisLabel = 'Country';
+      this.yAxisLabel = 'Number';
+      this.showXAxisLabel = false;
+      this.showLegend = true;
+    }
   }
 
   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
@@ -61,21 +68,22 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       for (let i = 0; i < appSummary.length; i++) {
         const formattedDate = (appSummary[i].dateTime).substring(0, 10);
         const day = new Date(formattedDate);
-        const value = this.getValue(appSummary[i]);
-
-        // Add elements to extrapolation dictionary
-        dictionary[day.getDay()] = value;
+        this.addToDictionary(appSummary[i], day, dictionary);
       }
-      this.extrapolateValuesBasedOnDate(dictionary);
+      if (!(this.chart === 'CountryChart')) {
+        this.extrapolateValuesBasedOnDate(dictionary);
+      }
       this.single = this.entries;
     }
   }
 
-  public getValue(appSummary: AppAnalyticsSummary) {
+  public addToDictionary(appSummary: AppAnalyticsSummary, day: Date, dictionary: {}) {
     if (this.chart === 'WeeklyUsers') {
-      return appSummary.activeDevices;
+      dictionary[day.getDay()] = appSummary.activeDevices;
     } else if (this.chart === 'WeeklyDownloads') {
-      return appSummary.newDevices;
+      dictionary[day.getDay()] = appSummary.newDevices;
+    } else if (this.chart === 'CountryChart') {
+      this.entries.push(new Entry(appSummary.country, appSummary.activeDevices));
     }
   }
 
@@ -97,4 +105,5 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
         getDayOfTheWeek(dayKey), dictionary[dayKey]));
     }
   }
+
 }

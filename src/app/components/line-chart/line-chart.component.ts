@@ -2,7 +2,6 @@ import {
   Component, OnInit, Input, OnChanges,
   SimpleChange
 } from '@angular/core';
-import {multi} from './data';
 import {Entry} from '../vertical-bar-chart/entry.model';
 import {getDayOfTheWeek} from '../../utils/utils';
 
@@ -13,7 +12,7 @@ import {getDayOfTheWeek} from '../../utils/utils';
 })
 export class LineChartComponent implements OnInit, OnChanges {
 
-  multi: any[];
+  multi: any[] = [];
   @Input() height: number;
   @Input() width: number;
   @Input() weeklyEventsData: any;
@@ -41,7 +40,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   autoScale = true;
 
   constructor() {
-    Object.assign(this, {multi});
+    Object.assign(this, {multi: this.multi});
   }
 
   onSelect(event) {

@@ -10,14 +10,17 @@ import { formatDate, getHeaders, getWeekDateRange } from '../utils/utils';
 @Injectable()
 export class AudienceAnalyticsService {
 
-  public url = 'https://api-metrics.flurry.com/public/v1/data/appUsage/all' +
+  public analyticsSummaryUrl = 'https://api-metrics.flurry.com/public/v1/data/appUsage/all' +
     '/app?metrics=sessions,activeDevices,newDevices,timeSpent' +
     ',averageTimePerDevice,averageTimePerSession' +
-    '&dateTime=2017-10-13/2017-10-15';
-  public dailyUsersUrl = 'https://api-metrics.flurry.com/public/v1/data/appUsage/all' +
-    '/app?metrics=newDevices&dateTime=' + this.getTodaysDateRange();
-  public weeklyUsersUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
-    'appUsage/day/app?metrics=newDevices&dateTime=' + getWeekDateRange();
+    '&dateTime=2017-10-01/' + formatDate(new Date());
+  public dailyStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/data/appUsage/all' +
+    '/app?metrics=activeDevices,newDevices&dateTime=' + this.getTodaysDateRange();
+  public weeklyStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
+    'appUsage/day/app?metrics=activeDevices,newDevices&dateTime=' + getWeekDateRange();
+  public countryStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
+    'appUsage/hour/country?metrics=activeDevices,newDevices&' +
+    'dateTime=2017-10-01/' + formatDate(new Date());
   public headers: Headers;
   public token = 'eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3' +
     'RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW' +
@@ -33,19 +36,25 @@ export class AudienceAnalyticsService {
   }
 
   public getAppAnalyticsSummary() {
-    return this.http.get(this.url, {
+    return this.http.get(this.analyticsSummaryUrl, {
       headers: this.headers
     }).map((response) => response.json());
   }
 
-  public getTotalUsersToday() {
-    return this.http.get(this.dailyUsersUrl, {
+  public getDailyStatistics() {
+    return this.http.get(this.dailyStatisticsUrl, {
       headers: this.headers
     }).map((response) => response.json());
   }
 
-  public getWeeklyUsers() {
-    return this.http.get(this.weeklyUsersUrl, {
+  public getWeeklyStatistics() {
+    return this.http.get(this.weeklyStatisticsUrl, {
+      headers: this.headers
+    }).map((response) => response.json());
+  }
+
+  public getCountryStatistics() {
+    return this.http.get(this.countryStatisticsUrl, {
       headers: this.headers
     }).map((response) => response.json());
   }

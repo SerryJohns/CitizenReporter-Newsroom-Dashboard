@@ -94,7 +94,6 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
         'averageTimePerSession': averageTimePerSession
       });
     }
-    console.log('');
   }
 
   public togglePeriod(period) {

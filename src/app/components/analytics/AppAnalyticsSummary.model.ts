@@ -12,4 +12,5 @@ export class AppAnalyticsSummary {
   public occurrences: number;
   public dateTime: string;
   public name: string;
+  public country: string;
 }
