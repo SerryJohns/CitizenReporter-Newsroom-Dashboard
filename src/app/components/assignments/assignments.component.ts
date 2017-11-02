@@ -66,7 +66,7 @@ export class AssignmentsComponent implements OnInit {
           err => this.msg = err
         );
       },
-      (err) => this.msg = (`Error: ${ err }`)
+      (err) => this.msg = (`Error: ${ err }`),
     );
   }
 
