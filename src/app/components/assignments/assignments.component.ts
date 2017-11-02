@@ -18,6 +18,7 @@ export class AssignmentsComponent implements OnInit {
 
   title: String = 'Assignments';
   assignments: Assignment[] = [];
+  msg: String;
 
   limit: number;
   offset: number;
@@ -36,6 +37,10 @@ export class AssignmentsComponent implements OnInit {
 
   }
 
+  closeAlert(): void {
+    this.msg = null;
+  }
+
   loadAssignments(): void {
     this.assignments = [];
     this.assignmentsService.countAssignments().then(
@@ -46,11 +51,11 @@ export class AssignmentsComponent implements OnInit {
         this.pages = this.paginator.pages;
         this.assignmentsService.getAssignments(this.limit, this.offset)
         .subscribe(
-          story => this.assignments.push(story),
-          err => console.log(err)
+          story => { this.assignments.push(story); console.log(story); },
+          err => this.msg = err
         );
       },
-      (err) => console.log(`Error: ${ err }`)
+      (err) => this.msg = (`Error: ${ err }`)
     );
   }
 

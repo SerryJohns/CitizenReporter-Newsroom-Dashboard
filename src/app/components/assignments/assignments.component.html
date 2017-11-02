@@ -8,15 +8,25 @@
         <div class="card-block">
           <div class="card-body content-scroll">
             <div class="col-5 pull-right form-group">
-                <div class="input-group">
-                    <input type="text" class="form-control even-z-index" name="searchString"
-                      placeholder="Type to search..." [(ngModel)]="searchString" />
-                    <div class="input-group-addon">
-                      <i>
-                        <img class="filter-icon" src="./../../../assets/images/icons/filter-icon.png"  />
-                      </i>
-                    </div>
+              <div class="input-group">
+                <input type="text" class="form-control even-z-index" name="searchString"
+                  placeholder="Type to search..." [(ngModel)]="searchString" />
+                <div class="input-group-addon">
+                  <i>
+                    <img class="filter-icon" src="./../../../assets/images/icons/filter-icon.png"  />
+                  </i>
                 </div>
+              </div>
+            </div>
+            <div *ngIf="msg"
+              [class.alert-success]="success"
+              [class.alert-danger]="!success"
+              class="alert alert-dismissible fade show"
+              role="alert">
+                <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ msg }}
             </div>
             <table class="table table-hover">
               <tr class="table-header text-white">
@@ -28,10 +38,10 @@
               </tr>
               <tr class="story-row" *ngFor="let assignment of assignments | filter : 'title' : searchString;">
                 <td> {{ assignment.title }} </td>
-                <td> {{ assignment.who }} </td>
-                <td> {{ assignment.cachedLocation }} </td>
+                <td> {{ assignment.author }} </td>
+                <td> {{ assignment.location }} </td>
                 <td> {{ assignment.createdAt | date: 'dd/MM/yyyy' }} </td>
-                <td> {{ assignment.summary }} </td>
+                <td> {{ assignment.description }} </td>
               </tr>
             </table>
           </div>
