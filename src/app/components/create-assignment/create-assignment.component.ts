@@ -31,6 +31,7 @@ export class CreateAssignmentComponent implements OnInit {
   }
 
   createAssignment(): void {
+    this.showProgressBar = true;
     this.createAssignmentService.createAssignment({
       title: this.title,
       author: this.author,
@@ -51,8 +52,12 @@ export class CreateAssignmentComponent implements OnInit {
           msg: `Error: ${ err }`,
           data: null
         }));
+        this.showProgressBar = false;
       },
-      () => this.resetFields()
+      () => {
+        this.resetFields();
+        this.showProgressBar = false;
+      }
     );
   }
 
