@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CreateAssignmentService } from '../../services/assignments/create-assignment.service';
 import { AlertMsg } from '../../models/alert-msg.model';
+import { States } from '../../models/states.enum';
 
 @Component({
   selector: 'app-create-assignment',
@@ -42,15 +43,14 @@ export class CreateAssignmentComponent implements OnInit {
     }).subscribe(
       (assignment) => {
         this.outputMsg.emit(<AlertMsg>({
-          type: 'success',
+          type: States[States.success],
           msg: 'Assignment Created successfully!',
           data: assignment
         }));
       }, (err) => {
         this.outputMsg.emit(<AlertMsg>({
-          type: 'danger',
-          msg: `Error: ${ err }`,
-          data: null
+          type: States[States.danger],
+          msg: `Error: ${ err }`
         }));
         this.showProgressBar = false;
       },

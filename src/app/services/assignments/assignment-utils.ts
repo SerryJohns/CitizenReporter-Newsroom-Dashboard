@@ -1,4 +1,4 @@
-import { Assignment } from './../../components/assignments/assignment.model';
+import { Assignment } from './../../models/assignment.model';
 
 export function toAssignment(assignment: any): Assignment {
     return <Assignment>({

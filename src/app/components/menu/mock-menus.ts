@@ -1,4 +1,4 @@
-import { Menu } from './menu.model';
+import { Menu } from './../../models/menu.model';
 
 const menuIconsPath = './../../assets/images/icons/';
 

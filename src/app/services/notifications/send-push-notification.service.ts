@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Parse } from 'parse';
-import { Audience } from './../../components/push-notifications/audience.model';
+import { Audience } from './../../models/audience.model';
 
 @Injectable()
 export class SendPushNotificationService {
