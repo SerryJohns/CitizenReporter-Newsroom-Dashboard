@@ -34,7 +34,11 @@ export class LineChartComponent implements OnInit, OnChanges {
   yAxisLabel = 'Population';
 
   colorScheme = {
-    domain: ['#3EC556', '#ED684A']
+    domain: [
+      '#3EC556', '#ED684A', '#00FFFF', '#008B8B', '#9932CC',
+      '#556B2F', '#1E90FF', '#20B2AA', '#FFA500', '#663399',
+      '#B0E0E6', '#D8BFD8', '#FFFF00', '#9ACD32', '#00FFFF'
+    ]
   };
 
   // line, area

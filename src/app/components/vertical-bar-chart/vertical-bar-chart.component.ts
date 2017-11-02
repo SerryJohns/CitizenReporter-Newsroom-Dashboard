@@ -33,7 +33,11 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   yAxisLabel = 'Downloads';
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#D8B42C', '#AAAAAA', '#784D78', '#56F2F1', '#87DDFF']
+    domain: [
+      '#5AA454', '#A10A28', '#D8B42C', '#AAAAAA', '#784D78', '#56F2F1',
+      '#87DDFF', '#D8BFD8', '#9ACD32', '#B0E0E6', '#663399', '#1E90FF',
+      '#9932CC', '#ED684A', '#556B2F', '#000000', '#0000FF', '#8A2BE2'
+    ]
   };
 
   constructor() {
