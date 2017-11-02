@@ -62,7 +62,7 @@ export class AssignmentsComponent implements OnInit {
         this.pages = this.paginator.pages;
         this.assignmentsService.getAssignments(this.limit, this.offset)
         .subscribe(
-          assignment => { this.assignments.push(assignment); console.log(assignment); },
+          assignment => this.assignments.push(assignment),
           err => this.msg = err
         );
       },
