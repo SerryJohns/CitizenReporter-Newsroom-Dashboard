@@ -36,7 +36,10 @@
                 <th> Creation Date </th>
                 <th> Description </th>
               </tr>
-              <tr class="story-row" *ngFor="let assignment of assignments | filter : 'title' : searchString;">
+              <tr class="story-row" 
+              *ngFor="let assignment of assignments | filter : 'title' : searchString;"
+              (click)="clickAssignment(assignment)"
+              [class.selected-row]="selectedAssignment === assignment">
                 <td> {{ assignment.title }} </td>
                 <td> {{ assignment.author }} </td>
                 <td> {{ assignment.location }} </td>

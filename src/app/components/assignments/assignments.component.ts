@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Assignment } from './assignment.model';
 import { Paginator } from './../stories/paginator.model';
 import { PaginateService } from './../../services/pagination/paginate.service';
@@ -18,6 +19,7 @@ export class AssignmentsComponent implements OnInit {
 
   title: String = 'Assignments';
   assignments: Assignment[] = [];
+  selectedAssignment: Assignment;
   msg: String;
 
   limit: number;
@@ -33,8 +35,17 @@ export class AssignmentsComponent implements OnInit {
     this.loadAssignments();
   }
 
-  loadMoreAssignments(page: number): void {
+  clickAssignment(assignment: Assignment): void {
+    this.selectedAssignment = assignment;
+  }
 
+  loadMoreAssignments(page: number): void {
+    const prevOffset: number = this.offset;
+    this.offset = this.paginateService.getOffset(page, this.limit, this.currentPage);
+    if (this.offset >= this.totalCount) {
+      this.offset = prevOffset;
+    }
+    this.loadAssignments();
   }
 
   closeAlert(): void {
@@ -51,7 +62,7 @@ export class AssignmentsComponent implements OnInit {
         this.pages = this.paginator.pages;
         this.assignmentsService.getAssignments(this.limit, this.offset)
         .subscribe(
-          story => { this.assignments.push(story); console.log(story); },
+          assignment => { this.assignments.push(assignment); console.log(assignment); },
           err => this.msg = err
         );
       },
