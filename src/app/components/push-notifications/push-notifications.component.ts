@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SendPushNotificationService } from './../../services/notifications/send-push-notification.service';
 import { GetLocationsService } from './../../services/notifications/get-locations.service';
-import { Audience } from './audience.model';
+import { Audience } from './../../models/audience.model';
 
 @Component({
   selector: 'app-push-notifications',

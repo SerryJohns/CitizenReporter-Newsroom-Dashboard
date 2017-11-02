@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Menu } from './menu.model';
+import { Menu } from './../../models/menu.model';
 import { dataMenu, notificationMenu } from './mock-menus';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
