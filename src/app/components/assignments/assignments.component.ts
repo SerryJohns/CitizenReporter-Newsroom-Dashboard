@@ -57,8 +57,8 @@ export class AssignmentsComponent implements OnInit {
   receiveOutputMsg(event: AlertMsg) {
     this.msg = event.msg;
     this.alertType = event.type;
-    if (event.msg === 'success') {
-      this.loadAssignments();
+    if (event.type === 'success') {
+      this.assignments.splice(0, 0, event.data);
     }
   }
 
