@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PageContentComponent } from './../components/page-content/page-content.component';
 import { StoriesComponent } from './../components/stories/stories.component';
 import { PushNotificationsComponent } from './../components/push-notifications/push-notifications.component';
+import { AssignmentsComponent } from './../components/assignments/assignments.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,6 +17,9 @@ const routes: Routes = [
   } },
   { path: 'push-notifications', component: PushNotificationsComponent, data: {
     title: 'Notifications'
+  } },
+  { path: 'assignments', component: AssignmentsComponent , data: {
+    title: 'Assignments'
   } }
 ];
 
