@@ -9,7 +9,18 @@ export class CreateAssignmentComponent implements OnInit {
 
   constructor() { }
 
+  showProgressBar: boolean;
+  title: String;
+  author: String;
+  location: String;
+  describe: String;
+
   ngOnInit() {
+    this.showProgressBar = false;
+  }
+
+  createAssignment(): void {
+
   }
 
 }

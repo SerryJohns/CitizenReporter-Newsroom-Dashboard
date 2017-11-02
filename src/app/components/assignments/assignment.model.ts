@@ -1,16 +1,11 @@
 export class Assignment {
     id: String;
-    uploaded: Boolean;
-    media: String[];
-    localID: String;
-    summary: String;
+    featuredImage: String;
     author: String;
-    assignment: String;
-    updatedAt: Date;
-    cachedLocation: String;
+    location: String;
     title: String;
-    when: Date;
+    description: String;
+    updatedAt: Date;
+    deadline: Date;
     createdAt: Date;
-    sourceApp: String;
-    who: String;
 }
