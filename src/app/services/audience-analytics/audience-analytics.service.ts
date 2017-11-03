@@ -45,7 +45,7 @@ export class AudienceAnalyticsService {
     return makeGetHttpRequest(this.http, this.countryStatisticsUrl);
   }
 
-  public getAppVersionStatistics() {
+  public getOsVersionStatistics() {
     return makeGetHttpRequest(this.http, this.appVersionStatisticsUrl);
   }
 }

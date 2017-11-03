@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {AppAnalyticsSummary} from '../analytics/AppAnalyticsSummary.model';
 import {Entry} from './entry.model';
-import { getDayOfTheWeek } from '../../utils/utils';
+import { getDayOfTheWeek, shuffleColors } from '../../utils/utils';
 
 @Component({
   selector: 'app-vertical-bar-chart',
@@ -18,7 +18,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   @Input() width: number;
   @Input() data: AppAnalyticsSummary[];
   @Input() chart: string;
-  @Input() countryChart: string;
+  @Input() osOrCountryChart: string;
   entries: Entry[] = [];
   showLegend = false;
   showProgressBar = true;
@@ -31,13 +31,16 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   xAxisLabel = 'Day';
   showYAxisLabel = true;
   yAxisLabel = 'Downloads';
+  colors = [
+    '#5AA454', '#A10A28', '#D8B42C', '#AAAAAA', '#784D78', '#56F2F1',
+    '#87DDFF', '#D8BFD8', '#9ACD32', '#B0E0E6', '#663399', '#1E90FF',
+    '#9932CC', '#ED684A', '#556B2F', '#000000', '#0000FF', '#8A2BE2',
+    '#a8385d', '#7aa3e5', '#a27ea8', '#aae3f5', '#adcded', '#a95963',
+    '#8796c0', '#7ed3ed', '#50abcc', '#ad6886'
+  ];
 
   colorScheme = {
-    domain: [
-      '#5AA454', '#A10A28', '#D8B42C', '#AAAAAA', '#784D78', '#56F2F1',
-      '#87DDFF', '#D8BFD8', '#9ACD32', '#B0E0E6', '#663399', '#1E90FF',
-      '#9932CC', '#ED684A', '#556B2F', '#000000', '#0000FF', '#8A2BE2'
-    ]
+    domain: shuffleColors(this.colors)
   };
 
   constructor() {
@@ -50,11 +53,14 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.countryChart === 'CountryChart') {
+    if (this.osOrCountryChart === 'CountryChart') {
       this.xAxisLabel = 'Country';
       this.yAxisLabel = 'Number';
-      this.showXAxisLabel = false;
-      this.showLegend = true;
+      this.showLegend = false;
+    } else if (this.osOrCountryChart === 'OsChart') {
+      this.xAxisLabel = 'Android Version';
+      this.yAxisLabel = 'Number';
+      this.showLegend = false;
     }
   }
 
@@ -63,6 +69,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       const simpleChange = changes[propName];
       if (propName === 'data') {
         this.populateWeeklyBarGraphData(simpleChange.currentValue);
+        console.log('');
       }
     }
   }
@@ -75,7 +82,10 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
         const day = new Date(formattedDate);
         this.addToDictionary(appSummary[i], day, dictionary);
       }
-      if (!(this.chart === 'CountryChart')) {
+      if (this.chart === 'WeeklyUsers') {
+        this.extrapolateValuesBasedOnDate(dictionary);
+      }
+      if (this.chart === 'WeeklyDownloads') {
         this.extrapolateValuesBasedOnDate(dictionary);
       }
       this.single = this.entries;
@@ -92,6 +102,8 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       dictionary[day.getDay()] = appSummary.newDevices;
     } else if (this.chart === 'CountryChart') {
       this.entries.push(new Entry(appSummary.country, appSummary.activeDevices));
+    } else if (this.chart === 'OsChart') {
+      this.entries.push(new Entry(appSummary.os, appSummary.activeDevices));
     }
   }
 

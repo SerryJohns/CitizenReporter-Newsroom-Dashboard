@@ -24,10 +24,12 @@ export class AnalyticsComponent implements OnInit {
   usersToday: number;
   downloadsToday: number;
   countryChart = 'CountryChart';
+  osChart = 'OsChart';
 
   appAnalyticsSummary: AppAnalyticsSummary;
   weeklyAnalytics: AppAnalyticsSummary[];
   countryAnalytics: AppAnalyticsSummary[];
+  osAnalytics: AppAnalyticsSummary[];
 
   constructor(private _audienceAnalyticsService: AudienceAnalyticsService) {
   }
@@ -37,6 +39,7 @@ export class AnalyticsComponent implements OnInit {
     this.getDailyStatistics();
     this.getWeeklyStatistics();
     this.getCountryStatistics();
+    this.getOsVersionStatistics();
   }
 
   private getSummary() {
@@ -95,7 +98,7 @@ export class AnalyticsComponent implements OnInit {
         console.log('Country statistics are not available at the moment');
       } else {
         this.countryAnalytics = [];
-        this.populateCountryData(data, this.countryAnalytics);
+        this.populateCountryAndOsData(data, this.countryAnalytics, 'country');
       }
       },
         (error) => {
@@ -103,18 +106,43 @@ export class AnalyticsComponent implements OnInit {
     });
   }
 
-  public populateCountryData (rawData: any, outputArray: any[]) {
+  private getOsVersionStatistics () {
+    this._audienceAnalyticsService.getOsVersionStatistics()
+      .subscribe((data) => {
+      if (data.rows.length === 0) {
+        console.log('Os version statistics are not available at the moment');
+      } else {
+        this.osAnalytics = [];
+        this.populateCountryAndOsData(data, this.osAnalytics, 'os');
+      }
+      },
+        (error) => {
+      console.log(error);
+    });
+  }
+
+  public populateCountryAndOsData (rawData: any, outputArray: any[], name: string) {
     for (let iterator = 0; iterator < rawData.rows.length; iterator++) {
-      const country = rawData.rows[iterator]['country|name'];
       const activeDevices = rawData.rows[iterator]['activeDevices'];
       const newDevices = rawData.rows[iterator]['newDevices'];
       const dateTime = rawData.rows[iterator]['dateTime'];
-      outputArray.push({
-        'country': country,
-        'activeDevices': activeDevices,
-        'newDevices': newDevices,
-        'dateTime': dateTime
-      });
+      if (name === 'country') {
+        const country = rawData.rows[iterator]['country|name'];
+        outputArray.push({
+          'country': country,
+          'activeDevices': activeDevices,
+          'newDevices': newDevices,
+          'dateTime': dateTime
+        });
+      } else {
+        const os = rawData.rows[iterator]['osVersion|name'];
+        outputArray.push({
+          'os': os,
+          'activeDevices': activeDevices,
+          'newDevices': newDevices,
+          'dateTime': dateTime
+        });
+      }
     }
   }
 }

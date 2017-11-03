@@ -59,7 +59,7 @@
 
   <!-- Statistics -->
   <div class="row" id="statistics">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <!-- Country statistics -->
       <div class="card">
         <div class="card-block content-header">
@@ -71,7 +71,23 @@
           </div>
         </div>
         <div class="general-statistics">
-          <app-vertical-bar-chart [width]="800" [height]="320" [data]="countryAnalytics" [chart]="countryChart" [countryChart]="countryChart"></app-vertical-bar-chart>
+          <app-vertical-bar-chart [width]="500" [height]="300" [data]="countryAnalytics" [chart]="countryChart" [osOrCountryChart]="countryChart"></app-vertical-bar-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Os version statistics -->
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Users by Android Versions</span>
+            </div>
+          </div>
+        </div>
+        <div class="general-statistics">
+          <app-vertical-bar-chart [width]="500" [height]="300" [data]="osAnalytics" [chart]="osChart" [osOrCountryChart]="osChart"></app-vertical-bar-chart>
         </div>
       </div>
     </div>

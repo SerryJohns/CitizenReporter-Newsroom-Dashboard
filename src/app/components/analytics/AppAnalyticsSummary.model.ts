@@ -13,4 +13,5 @@ export class AppAnalyticsSummary {
   public dateTime: string;
   public name: string;
   public country: string;
+  public os: string;
 }

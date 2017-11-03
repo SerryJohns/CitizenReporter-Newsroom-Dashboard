@@ -3,7 +3,7 @@ import {
   SimpleChange
 } from '@angular/core';
 import {Entry} from '../vertical-bar-chart/entry.model';
-import {getDayOfTheWeek} from '../../utils/utils';
+import {getDayOfTheWeek, shuffleColors} from '../../utils/utils';
 
 @Component({
   selector: 'app-line-chart',
@@ -33,12 +33,16 @@ export class LineChartComponent implements OnInit, OnChanges {
   showYAxisLabel = false;
   yAxisLabel = 'Population';
 
+  colors = [
+    '#5AA454', '#A10A28', '#D8B42C', '#AAAAAA', '#784D78', '#56F2F1',
+    '#87DDFF', '#D8BFD8', '#9ACD32', '#B0E0E6', '#663399', '#1E90FF',
+    '#9932CC', '#ED684A', '#556B2F', '#000000', '#0000FF', '#8A2BE2',
+    '#a8385d', '#7aa3e5', '#a27ea8', '#aae3f5', '#adcded', '#a95963',
+    '#8796c0', '#7ed3ed', '#50abcc', '#ad6886'
+  ];
+
   colorScheme = {
-    domain: [
-      '#3EC556', '#ED684A', '#00FFFF', '#008B8B', '#9932CC',
-      '#556B2F', '#1E90FF', '#20B2AA', '#FFA500', '#663399',
-      '#B0E0E6', '#D8BFD8', '#FFFF00', '#9ACD32', '#00FFFF'
-    ]
+    domain: shuffleColors(this.colors)
   };
 
   // line, area
