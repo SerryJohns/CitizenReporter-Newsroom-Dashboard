@@ -26,6 +26,7 @@ export class PushNotificationsComponent implements OnInit {
   msg: String;
 
   ngOnInit() {
+    this.showProgressBar = false;
     this.success = false;
     this.getLocationsService.getLocations().subscribe(
       (location) => this.locations.push(location)
