@@ -2,9 +2,9 @@
  * Created by edwinkato on 10/31/17.
  */
 import {
-	Headers
+  Headers,
+  Http
 } from '@angular/http';
-
 
 export function formatDate(date: Date) {
   let dd: any = date.getDate();
@@ -20,9 +20,15 @@ export function formatDate(date: Date) {
 }
 
 export function getHeaders() {
+  const token = 'eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3' +
+    'RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW' +
+    '4iLCJpYXQiOjE1MDgxNjY3OTMsImV4cCI6MzMwNjUwNzU1OTMsInN1YiI6IjQwNjQ2MCIs' +
+    'ImF1ZCI6IjQiLCJ0eXBlIjo0LCJqdGkiOiIyMjU4In0.dsr3hGkC3O8FUR_zVxMDZ6F' +
+    'taU7r7dnWJ6sR82vcsDE';
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('Access-Control-Allow-Origin', '*');
+  headers.set('Authorization', `Bearer ${token}`);
   return headers;
 }
 
@@ -56,4 +62,18 @@ export function getDayOfTheWeek(day: number) {
   } else{
     return 'Sun';
   }
+}
+
+export function makeGetHttpRequest (http: Http, url: string) {
+  return http.get(url, {
+    headers: getHeaders()
+  }).map((response) => response.json());
+}
+
+
+export function getTodaysDateRange() {
+  const today = new Date();
+  const previousDay = new Date(today);
+  previousDay.setDate(today.getDate() - 1);
+  return formatDate(previousDay) + '/' + formatDate(today);
 }

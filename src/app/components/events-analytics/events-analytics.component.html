@@ -31,7 +31,7 @@
           </div>
           <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
          <div *ngIf="paginatedData.length === 0 && searchString !== ''">
-            <h1 id="empty-message-description">No events march the search query entered.</h1>
+            <h1 id="empty-message-description">No events match the search query entered.</h1>
           </div>
           <div *ngIf="paginatedData.length !== 0">
             <table *ngIf="!showProgressBar" class="table table-hover">
