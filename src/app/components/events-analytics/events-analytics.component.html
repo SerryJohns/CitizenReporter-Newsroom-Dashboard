@@ -18,17 +18,45 @@
     <div class="col-md-4" id="events-summary">
       <div class="row">
         <div class="col-md-12">
+          <div class="pull-right form-group">
+              <div class="input-group">
+                  <input type="text" class="form-control even-z-index" name="searchString"
+                    placeholder="Type to search..." (keyup)="filter()" [(ngModel)]="searchString"/>
+                  <div class="input-group-addon">
+                    <i>
+                      <img class="filter-icon" src="./../../../assets/images/icons/filter-icon.png"  />
+                    </i>
+                  </div>
+              </div>
+          </div>
           <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
           <table *ngIf="!showProgressBar" class="table table-hover">
             <tr class="table-header text-white" id="summary-table-heading">
               <th> EVENT NAME </th>
               <th> OCCURRENCES </th>
             </tr>
-            <tr class="story-row" *ngFor="let event of analyticsSummary">
+            <tr class="story-row" *ngFor="let event of paginatedData">
               <td> {{ event.name }} </td>
               <td class="position-left"> {{ event.occurrences }} </td>
             </tr>
           </table>
+          <nav>
+            <ul class="pagination left-15">
+              <li class="page-item">
+                <a class="page-link" (click)="loadMore(-1)">
+                  Previous
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of pages">
+                <a class="page-link" [class.selected-page]="currentPage === page" (click)="loadMore(page)"> {{ page }}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="loadMore(0)">
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

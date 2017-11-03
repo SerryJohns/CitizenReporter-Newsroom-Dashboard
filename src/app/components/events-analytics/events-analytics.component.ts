@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { EventsAnalyticsService } from '../../services/events-analytics/events-analytics.service';
+import { Paginator } from './../../models/paginator.model';
+import { PaginateService } from '../../services/pagination/paginate.service';
 
 declare var $: any;
 
@@ -7,17 +9,25 @@ declare var $: any;
   selector: 'app-events-analytics',
   templateUrl: './events-analytics.component.html',
   styleUrls: ['./events-analytics.component.css'],
-  providers: [EventsAnalyticsService]
+  providers: [EventsAnalyticsService, PaginateService]
 })
 export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
 
   analyticsSummary: any[] = [];
+  paginatedData: any[] = [];
+  temporaryPaginatedData: any[] = [];
   weeklyEvents: any[] = [];
   monthlyEvents: any[] = [];
   showPeriod = 'Week';
   showProgressBar = true;
+  currentPage: number;
+  limit = 6;
+  offset = 0;
+  pages: number [];
+  paginator: Paginator;
+  searchString = '';
 
-  constructor(private _eventsAnalyticsService: EventsAnalyticsService) { }
+  constructor(private _eventsAnalyticsService: EventsAnalyticsService, private _paginateService: PaginateService) { }
 
   ngOnInit() {
     this.getEventsAnalyticsData();
@@ -44,6 +54,12 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
         this.analyticsSummary = [];
         this.populateEventsData(data, this.analyticsSummary);
         this.showProgressBar = false;
+        this.paginator = this._paginateService.paginateData(this.analyticsSummary.length, this.limit, this.offset);
+        this.currentPage = this.paginator.currentPage;
+        this.pages = this.paginator.pages;
+        this.paginatedData = this.analyticsSummary.slice(this.offset, this.limit);
+        this.temporaryPaginatedData = this.paginatedData;
+        console.log('');
       }
       },
         (error) => {
@@ -140,4 +156,26 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public loadMore(page) {
+    const prevOffset: number = this.offset;
+    this.offset = this._paginateService.getOffset(page, this.limit, this.currentPage);
+    if (this.offset >= this.analyticsSummary.length) {
+      this.offset = prevOffset;
+    }
+    this.paginatedData = this.analyticsSummary.slice(this.offset, this.offset + this.limit);
+    this.temporaryPaginatedData = this.paginatedData;
+  }
+
+   public filter () {
+    if (this.searchString !== '') {
+      this.paginatedData = [];
+      this.analyticsSummary.forEach(element => {
+        if (element.name.toUpperCase().indexOf(this.searchString.toUpperCase()) >= 0) {
+          this.paginatedData.push(element);
+       }
+      });
+    } else {
+      this.paginatedData = this.temporaryPaginatedData;
+    }
+   }
 }
