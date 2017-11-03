@@ -40,7 +40,7 @@
 .white-text {
   color: #ffffff;
 }
-#title-description {
+.title-description {
   font-weight: bolder;
   padding: 20px;
   color: #46A9D4;
@@ -83,4 +83,9 @@
 .filter-icon {
     width: 20px;
     opacity: 0.46;
+}
+#empty-message-description {
+  padding-top: 30px;
+  color: #d48551;
+  margin: 30px;
 }

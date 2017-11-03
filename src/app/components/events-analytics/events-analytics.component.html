@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <h1 id="title-description"> Event summary data as of 1st October, 2017 to date.</h1>
+  <h1 class="title-description"> Event summary data as of 1st October, 2017 to date.</h1>
 
 
   <!-- Event summary -->
@@ -30,16 +30,21 @@
               </div>
           </div>
           <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
-          <table *ngIf="!showProgressBar" class="table table-hover">
-            <tr class="table-header text-white" id="summary-table-heading">
-              <th> EVENT NAME </th>
-              <th> OCCURRENCES </th>
-            </tr>
-            <tr class="story-row" *ngFor="let event of paginatedData">
-              <td> {{ event.name }} </td>
-              <td class="position-left"> {{ event.occurrences }} </td>
-            </tr>
-          </table>
+         <div *ngIf="paginatedData.length === 0 && searchString !== ''">
+            <h1 id="empty-message-description">No events march the search query entered.</h1>
+          </div>
+          <div *ngIf="paginatedData.length !== 0">
+            <table *ngIf="!showProgressBar" class="table table-hover">
+              <tr class="table-header text-white" id="summary-table-heading">
+                <th> EVENT NAME </th>
+                <th> OCCURRENCES </th>
+              </tr>
+              <tr class="story-row" *ngFor="let event of paginatedData">
+                <td> {{ event.name }} </td>
+                <td class="position-left"> {{ event.occurrences }} </td>
+              </tr>
+            </table>
+          </div>
           <nav>
             <ul class="pagination left-15">
               <li class="page-item">
