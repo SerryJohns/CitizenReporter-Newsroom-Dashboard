@@ -1,13 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-<<<<<<< HEAD
 import { Menu } from './../../models/menu.model';
-import { dataMenu, notificationMenu } from './mock-menus';
-=======
-import { Menu } from './menu.model';
 import { dataMenu, notificationMenu, analyticsMenu } from './mock-menus';
->>>>>>> Move analytics to its own menu
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
