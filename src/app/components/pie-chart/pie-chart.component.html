@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="showProgressBar" class="transparent-loader"></div>
+  <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
   <div *ngIf="!showProgressBar">
     <ngx-charts-pie-chart
       [view]="view"

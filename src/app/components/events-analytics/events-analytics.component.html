@@ -18,7 +18,8 @@
     <div class="col-md-4" id="events-summary">
       <div class="row">
         <div class="col-md-12">
-          <table class="table table-hover">
+          <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
+          <table *ngIf="!showProgressBar" class="table table-hover">
             <tr class="table-header text-white" id="summary-table-heading">
               <th> EVENT NAME </th>
               <th> OCCURRENCES </th>

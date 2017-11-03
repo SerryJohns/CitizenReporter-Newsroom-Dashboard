@@ -15,6 +15,7 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
   weeklyEvents: any[] = [];
   monthlyEvents: any[] = [];
   showPeriod = 'Week';
+  showProgressBar = true;
 
   constructor(private _eventsAnalyticsService: EventsAnalyticsService) { }
 
@@ -42,6 +43,7 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
       } else {
         this.analyticsSummary = [];
         this.populateEventsData(data, this.analyticsSummary);
+        this.showProgressBar = false;
       }
       },
         (error) => {

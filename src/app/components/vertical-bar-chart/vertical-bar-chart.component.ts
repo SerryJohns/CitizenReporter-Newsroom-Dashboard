@@ -80,7 +80,9 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       }
       this.single = this.entries;
     }
-    this.showProgressBar = false;
+    if (!(this.single.length === 0)) {
+      this.showProgressBar = false;
+    }
   }
 
   public addToDictionary(appSummary: AppAnalyticsSummary, day: Date, dictionary: {}) {

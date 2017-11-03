@@ -22,6 +22,7 @@ import { VerticalBarChartComponent } from './components/vertical-bar-chart/verti
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { EventsAnalyticsComponent } from './components/events-analytics/events-analytics.component';
+import { CircularSpinnerComponent } from './components/circular-spinner/circular-spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { EventsAnalyticsComponent } from './components/events-analytics/events-a
     VerticalBarChartComponent,
     PieChartComponent,
     LineChartComponent,
-    EventsAnalyticsComponent
+    EventsAnalyticsComponent,
+    CircularSpinnerComponent
   ],
   imports: [
     BrowserModule,

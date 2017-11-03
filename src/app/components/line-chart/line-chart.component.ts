@@ -62,7 +62,12 @@ export class LineChartComponent implements OnInit, OnChanges {
       && changes['weeklyEventsData'].previousValue !== changes['weeklyEventsData'].currentValue ) {
         this.period = 'Week';
         this.populateBarGraphData(changes['weeklyEventsData'].currentValue);
-        this.multi = this.weeklyEntries;
+        if (this.weeklyEntries) {
+          this.multi = this.weeklyEntries;
+          if (!(this.multi.length === 0)) {
+            this.showProgressBar = false;
+          }
+        }
     }
     if (
       changes['monthlyEventsData']
@@ -80,8 +85,14 @@ export class LineChartComponent implements OnInit, OnChanges {
       } else if (this.showPeriod === 'Week') {
         if (this.weeklyEntries) {
           this.multi = this.weeklyEntries;
+          if (!(this.multi.length === 0)) {
+            this.showProgressBar = false;
+          }
         }
       }
+    }
+    if (!(this.multi.length === 0)) {
+      this.showProgressBar = false;
     }
   }
 
@@ -104,7 +115,6 @@ export class LineChartComponent implements OnInit, OnChanges {
       }
       this.extrapolateValuesBasedOnDate(eventsDictionary, keys);
     }
-    this.showProgressBar = false;
   }
 
   public extrapolateValuesBasedOnDate(dictionary: {}, keys: string[]) {

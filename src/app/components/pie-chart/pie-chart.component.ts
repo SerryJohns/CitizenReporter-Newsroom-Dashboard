@@ -10,16 +10,7 @@ import {
 })
 export class PieChartComponent implements OnInit, OnChanges {
 
-  single: any[] = [
-    {
-      'name': 'Today',
-      'value': 0
-    },
-    {
-      'name': 'Total',
-      'value': 0
-    }
-  ];
+  single: any[] = [];
 
   view: any[] = [200, 200];
   gradient = false;
@@ -59,7 +50,9 @@ export class PieChartComponent implements OnInit, OnChanges {
       }
     }
     this.updatePieChartData();
-    this.showProgressBar = false;
+    if (!(this.single.length === 0)) {
+      this.showProgressBar = false;
+    }
   }
 
   updatePieChartData() {
