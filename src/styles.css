@@ -167,3 +167,7 @@ text-light-gray {
 	background-size: 60px;
 	border-radius: 50%;
 }
+
+.min-card-width {
+    min-width: 289px;
+}
