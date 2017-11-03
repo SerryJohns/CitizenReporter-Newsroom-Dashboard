@@ -83,19 +83,51 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
 
   public populateEventsData (rawData: any, outputArray: any[]) {
     for (let iterator = 0; iterator < rawData.rows.length; iterator++) {
-      const row = rawData.rows[iterator]['event|name'];
+      const name = rawData.rows[iterator]['event|name'];
       const occurrences = rawData.rows[iterator]['occurrences'];
       const averageTimePerDevice = rawData.rows[iterator]['averageTimePerDevice'];
       const dateTime = rawData.rows[iterator]['dateTime'];
       const averageTimePerSession = rawData.rows[iterator]['averageTimePerSession'];
       outputArray.push({
-        'name': row,
+        'name': this.formatName(name),
         'occurrences': occurrences,
         'averageTimePerDevice': averageTimePerDevice,
         'dateTime': dateTime,
         'averageTimePerSession': averageTimePerSession
       });
     }
+  }
+
+  private formatName(name: string) {
+    switch (name) {
+        case 'PASSWORD_SIGN_UP':
+            name = 'Number of sign ups';
+            break;
+        case 'LOGIN':
+            name = 'Number of logins';
+            break;
+        case 'ASSIGNMENT_OPEN':
+            name = 'Number of open assignments';
+            break;
+        case 'CREATE_STORY':
+            name = 'Number of stories created';
+            break;
+        case 'SAVE_STORY':
+            name = 'Number of stories saved';
+            break;
+        case 'AUDIO_UPLOAD':
+            name = 'Number of audios uploaded';
+            break;
+        case 'UPLOAD_STORY':
+            name = 'Number of uploaded stories';
+            break;
+        case 'IMAGE_UPLOAD':
+            name = 'Number of images uploaded';
+            break;
+        default:
+            return name;
+    }
+    return name;
   }
 
   public togglePeriod(period) {
