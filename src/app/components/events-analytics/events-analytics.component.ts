@@ -104,7 +104,7 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
             name = 'Number of sign ups';
             break;
         case 'LOGIN':
-            name = 'Number of logins';
+            name = 'Number of log ins';
             break;
         case 'ASSIGNMENT_OPEN':
             name = 'Number of open assignments';
@@ -119,7 +119,7 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
             name = 'Number of audios uploaded';
             break;
         case 'UPLOAD_STORY':
-            name = 'Number of uploaded stories';
+            name = 'Number of stories uploaded';
             break;
         case 'IMAGE_UPLOAD':
             name = 'Number of images uploaded';
