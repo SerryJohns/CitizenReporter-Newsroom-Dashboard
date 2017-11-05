@@ -30,6 +30,7 @@ export class StoriesComponent implements OnInit {
   currentPage: number;
   pages: number [];
   paginator: Paginator;
+  searchString: String;
 
   ngOnInit() {
     // show 10 stories per page

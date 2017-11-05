@@ -24,6 +24,7 @@ export class AssignmentsComponent implements OnInit {
   selectedAssignment: Assignment;
   alertType: String;
   msg: String;
+  searchString: String;
 
   limit: number;
   offset: number;
