@@ -1,7 +1,8 @@
 import { Parse } from 'parse';
+import { environment } from './../../environments/environment';
 
-Parse.initialize('11235813');
-Parse.masterKey = '11235813';
-Parse.serverURL = 'https://creporter-server.herokuapp.com/parse';
+Parse.initialize(environment.APP_ID);
+Parse.masterKey = environment.MASTER_KEY;
+Parse.serverURL = environment.SERVER_URL;
 
 export class ParseConfig { }
