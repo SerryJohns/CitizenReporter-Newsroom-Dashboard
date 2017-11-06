@@ -1,0 +1,16 @@
+<div class="container">
+  <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
+  <div *ngIf="!showProgressBar">
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="{domain: [firstColor, secondColor]}"
+      [results]="single"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
+  </div>
+</div>

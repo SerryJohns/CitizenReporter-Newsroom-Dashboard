@@ -3,10 +3,8 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { ParseConfig } from './services/parse-config';
-import { FilterPipe } from './pipes/filter.pipe';
-
+import { HttpModule } from '@angular/http';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -17,6 +15,14 @@ import { StoryMediaComponent } from './components/story-media/story-media.compon
 import { PushNotificationsComponent } from './components/push-notifications/push-notifications.component';
 import { AssignmentsComponent } from './components/assignments/assignments.component';
 import { CreateAssignmentComponent } from './components/create-assignment/create-assignment.component';
+import { ParseConfig } from './services/parse-config';
+import { FilterPipe } from './pipes/filter.pipe';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { EventsAnalyticsComponent } from './components/events-analytics/events-analytics.component';
+import { CircularSpinnerComponent } from './components/circular-spinner/circular-spinner.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +35,20 @@ import { CreateAssignmentComponent } from './components/create-assignment/create
     PushNotificationsComponent,
     FilterPipe,
     AssignmentsComponent,
-    CreateAssignmentComponent
+    CreateAssignmentComponent,
+    AnalyticsComponent,
+    AnalyticsComponent,
+    VerticalBarChartComponent,
+    PieChartComponent,
+    LineChartComponent,
+    EventsAnalyticsComponent,
+    CircularSpinnerComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
+    NgxChartsModule,
     FormsModule,
     NgbModule.forRoot(),
     AppRoutingModule,
@@ -42,3 +57,5 @@ import { CreateAssignmentComponent } from './components/create-assignment/create
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+
