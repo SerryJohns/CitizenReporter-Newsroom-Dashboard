@@ -160,7 +160,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       }
     }
     for (let dayIterator = iteratorLimit; dayIterator > 0; dayIterator--) {
-      const day = new Date(new Date().getDate());
+      const day = new Date();
 
       day.setDate(new Date().getDate() - dayIterator);
       const dayDate = day.getDate();
