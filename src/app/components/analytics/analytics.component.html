@@ -1,0 +1,95 @@
+<div class="container" id="fill-height">
+
+  <!-- Users and Downloads -->
+  <div class="row" id="user-and-downloads">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Users and Downloads</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <!-- Downloads -->
+            <div class="col-md-3">
+              <div class="row statistics-heading">
+                <h3 class="green-text">{{totalDownloads}} </h3>
+                <h3 class="gray-text">Total <br>Downloads</h3>
+              </div>
+              <app-vertical-bar-chart [width]="width" [height]="height" [data]="weeklyAnalytics" [chart]="weeklyDownloadsChart"></app-vertical-bar-chart>
+            </div>
+
+            <!-- Downloads today -->
+            <div class="col-md-3">
+              <div class="row statistics-heading">
+                <h3 class="green-text">{{downloadsToday}} </h3>
+                <h3 class="gray-text">Today </h3>
+              </div>
+              <app-pie-chart [firstColor]="green" [secondColor]="darkColor" [totalUsers]="totalUsers" [usersToday]="usersToday"></app-pie-chart>
+            </div>
+
+            <!-- Users -->
+            <div class="col-md-3">
+              <div class="row statistics-heading">
+                <h3 class="users-orange-text">{{totalUsers}} </h3>
+                <h3 class="gray-text">Total <br>Users</h3>
+              </div>
+              <app-vertical-bar-chart [width]="width" [height]="height" [data]="weeklyAnalytics" [chart]="weeklyUsersChart"></app-vertical-bar-chart>
+            </div>
+
+            <!-- Users today -->
+            <div class="col-md-3">
+              <div class="row statistics-heading">
+                <h3 class="users-orange-text">{{usersToday}} </h3>
+                <h3 class="gray-text">Today </h3>
+              </div>
+              <app-pie-chart [firstColor]="orange" [secondColor]="darkColor" [totalUsers]="totalUsers" [usersToday]="usersToday"></app-pie-chart>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics -->
+  <div class="row" id="statistics">
+    <div class="col-md-6">
+      <!-- Country statistics -->
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Users by country</span>
+            </div>
+          </div>
+        </div>
+        <div class="general-statistics">
+          <app-vertical-bar-chart [width]="500" [height]="300" [data]="countryAnalytics" [chart]="countryChart" [osOrCountryChart]="countryChart"></app-vertical-bar-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Os version statistics -->
+      <div class="card">
+        <div class="card-block content-header">
+          <div class="row">
+            <div class="header-container">
+              <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+              <span class="title">Users by Android Versions</span>
+            </div>
+          </div>
+        </div>
+        <div class="general-statistics">
+          <app-vertical-bar-chart [width]="500" [height]="300" [data]="osAnalytics" [chart]="osChart" [osOrCountryChart]="osChart"></app-vertical-bar-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

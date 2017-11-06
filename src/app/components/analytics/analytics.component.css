@@ -1,0 +1,74 @@
+.content-header {
+  background-color: #46A9D4;
+  height: 50px;
+}
+.content-body {
+  background-color: white;
+}
+.title {
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 2px;
+  float: right;
+}
+.grid {
+  margin-top: 15px;
+  margin-left: 30px;
+  width: 20px;
+  height: 20px;
+  line-height: 50px;
+  text-align: center;
+  border: 2px;
+  float: left;
+}
+.header-container {
+  width:50%;
+}
+#fill-height {
+  height: 100%;
+}
+#user-and-downloads {
+  height: 50%;
+  margin-bottom: 10px;
+}
+#statistics {
+  height: 50%;
+}
+.general-statistics {
+  background-color: #ffffff;
+}
+.white-text {
+  color: #ffffff;
+}
+.blue-text {
+  color: #97BBD3;
+}
+.orange-text {
+  color: #CF917A;
+}
+#general-statistics-highlights {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#daily-overview {
+  margin-left: 40px;
+  color: #ffffff;
+}
+.statistics-heading {
+  padding-top: 30px;
+  margin-left: 40px;
+}
+.green-text {
+  color: #3EC556;
+  font-size: 34px;
+}
+.gray-text {
+  color: #484A69;
+  font-size: 12px;
+}
+.users-orange-text {
+  color: #ED684A;
+  font-size: 34px;
+}
