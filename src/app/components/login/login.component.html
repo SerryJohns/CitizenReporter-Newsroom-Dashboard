@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<div class="row">
+  <div class="col-md-7 col-12">
+    <div class="card min-card-width">
+      <div class="card-header bg-blue text-white text-center">
+        LOGIN
+      </div>
+      <div class="card-block">
+        <div class="card-body content-scroll">
+          <section id="login" class="login-section">
+              <div class="container">
+                  <div class="loginView col-xs-12">
+                    <h1>Login</h1>
+                    <form role="form" (submit)="login($event, username.value, password.value)">
+                      <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" #username class="form-control" id="username" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" #password class="form-control" id="password" placeholder="Password">
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                      <p *ngIf="errorMsg"> {{ errorMsg }} </p>
+                    </form>
+                  </div>
+              </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    
+  </div>
+</div>

@@ -37,6 +37,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router) { }
   public menuState: String = 'out';
+  UserIsAuthorised = false;
 
   toggleMenu() {
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
