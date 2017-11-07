@@ -13,7 +13,7 @@ import { AuthGuard } from '../guards/authentication/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/analytics', pathMatch: 'full' },
-  { path: 'analytics',  component: AnalyticsComponent },
+  { path: 'analytics',  component: AnalyticsComponent, canActivate: [AuthGuard] },
   {
     path: 'home',  component: PageContentComponent, data: {
     title: 'Overview'

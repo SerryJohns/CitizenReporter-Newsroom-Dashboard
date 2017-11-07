@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   private redirect(): void {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/analytics']);
   }
 
 }
