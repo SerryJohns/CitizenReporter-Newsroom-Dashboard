@@ -5,9 +5,7 @@ RUN apk add
 RUN npm install -g @angular/cli
 
 COPY package.json /src/package.json
-RUN cd /src; npm install
-
-COPY . /src
+RUN cd npm install
 
 EXPOSE  8080
 
