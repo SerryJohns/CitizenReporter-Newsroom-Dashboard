@@ -24,6 +24,8 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
 import { EventsAnalyticsComponent } from './components/events-analytics/events-analytics.component';
 import { CircularSpinnerComponent } from './components/circular-spinner/circular-spinner.component';
 import { LoginComponent } from './components/login/login.component';
+import {AuthGuard} from './services/authentication/authentication.guard';
+import {AuthenticationService} from './services/authentication/authentication.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { LoginComponent } from './components/login/login.component';
     PieChartComponent,
     LineChartComponent,
     EventsAnalyticsComponent,
-    CircularSpinnerComponent
+    CircularSpinnerComponent,
     LoginComponent
   ],
   imports: [
@@ -55,7 +57,7 @@ import { LoginComponent } from './components/login/login.component';
     NgbModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [ ParseConfig ],
+  providers: [ ParseConfig, AuthGuard, AuthenticationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

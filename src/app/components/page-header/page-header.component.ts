@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Parse } from 'parse';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-page-header',
@@ -8,13 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PageHeaderComponent implements OnInit {
 
-  pageTitle: '';
+  pageTitle: 'Citizen';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private _authenticationService: AuthenticationService) {
     this.pageTitle = route.snapshot.data['title'];
   }
 
   ngOnInit() {
+  }
+
+  isAuth() {
+    return this._authenticationService.isAuthenticated();
+  }
+
+  onLogout() {
+    this._authenticationService.logout();
   }
 
 }

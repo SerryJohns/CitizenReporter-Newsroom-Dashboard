@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   trigger,
   state,
@@ -7,11 +7,13 @@ import {
   animate
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [AuthenticationService],
   animations: [
     trigger('sideMenuToggle', [
       state('in', style({
@@ -34,12 +36,22 @@ import { Router } from '@angular/router';
   ]
 })
 
-export class AppComponent {
-  constructor(private router: Router) { }
+export class AppComponent implements OnInit{
+  constructor(private router: Router, private _authenticationService: AuthenticationService) { }
   public menuState: String = 'out';
   UserIsAuthorised = false;
 
   toggleMenu() {
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
+  }
+
+  ngOnInit() {
+    this._authenticationService.showDashboardEmitter.subscribe(
+      (mode: boolean) => {
+        if (mode !== null) {
+          this.UserIsAuthorised = mode;
+        }
+      }
+    );
   }
 }

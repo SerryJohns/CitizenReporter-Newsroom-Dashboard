@@ -26,26 +26,39 @@ export class LoginComponent implements OnInit {
     private _authenticationService: AuthenticationService
   ) {}
 
+  // login(event, username, password) {
+  //   event.preventDefault();
+  //   const self = this;
+  //
+  //   this.errorMsg = null;
+  //   Parse.User.logIn(username, password, {
+  //     success: function(user) {
+  //       console.log('User has been logged in successfully');
+  //       self.redirect();
+  //     },
+  //     error: function(user, error) {
+  //       this.errorMsg = 'Wrong username / password combination';
+  //       console.log(error);
+  //     }
+  //   });
+  //
+  // }
+
   login(event, username, password) {
     event.preventDefault();
+
     const self = this;
 
     this.errorMsg = null;
-    Parse.User.logIn(username, password, {
-      success: function(user) {
-        console.log('User has been logged in successfully');
-        self.redirect();
-      },
-      error: function(user, error) {
-        this.errorMsg = 'Wrong username / password combination';
-        console.log(error);
-      }
-    });
 
-  }
+    this._authenticationService.logIn(username, password, function(){
+          console.log('User logged in using email');
+          this._authenticationService.toggleAuthentication();
+          self.router.navigate(['/home']);
+        }, function(){
+          self.errorMsg = 'Wrong username / password combination';
+      });
 
-  private redirect(): void {
-      this.router.navigate(['/home']);
   }
 
 }

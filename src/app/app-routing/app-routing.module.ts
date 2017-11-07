@@ -9,6 +9,7 @@ import { StoriesComponent } from '../components/stories/stories.component';
 import { PushNotificationsComponent } from '../components/push-notifications/push-notifications.component';
 import { AssignmentsComponent } from '../components/assignments/assignments.component';
 import { LoginComponent } from '../components/login/login.component';
+import { AuthGuard } from '../services/authentication/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/analytics', pathMatch: 'full' },
@@ -16,17 +17,17 @@ const routes: Routes = [
   {
     path: 'home',  component: PageContentComponent, data: {
     title: 'Overview'
-  } },
+  }, canActivate: [AuthGuard] },
   { path: 'stories',  component: StoriesComponent, data: {
     title: 'Stories'
-  } },
+  }, canActivate: [AuthGuard] },
   { path: 'push-notifications', component: PushNotificationsComponent, data: {
     title: 'Notifications'
-  } },
+  }, canActivate: [AuthGuard] },
   { path: 'assignments', component: AssignmentsComponent , data: {
     title: 'Assignments'
-  } },
-  { path: 'events-summary',  component: EventsAnalyticsComponent },
+  }, canActivate: [AuthGuard]  },
+  { path: 'events-summary',  component: EventsAnalyticsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent , data: {
     title: 'Login'
   } }

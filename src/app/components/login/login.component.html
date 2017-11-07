@@ -1,35 +1,23 @@
-<div class="row">
-  <div class="col-md-7 col-12">
-    <div class="card min-card-width">
-      <div class="card-header bg-blue text-white text-center">
-        LOGIN
-      </div>
-      <div class="card-block">
-        <div class="card-body content-scroll">
-          <section id="login" class="login-section">
-              <div class="container">
-                  <div class="loginView col-xs-12">
-                    <h1>Login</h1>
-                    <form role="form" (submit)="login($event, username.value, password.value)">
-                      <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" #username class="form-control" id="username" placeholder="Username">
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" #password class="form-control" id="password" placeholder="Password">
-                      </div>
-                      <button type="submit" class="btn btn-default">Submit</button>
-                      <p *ngIf="errorMsg"> {{ errorMsg }} </p>
-                    </form>
-                  </div>
-              </div>
-          </section>
-        </div>
-      </div>
+<div class="container login-card">
+  <div class="card card-container">
+    <div class="login-header">
+      <h2 class='login_title text-center'>Citizen Reporter</h2>
     </div>
-  </div>
-  <div>
-    
-  </div>
-</div>
+  <hr>
+
+      <form class="form-signin" role="form" (submit)="login($event, username.value, password.value)">
+          <span id="reauth-email" class="reauth-email"></span>
+          <p class="input_title">Email</p>
+          <input type="text" id="inputEmail" #username class="login_box" placeholder="user01@IceCode.com" required autofocus>
+          <p class="input_title">Password</p>
+          <input type="password" id="inputPassword" #password class="login_box" placeholder="******" required>
+          <div id="remember" class="checkbox">
+              <label>
+
+              </label>
+          </div>
+          <button class="btn btn-lg btn-primary" type="submit">Login</button>
+          <p *ngIf="errorMsg"> {{ errorMsg }} </p>
+      </form><!-- /form -->
+  </div><!-- /card-container -->
+</div><!-- /container -->
