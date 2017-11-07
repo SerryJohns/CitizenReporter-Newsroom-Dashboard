@@ -9,7 +9,7 @@ import { StoriesComponent } from '../components/stories/stories.component';
 import { PushNotificationsComponent } from '../components/push-notifications/push-notifications.component';
 import { AssignmentsComponent } from '../components/assignments/assignments.component';
 import { LoginComponent } from '../components/login/login.component';
-import { AuthGuard } from '../services/authentication/authentication.guard';
+import { AuthGuard } from '../guards/authentication/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/analytics', pathMatch: 'full' },
