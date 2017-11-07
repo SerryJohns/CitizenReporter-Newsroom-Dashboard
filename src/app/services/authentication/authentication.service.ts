@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class AuthenticationService {
 
-  // private _showNavBar = new BehaviorSubject<boolean>(null);
+  // private _showDashboard = new BehaviorSubject<boolean>(null);
   public showDashboardEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   private authenticated = false;

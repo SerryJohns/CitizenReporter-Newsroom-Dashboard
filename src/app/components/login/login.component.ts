@@ -9,13 +9,11 @@ import { Parse } from 'parse';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers: [AuthenticationService]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
   errorMsg: string;
-  k = 9;
 
   ngOnInit() {
   }
@@ -26,39 +24,22 @@ export class LoginComponent implements OnInit {
     private _authenticationService: AuthenticationService
   ) {}
 
-  // login(event, username, password) {
-  //   event.preventDefault();
-  //   const self = this;
-  //
-  //   this.errorMsg = null;
-  //   Parse.User.logIn(username, password, {
-  //     success: function(user) {
-  //       console.log('User has been logged in successfully');
-  //       self.redirect();
-  //     },
-  //     error: function(user, error) {
-  //       this.errorMsg = 'Wrong username / password combination';
-  //       console.log(error);
-  //     }
-  //   });
-  //
-  // }
-
   login(event, username, password) {
     event.preventDefault();
-
     const self = this;
-
     this.errorMsg = null;
-
     this._authenticationService.logIn(username, password, function(){
-          console.log('User logged in using email');
-          this._authenticationService.toggleAuthentication();
-          self.router.navigate(['/home']);
+          console.log('User logged in through email');
+          self._authenticationService.toggleAuthentication();
+          self.redirect();
         }, function(){
           self.errorMsg = 'Wrong username / password combination';
       });
 
+  }
+
+  private redirect(): void {
+      this.router.navigate(['/home']);
   }
 
 }

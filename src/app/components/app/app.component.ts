@@ -13,7 +13,6 @@ import { AuthenticationService } from '../../services/authentication/authenticat
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AuthenticationService],
   animations: [
     trigger('sideMenuToggle', [
       state('in', style({
@@ -36,7 +35,7 @@ import { AuthenticationService } from '../../services/authentication/authenticat
   ]
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   constructor(private router: Router, private _authenticationService: AuthenticationService) { }
   public menuState: String = 'out';
   UserIsAuthorised = false;
