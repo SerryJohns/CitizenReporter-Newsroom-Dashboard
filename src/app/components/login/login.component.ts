@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   errorMsg: string;
 
   ngOnInit() {
+    if (localStorage.getItem('currentUser')) {
+      // log out and redirect to login page
+      this._authenticationService.logout();
+    }
   }
 
   constructor (

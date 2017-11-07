@@ -2,13 +2,10 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Parse } from 'parse';
 
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class AuthenticationService {
 
-  // private _showDashboard = new BehaviorSubject<boolean>(null);
   public showDashboardEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   private authenticated = false;
@@ -16,7 +13,8 @@ export class AuthenticationService {
   constructor(private router: Router) {}
 
   logIn(username: String, password: String, success: () => void, error: () => void) {
-    Parse.User.logIn(username, password).then(function(){
+    Parse.User.logIn(username, password).then(function() {
+      localStorage.setItem('currentUser', 'LoggedIn');
       success();
       }, function (e){
       error();
@@ -31,6 +29,7 @@ export class AuthenticationService {
   logout() {
     this.authenticated = false;
     this.showDashboard(false);
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
 

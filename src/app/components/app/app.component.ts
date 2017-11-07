@@ -52,5 +52,9 @@ export class AppComponent implements OnInit {
         }
       }
     );
+    if (localStorage.getItem('currentUser')) {
+        // logged in so show dashboard
+        this.UserIsAuthorised = true;
+    }
   }
 }
