@@ -219,3 +219,7 @@ hr{
     box-shadow: 0 2.5em 0 0;
   }
 }
+.error-message {
+  color: orange;
+  font-weight: bold;
+}
