@@ -1,0 +1,99 @@
+.btn-lg-custom {
+    width: 150px;
+}
+
+.phone-image {
+    min-height: 250px;
+    background-image: url("./../../../assets/images/static/android-phone.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 270px;
+}
+
+.custom-bg {
+    background-color: #F3F6FA;
+}
+
+.notification-preview {
+    margin: 50px 60px;
+    padding: 20px;
+}
+
+.margin-10 {
+    padding-top: 20px;
+}
+
+.current-time {
+    font-size: 40px;
+    margin-bottom: -8px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.current-date {
+    top: 250px;
+    width: 100%;
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.notification {
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 20px;
+    min-width: 180px;
+    max-width: 180px;
+    margin: 20px auto;
+}
+
+.notification-box {
+    background: #FFFFFF;
+    box-shadow: 0 1px 1px rgba(0,0,0,.24);
+    padding: 20px 10px 0 40px;
+    min-height: 38px;
+    max-height: 50px;
+    overflow: hidden;
+}
+
+.notification-preview {
+    padding: 20px;
+    margin-top: 20px;
+    min-width: 180px;
+}
+
+.app-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: #169cee;
+    margin-top: -15px;
+    margin-left: -30px;
+}
+
+.app-name {
+    margin-top: -26px;
+    color: #000;
+    font-size: 10px;
+}
+
+.app-time {
+    top: 9px;
+    right: 6px;
+    color: rgba(0,0,0,.5);
+    font-size: 8px;
+}
+
+.message {
+    color: rgba(0,0,0,.5);
+    font-size: 10px;
+    text-align: left;
+}
+
+.notification {
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 20px;
+}

@@ -1,0 +1,19 @@
+.story-image {
+    width: 100%;
+    min-height: 60px;
+}
+
+.top-10 {
+    margin-top: 10px;
+}
+
+.attachment-header {
+    background-color: #47a8d4;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.content-scroll {
+    max-height: 650px;
+    overflow: scroll;
+}

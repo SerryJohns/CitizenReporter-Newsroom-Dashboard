@@ -1,0 +1,66 @@
+#content {
+    width: 100%;
+}
+
+#page-header {
+    top: 0;
+    min-height: 55px;
+    max-height: 55px;
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+    background-color: #f3f3f3;
+    box-shadow: 4px 1px 4px 0px #b7c7d4;
+    z-index: 1;
+}
+
+.side-toggle {
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 55px;
+    position: fixed;
+    box-shadow: -5px 2px 6px 2px rgb(71, 74, 103);
+    z-index: 1;
+}
+
+.app-icon {
+    width: 50px;
+    height: 100%;
+    margin-left: 20px;
+    border-radius: 5px;
+    float: left;
+    background-image: url("../../../assets/images/icons/app_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.toggle-btn {
+    padding: 10px;
+    width: 50px;
+    height: 100%;
+    float: right;
+    background-color: #64BBE2;
+    background-image: url("../../../assets/images/icons/toggle_back.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+.page-content {
+    margin-left: 250px;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.page-content-wide {
+    margin-left: 50px;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.main-content {
+    margin-top: 50px;
+    padding: 20px;
+    transition: all 0.4s ease-in-out 0s;
+}

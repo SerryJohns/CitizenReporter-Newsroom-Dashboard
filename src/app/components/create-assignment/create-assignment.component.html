@@ -1,0 +1,36 @@
+<div *ngIf="showProgressBar" class="alert alert-info" role="alert">
+  <strong>Please wait ...</strong>
+</div>
+
+<form enctype="multipart/form-data" name="createAssignment">
+  <div class="form-group">
+    <label for="title">TITLE</label>
+    <input type="text" [(ngModel)]="title" name="title" id="title" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="author">AUTHOR</label>
+    <input type="text" [(ngModel)]="author" name="author" id="author" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="location">LOCATION</label>
+    <input type="text" [(ngModel)]="location" name="location" id="location" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="description">DESCRIPTION</label>
+    <textarea [(ngModel)]="description" name="description" id="description" cols="30" rows="3" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="deadline">DEADLINE</label>
+    <input type="date" [(ngModel)]="deadline" name="deadline" id="deadline" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="featureImage">FEATURE IMAGE</label>
+    <input (change)="fileChange($event)" type="file" class="form-control" placeholder="Upload picture" accept=".jpg, .png, .jpeg, .JPG, .PNG, .JPEG">
+  </div>
+  <div class="form-group">
+    <div *ngIf="showProgressBar" class="transparent-loader"></div>
+    <button (click)="createAssignment()" type="button" class="btn btn-lg-custom btn-outline-info pull-right">
+      Add New Assignment
+    </button>
+  </div>
+</form>
