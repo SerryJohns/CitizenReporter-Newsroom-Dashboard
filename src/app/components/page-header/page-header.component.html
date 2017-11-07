@@ -1,27 +1,16 @@
-<div class="app-name">
-    Citizen Reporter
-</div>
-<div>
-    {{ pageTitle }}
-
-    <nav class="blue darken-3">
-      <div class="nav-wrapper">
-        <a class="brand-logo right" style="padding-left: 15px"
-          routerLink="">
-          Angular Example
-        </a>
-        <ul id="nav-mobile" class="left">
-          <li routerLinkActive="active">
-            <a routerLink="/contacts">Contacts</a>
-          </li>
-          <li routerLinkActive="active" *ngIf="!isAuth()">
-            <a routerLink="/signin">Login</a>
-          </li>
-          <li routerLinkActive="active" *ngIf="isAuth()">
-            <a (click)="onLogout()">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+<div class="container">
+  <div id="app-header">
+    <div id="app-header-left">
+      <div class="app-name">Citizen Reporter </div>
+    </div>
+    <div id="app-header-right">
+        <div class="dropdown">
+          <div class="inset"><img src="../../../assets/images/icons/person-icon.png"></div>
+            <div class="dropdown-content" id="dropdown-color">
+              <a href="#"><img src="../../../assets/images/icons/Settings.ico" class="dropdown-menu-icon"/> Settings</a>
+              <a href="#" (click)="onLogout()"><img src="../../../assets/images/icons/logout.ico" class="dropdown-menu-icon"/> Log out</a>
+            </div>
+        </div>
+    </div>
+  </div>
 </div>

@@ -14,6 +14,8 @@ import { Parse } from 'parse';
 export class LoginComponent implements OnInit {
 
   errorMsg: string;
+  loading = false;
+  state = false;
 
   ngOnInit() {
     if (localStorage.getItem('currentUser')) {
@@ -29,15 +31,18 @@ export class LoginComponent implements OnInit {
   ) {}
 
   login(event, username, password) {
+    this.loading = true;
     event.preventDefault();
     const self = this;
     this.errorMsg = null;
     this._authenticationService.logIn(username, password, function(){
           console.log('User logged in through email');
           self._authenticationService.toggleAuthentication();
+          self.loading = false;
           self.redirect();
         }, function(){
           self.errorMsg = 'Wrong username / password combination';
+          self.loading = false;
       });
 
   }
