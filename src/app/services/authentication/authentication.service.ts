@@ -1,6 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Parse } from 'parse';
-
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -34,6 +33,7 @@ export class AuthenticationService {
   }
 
   logout() {
+    Parse.User.logOut().then(() => {});
     this.showDashboard(false);
     localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
