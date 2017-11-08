@@ -8,8 +8,6 @@ export class AuthenticationService {
 
   public showDashboardEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  private authenticated = false;
-
   constructor(private router: Router) {}
 
   logIn(username: String, password: String, success: () => void, error: () => void) {
@@ -20,11 +18,9 @@ export class AuthenticationService {
       return query.find().then(function(roles) {
           const isAdmin = roles.length > 0;
           if (isAdmin) {
-            console.log('User is admin');
             localStorage.setItem('currentUser', 'LoggedIn');
             success();
           } else {
-            console.log('User is not admin');
             error();
           }
       });
@@ -34,19 +30,13 @@ export class AuthenticationService {
   }
 
   toggleAuthentication() {
-    this.authenticated = true;
     this.showDashboard(true);
   }
 
   logout() {
-    this.authenticated = false;
     this.showDashboard(false);
     localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
-  }
-
-  isAuthenticated() {
-    return this.authenticated;
   }
 
   private showDashboard(ifShow: boolean) {

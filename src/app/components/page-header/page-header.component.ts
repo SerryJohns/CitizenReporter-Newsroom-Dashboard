@@ -19,10 +19,6 @@ export class PageHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  isAuth() {
-    return this._authenticationService.isAuthenticated();
-  }
-
   onLogout() {
     this._authenticationService.logout();
   }
