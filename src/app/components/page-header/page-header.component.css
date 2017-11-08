@@ -3,7 +3,8 @@
   font-family: HelveticaNeue-BoldItalic;
   font-size: 24px;
   color: #C3C3C3;
-  padding: 20px;
+  padding-top: 20px;
+  /*padding: 20px;*/
 }
 #app-header {
   padding: 0px;
@@ -13,7 +14,7 @@
 }
 #app-header-right {
   float: right;
-  margin-right: 100px;
+  margin-right: 70px;
 }
 .inset {
   margin-top: -5px;
@@ -90,4 +91,15 @@
 .dropdown-menu-icon {
   width: 40px;
   height: 40px;
+}
+@media (max-width: 340px) {
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -80px;
+  }
 }
