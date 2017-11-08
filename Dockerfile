@@ -16,6 +16,6 @@ RUN ls
 RUN cd src; ls
 RUN ng build --aot -prod
 
-EXPOSE 4200
+EXPOSE 8080
 
 CMD ["npm", "start"]
