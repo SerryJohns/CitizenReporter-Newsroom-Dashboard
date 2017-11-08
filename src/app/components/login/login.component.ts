@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
 
   private redirect(): void {
       this.router.navigate(['/analytics']);
+      window.location.reload();
   }
 
 }
