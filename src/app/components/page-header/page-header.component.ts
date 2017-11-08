@@ -23,4 +23,8 @@ export class PageHeaderComponent implements OnInit {
     this._authenticationService.logout();
   }
 
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
 }

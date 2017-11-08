@@ -26,6 +26,7 @@ import { CircularSpinnerComponent } from './components/circular-spinner/circular
 import { LoginComponent } from './components/login/login.component';
 import {AuthGuard} from './guards/authentication/authentication.guard';
 import {AuthenticationService} from './services/authentication/authentication.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {AuthenticationService} from './services/authentication/authentication.se
     LineChartComponent,
     EventsAnalyticsComponent,
     CircularSpinnerComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

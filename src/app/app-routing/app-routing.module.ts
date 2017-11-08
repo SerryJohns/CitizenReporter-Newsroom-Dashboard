@@ -9,11 +9,13 @@ import { StoriesComponent } from '../components/stories/stories.component';
 import { PushNotificationsComponent } from '../components/push-notifications/push-notifications.component';
 import { AssignmentsComponent } from '../components/assignments/assignments.component';
 import { LoginComponent } from '../components/login/login.component';
+import { ProfileComponent } from '../components/profile/profile.component';
 import { AuthGuard } from '../guards/authentication/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/analytics', pathMatch: 'full' },
   { path: 'analytics',  component: AnalyticsComponent, canActivate: [AuthGuard] },
+  { path: 'profile',  component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'home',  component: PageContentComponent, data: {
     title: 'Overview'
