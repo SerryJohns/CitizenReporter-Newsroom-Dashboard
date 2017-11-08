@@ -13,10 +13,22 @@ export class AuthenticationService {
   constructor(private router: Router) {}
 
   logIn(username: String, password: String, success: () => void, error: () => void) {
-    Parse.User.logIn(username, password).then(function() {
-      localStorage.setItem('currentUser', 'LoggedIn');
-      success();
-      }, function (e){
+    Parse.User.logIn(username, password).then(function(user) {
+      const query = new Parse.Query(Parse.Role);
+      query.equalTo('name', 'Administrator');
+      query.equalTo('users', user);
+      return query.find().then(function(roles) {
+          const isAdmin = roles.length > 0;
+          if (isAdmin) {
+            console.log('User is admin');
+            localStorage.setItem('currentUser', 'LoggedIn');
+            success();
+          } else {
+            console.log('User is not admin');
+            error();
+          }
+      });
+    }, function(e) {
       error();
     });
   }
