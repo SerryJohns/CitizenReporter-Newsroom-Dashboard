@@ -1,0 +1,91 @@
+.table-header {
+    background-color: #484A69 !important;
+    color: #A6A8B9 !important;
+    text-align: center;
+}
+
+.selected-row {
+    background-color:#E9ECEF !important;
+    cursor: pointer;
+}
+#events-summary {
+  height: 50%;
+  margin-bottom: 10px;
+}
+.grid {
+  margin-top: 15px;
+  margin-left: 30px;
+  width: 20px;
+  height: 20px;
+  line-height: 50px;
+  text-align: center;
+  border: 2px;
+  float: left;
+}
+.header-container {
+  width:50%;
+}
+.content-header {
+  background-color: #46A9D4;
+  height: 50px;
+}
+.title {
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 2px;
+  float: right;
+}
+.white-text {
+  color: #ffffff;
+}
+.title-description {
+  font-weight: bolder;
+  padding: 20px;
+  color: #46A9D4;
+}
+.white-background {
+  background-color: white;
+}
+#radioBtn .notActive{
+    color: #46A9D4;
+    background-color: #fff;
+}
+.center-div {
+  width: 50%;
+  margin: 0 auto;
+  padding: 30px;
+}
+.active {
+  background-color: #46A9D4 !important;
+  border-color: #46A9D4 !important;
+}
+.btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  box-shadow: none;
+}
+.cursor {
+  cursor: pointer;
+}
+.position-left {
+  padding: 20px;
+  text-align: right;
+}
+#summary-table-heading {
+  color: white;
+  font-weight: bolder;
+  font-size: 14px;
+  text-align: left !important;
+}
+.even-z-index {
+    z-index: 0;
+}
+.filter-icon {
+    width: 20px;
+    opacity: 0.46;
+}
+#empty-message-description {
+  padding-top: 30px;
+  color: #d48551;
+  margin: 30px;
+}

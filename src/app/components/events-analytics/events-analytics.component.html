@@ -1,0 +1,84 @@
+<div class="container white-background" id="fill-height">
+
+  <div class="card">
+    <div class="card-block content-header">
+      <div class="row">
+        <div class="header-container">
+          <img src="../../../assets/images/icons/grid_icon.png" class="grid">
+          <span class="title">Events summary</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="title-description"> Event summary data as of 1st October, 2017 to date.</h1>
+
+
+  <!-- Event summary -->
+  <div class="row">
+    <div class="col-md-4" id="events-summary">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="pull-right form-group">
+              <div class="input-group">
+                  <input type="text" class="form-control even-z-index" name="searchString"
+                    placeholder="Type to search..." (keyup)="filter()" [(ngModel)]="searchString"/>
+                  <div class="input-group-addon">
+                    <i>
+                      <img class="filter-icon" src="./../../../assets/images/icons/filter-icon.png"  />
+                    </i>
+                  </div>
+              </div>
+          </div>
+          <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
+         <div *ngIf="paginatedData.length === 0 && searchString !== ''">
+            <h1 id="empty-message-description">No events match the search query entered.</h1>
+          </div>
+          <div *ngIf="paginatedData.length !== 0">
+            <table *ngIf="!showProgressBar" class="table table-hover">
+              <tr class="table-header text-white" id="summary-table-heading">
+                <th> EVENT NAME </th>
+                <th> OCCURRENCES </th>
+              </tr>
+              <tr class="story-row" *ngFor="let event of paginatedData">
+                <td> {{ event.name }} </td>
+                <td class="position-left"> {{ event.occurrences }} </td>
+              </tr>
+            </table>
+          </div>
+          <nav>
+            <ul class="pagination left-15">
+              <li class="page-item">
+                <a class="page-link" (click)="loadMore(-1)">
+                  Previous
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of pages">
+                <a class="page-link" [class.selected-page]="currentPage === page" (click)="loadMore(page)"> {{ page }}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="loadMore(0)">
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group center-div">
+        <div class="col-sm-7 col-md-7">
+          <div class="input-group">
+            <div id="radioBtn" class="btn-group">
+              <a class="btn btn-primary btn-sm active cursor" data-toggle="fun" data-title="W" (click)="togglePeriod('W')">Week</a>
+              <a class="btn btn-primary btn-sm notActive cursor" data-toggle="fun" data-title="N" (click)="togglePeriod('M')">Month</a>
+            </div>
+            <input type="hidden" name="fun" id="fun">
+          </div>
+        </div>
+      </div>
+      <app-line-chart [width]="700" [height]="320" [weeklyEventsData]="weeklyEvents" [monthlyEventsData]="monthlyEvents" [showPeriod]="showPeriod"></app-line-chart>
+    </div>
+  </div>
+</div>
+

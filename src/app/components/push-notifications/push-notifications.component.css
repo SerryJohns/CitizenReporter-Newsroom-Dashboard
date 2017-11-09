@@ -14,11 +14,6 @@
     background-color: #F3F6FA;
 }
 
-.notification-preview {
-    margin: 50px 60px;
-    padding: 20px;
-}
-
 .margin-10 {
     padding-top: 20px;
 }
@@ -40,10 +35,12 @@
     text-align: center;
 }
 
+.phone-preview-min-width {
+    min-width: 289px;
+    max-width: 289px;
+}
+
 .notification {
-    margin-left: -10px;
-    margin-right: -10px;
-    margin-top: 20px;
     min-width: 180px;
     max-width: 180px;
     margin: 20px auto;
@@ -59,9 +56,10 @@
 }
 
 .notification-preview {
-    padding: 20px;
-    margin-top: 20px;
+    margin: 0 15%;
+    margin-top: 50px;
     min-width: 180px;
+    position: absolute;
 }
 
 .app-icon {

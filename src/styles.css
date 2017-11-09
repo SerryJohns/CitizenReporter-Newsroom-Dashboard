@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 #app-body {
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     color: #1D1D1D;
 	background-color: #DEE9EE;
 	font-size: 14px;
@@ -166,4 +166,16 @@ text-light-gray {
     background-position: center;
 	background-size: 60px;
 	border-radius: 50%;
+}
+
+
+.min-card-width {
+    min-width: 289px;
+}
+
+.resize-loading {
+  width: 70%;
+  height: 70%;
+  /*margin: 0 auto;*/
+
 }

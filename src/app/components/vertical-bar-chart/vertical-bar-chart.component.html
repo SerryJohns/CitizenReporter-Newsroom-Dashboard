@@ -1,0 +1,19 @@
+<div class="container">
+  <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
+  <div *ngIf="!showProgressBar">
+    <ngx-charts-bar-vertical
+      [view]="[width, height]"
+      [scheme]="colorScheme"
+      [results]="single"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [legend]="showLegend"
+      [yAxis]="showYAxis"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>
