@@ -4,17 +4,22 @@ RUN mkdir -p  /opt/app
 WORKDIR /opt/app
 RUN npm install -g @angular/cli@1.3.0
 
-COPY package.json .
-COPY package-lock.json .
+RUN mkdir -p /Dashboard
+RUN mkdir -p /ParseServer
 
-RUN npm install --only=production
-
-COPY .angular-cli.json .
 COPY . .
+# COPY Dashboard/package.json . /Dashboard/package.json
+# COPY Dashboard/package-lock.json . /Dashboard/package-lock.json
 
-RUN ls
-RUN cd src; ls
-RUN ng build --aot -prod
+# RUN ls
+# RUN pwd
+
+RUN cd Dashboard; npm install --only=production
+
+# COPY Dashboard/.angular-cli.json /Dashboard/.angular-cli.json .
+# COPY Dashboard /Dashboard . .
+
+RUN cd Dashboard; ng build --aot -prod
 
 EXPOSE 8080
 
