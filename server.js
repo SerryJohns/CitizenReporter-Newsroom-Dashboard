@@ -1,6 +1,6 @@
 const express = require('express');
-var ParseServer = require('parse-server').ParseServer;
-var ParseDashboard = require('parse-dashboard');
+const ParseServer = require('parse-server').ParseServer;
+const ParseDashboard = require('parse-dashboard');
 const path= require('path');
 const app = express();
 
@@ -17,7 +17,7 @@ const forceSSL = function() {
 
 // Serve parse server
 
-var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+const databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
@@ -73,8 +73,8 @@ app.get('/test', function(req, res) {
     res.sendFile(path.join(__dirname, '/parseServer/public/test.html'));
 });
 
-var port = process.env.PORT || 1337;
-var httpServer = require('http').createServer(app);
+const port = process.env.PORT || 1337;
+const httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
     console.log('parse-server-example running on port ' + port + '.');
 });

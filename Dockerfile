@@ -12,8 +12,6 @@ RUN npm install --only=production
 COPY .angular-cli.json .
 COPY . .
 
-RUN ls
-RUN cd src; ls
 RUN ng build --aot -prod
 
 ENV APP_ID setYourAppId
