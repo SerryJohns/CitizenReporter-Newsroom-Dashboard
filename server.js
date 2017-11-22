@@ -26,11 +26,11 @@ if (!databaseUri) {
 var allowInsecureHTTP = true
 
 var api = new ParseServer({
-  databaseURI: databaseUri || 'mongodb://root:NewsroomDashboard@ds117156.mlab.com:17156/parsedb',
+  databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/parseServer/cloud/main.js',
-  appId: process.env.APP_ID || '11235813',
-  masterKey: process.env.MASTER_KEY || '11235813', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'https://newsroom-dashboard.herokuapp.com/parse',  // Don't forget to change to https if needed
+  appId: process.env.APP_ID || 'myAppId',
+  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
+  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
@@ -43,16 +43,16 @@ var api = new ParseServer({
 var dashboard = new ParseDashboard({
     "apps": [
       {
-        "serverURL": process.env.SERVER_URL || 'https://newsroom-dashboard.herokuapp.com/parse',
-        "appId": process.env.APP_ID || '11235813',
-        "masterKey": process.env.MASTER_KEY || '11235813',
+        "serverURL": process.env.SERVER_URL || 'http://localhost:1337/parse',
+        "appId": process.env.APP_ID || 'myAppId',
+        "masterKey": process.env.MASTER_KEY || '',
         "appName": process.env.APP_NAME
       }
     ], 
     "users": [
         {
           "user": "admin",
-          "pass": process.env.PASSWORD || 'NewsroomDashboard'
+          "pass": process.env.PASSWORD
         }
     ]
   }, allowInsecureHTTP);
@@ -83,7 +83,7 @@ httpServer.listen(port, function() {
 ParseServer.createLiveQueryServer(httpServer);
 
 // Serve the Newsroom dashboard
-// app.use(forceSSL());
+app.use(forceSSL());
 app.use(express.static(__dirname + '/dashboard/dist'));
 
 app.get('/*', function(req, res) {
