@@ -52,7 +52,7 @@ var dashboard = new ParseDashboard({
     "users": [
         {
           "user": "admin",
-          "pass": process.env.PASSWORD
+          "pass": process.env.PASSWORD || 'NewsroomDashboard'
         }
     ]
   }, allowInsecureHTTP);
@@ -83,7 +83,7 @@ httpServer.listen(port, function() {
 ParseServer.createLiveQueryServer(httpServer);
 
 // Serve the Newsroom dashboard
-app.use(forceSSL());
+// app.use(forceSSL());
 app.use(express.static(__dirname + '/dashboard/dist'));
 
 app.get('/*', function(req, res) {
