@@ -89,3 +89,7 @@
   color: #d48551;
   margin: 30px;
 }
+#fill-height {
+  height: 100%;
+  min-width: 720px;
+}

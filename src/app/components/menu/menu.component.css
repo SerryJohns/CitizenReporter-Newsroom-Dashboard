@@ -54,3 +54,7 @@ ul li :hover {
 .right-icon {
     float: right;
 }
+
+.menu-title {
+  font-weight: 600;
+}

@@ -1,0 +1,8 @@
+.content-scroll {
+    max-height: 650px;
+    overflow: scroll;
+}
+.confirm-button {
+  background-color: #505275;
+  cursor: pointer;
+}

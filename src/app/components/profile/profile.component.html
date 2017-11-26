@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-12 col-12">
+      <div class="card min-card-width">
+        <div class="card-header bg-blue text-white text-center">
+          <img class="card-menu-icon" src="./../../assets/images/icons/menu.png">
+          <h1>Edit Profile</h1>
+        </div>
+        <div class="card-block">
+          <div class="card-body content-scroll">
+
+            <div class="container">
+              <div class="row">
+                  <!-- left column -->
+                  <div class="col-md-4">
+                    <div class="text-center">
+                      <div class="inset"><img src="../../../assets/images/icons/person-icon.png"></div>
+                    </div>
+                    <br>
+                    <h1 class="text-center">Change password</h1>
+
+                    <form class="form-horizontal text-center" role="form" name="confirmPasswordChange">
+                      <div class="form-group">
+                        <label class="col-md-12 control-label">Enter new password:</label>
+                        <div class="col-md-12">
+                          <input class="form-control text-center" type="password" name="password" [(ngModel)]="password" placeholder="******">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-12">
+                          <input (click)="changePassword()" type="submit" class="btn btn-primary confirm-button" value="Confirm change">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- edit form column -->
+                  <div class="col-md-8 personal-info">
+                    <div *ngIf="errorMessage" class="alert alert-info alert-dismissable">
+                      <a class="panel-close close" data-dismiss="alert">×</a>
+                      <i class="fa fa-coffee"></i>
+                      {{ errorMessage }}
+                    </div>
+                    <form class="form-horizontal" role="form" name="savePersonalDetails">
+                      <div class="form-group">
+                        <label class="col-lg-3 control-label">Name:</label>
+                        <div class="col-lg-8">
+                          <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                          <input class="form-control" type="text" [(ngModel)]="email" name="email" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Username:</label>
+                        <div class="col-md-8">
+                          <input class="form-control" type="text" [(ngModel)]="username" name="username" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                          <input type="submit" (click)="saveChanges()" class="btn btn-primary confirm-button" value="Save Changes">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

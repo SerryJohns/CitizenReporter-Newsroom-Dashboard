@@ -1,0 +1,27 @@
+<div id="login">
+
+  <h2>
+    <span class="fontawesome-lock"></span>
+    <span id="app-login-name">Citizen Reporter</span>
+  </h2>
+
+  <form class="form-signin" role="form" (submit)="login($event, username.value, password.value)">
+
+    <fieldset>
+
+      <p><label for="username" class="label">Username</label></p>
+      <p><input type="text" id="username" placeholder="Username" #username required autofocus></p> <!-- JS because of IE support; better: placeholder="mail@address.com" -->
+
+      <p><label for="password" class="label">Password</label></p>
+      <p><input type="password" id="password" placeholder="******" #password required></p> <!-- JS because of IE support; better: placeholder="password" -->
+
+      <p><input type="submit" value="Sign in to continue"></p>
+
+      <h3 class="error-message" *ngIf="errorMsg"> {{ errorMsg }} </h3>
+      <div *ngIf="loading" class="loader">Loading...</div>
+
+    </fieldset>
+
+  </form>
+
+</div> <!-- end login -->

@@ -7,11 +7,20 @@
     min-height: 55px;
     max-height: 55px;
     position: fixed;
-    width: 100%;
     padding: 10px;
     background-color: #f3f3f3;
     box-shadow: 4px 1px 4px 0px #b7c7d4;
     z-index: 1;
+}
+
+.page-header-narrow {
+  width: 85%;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.page-header-wide {
+  width: 100%;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .side-toggle {
