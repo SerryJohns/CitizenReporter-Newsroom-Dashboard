@@ -18,11 +18,15 @@ export class UserAccountComponent implements OnInit {
   confirmPassword: String;
   msg: String;
   success: boolean;
+  admin: boolean;
 
   constructor(private createUserService: CreateUserService) { }
 
   ngOnInit() {
     this.success = false;
+    if (localStorage.getItem('role') === 'Administrator') {
+      this.admin = true;
+    }
   }
 
   private createAccount(): void {

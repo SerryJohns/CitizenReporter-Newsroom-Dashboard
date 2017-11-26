@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit {
   notificationMenu: Menu[];
   userAccountMenu: Menu[];
   selectedMenu: String;
+  admin: boolean;
   @Input() toggleState: String;
 
   ngOnInit() {
@@ -37,6 +38,9 @@ export class MenuComponent implements OnInit {
     this.analyticsMenu = analyticsMenu;
     this.notificationMenu = notificationMenu;
     this.userAccountMenu = userAccountMenu;
+    if (localStorage.getItem('role') === 'Administrator') {
+      this.admin = true;
+    }
   }
 
   onMenuClick(menu: Menu) {

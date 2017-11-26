@@ -18,10 +18,10 @@ export class AuthenticationService {
           roles.every(element => {
             if (element.get('name') === 'Administrator') {
               isAdmin = true;
-              localStorage.setItem('role', 'admin');
+              localStorage.setItem('role', 'Administrator');
               return false;
             } else if (element.get('name') === 'Editor') {
-              localStorage.setItem('role', 'editor');
+              localStorage.setItem('role', 'Editor');
               isAdmin = true;
             }
             return true;
