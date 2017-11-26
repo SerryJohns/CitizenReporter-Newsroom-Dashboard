@@ -1,3 +1,16 @@
-<div class="app-name">
-    Citizen Reporter
+<div class="container">
+  <div id="app-header">
+    <div id="app-header-left">
+      <div class="app-name">Citizen Reporter </div>
+    </div>
+    <div id="app-header-right">
+        <div class="dropdown">
+          <div class="inset"><img src="../../../assets/images/icons/person-icon.png"></div>
+            <div class="dropdown-content" id="dropdown-color">
+              <span (click)="goToProfile()"><img src="../../../assets/images/icons/Settings.ico" class="dropdown-menu-icon"/> Profile</span>
+              <span (click)="onLogout()"><img src="../../../assets/images/icons/logout.ico" class="dropdown-menu-icon"/> Log out</span>
+            </div>
+        </div>
+    </div>
+  </div>
 </div>
