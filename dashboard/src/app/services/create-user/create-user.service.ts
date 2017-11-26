@@ -7,12 +7,15 @@ export class CreateUserService {
 
   constructor() { }
 
-  CreateUserService(userObj: User): Promise<boolean> {
+  CreateUser(userObj: User): Promise<boolean> {
+    console.log(userObj);
     const query = new Parse.Query(Parse.Role);
     query.equalTo('name', userObj.role);
     return new Promise<boolean>((resolve, reject) => {
       query.find().then(
         (roles) => {
+          console.log('Roles');
+          console.log(roles);
           const user = new Parse.User;
           user.set('username', userObj.username);
           user.set('email', userObj.email);
@@ -21,11 +24,18 @@ export class CreateUserService {
           user.set('first_name', userObj.firstname);
           user.set('last_name', userObj.lastname);
           user.signUp(null, {
-            success: (result) => resolve(result),
-            error: (error) => reject(error)
+            success: (result) => {
+              console.log('success 2');
+              roles[0].getUsers().add(user);
+              roles[0].save();
+              resolve(result);
+            },
+            error: (error) => {
+              reject(error);
+            }
           });
         },
-        (err) => console.log(err)
+        (err) => reject(err)
       );
     });
   }

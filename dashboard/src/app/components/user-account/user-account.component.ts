@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from "../../models/user.model";
+import { User } from '../../models/user.model';
+import { CreateUserService } from '../../services/create-user/create-user.service';
 
 @Component({
   selector: 'app-user-account',
   templateUrl: './user-account.component.html',
-  styleUrls: ['./user-account.component.css']
+  styleUrls: ['./user-account.component.css'],
+  providers: [ CreateUserService ]
 })
 export class UserAccountComponent implements OnInit {
 
@@ -17,7 +19,7 @@ export class UserAccountComponent implements OnInit {
   msg: String;
   success: boolean;
 
-  constructor() { }
+  constructor(private createUserService: CreateUserService) { }
 
   ngOnInit() {
     this.success = false;
@@ -45,6 +47,17 @@ export class UserAccountComponent implements OnInit {
       firstname: nameArr[0],
       lastname: nameArr[1]
     };
+    this.createUserService.CreateUser(user).then(
+      (result) => {
+        console.log(result);
+        this.msg = 'Account created successfully.';
+        this.success = true;
+      }
+    ).catch((err) => {
+      console.log(err);
+      this.msg = err;
+      this.success = false;
+    });
 
   }
 
