@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
     this.errorMsg = null;
     this._authenticationService.logIn(username, password, function(){
           console.log('User logged in through email');
-          self._authenticationService.toggleAuthentication();
-          self.loading = false;
-          self.redirect();
+          // self._authenticationService.toggleAuthentication();
+          // self.loading = false;
+          // self.redirect();
         }, function(){
           self.errorMsg = 'Wrong username / password combination';
           self.loading = false;

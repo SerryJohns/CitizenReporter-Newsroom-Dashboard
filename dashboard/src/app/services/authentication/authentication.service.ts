@@ -12,10 +12,20 @@ export class AuthenticationService {
   logIn(username: String, password: String, success: () => void, error: () => void) {
     Parse.User.logIn(username, password).then(function(user) {
       const query = new Parse.Query(Parse.Role);
-      query.equalTo('name', 'Administrator');
       query.equalTo('users', user);
       return query.find().then(function(roles) {
-          const isAdmin = roles.length > 0;
+          let isAdmin = false;
+          roles.every(element => {
+            if (element.get('name') === 'Administrator') {
+              isAdmin = true;
+              localStorage.setItem('role', 'admin');
+              return false;
+            } else if (element.get('name') === 'Editor') {
+              localStorage.setItem('role', 'editor');
+              isAdmin = true;
+            }
+            return true;
+          });
           if (isAdmin) {
             localStorage.setItem('currentUser', 'LoggedIn');
             success();
