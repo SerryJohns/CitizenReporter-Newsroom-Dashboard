@@ -2,14 +2,18 @@
   "name": "newsroom-dashboard",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ParsePlatform/parse-server-example"
+  },
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -32,7 +36,10 @@
     "parse": "^1.10.1",
     "d3": "^4.11.0",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "kerberos": "~0.0.x",
+    "parse-server": "*",
+    "parse-dashboard": "*"
   },
   "devDependencies": {
     "@angular/language-service": "^4.2.4",
