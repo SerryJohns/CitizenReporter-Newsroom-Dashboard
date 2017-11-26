@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Menu } from './../../models/menu.model';
-import { dataMenu, notificationMenu, analyticsMenu } from './mock-menus';
+import { dataMenu, notificationMenu, analyticsMenu, userAccountMenu } from './mock-menus';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
@@ -28,6 +28,7 @@ export class MenuComponent implements OnInit {
   dataMenu: Menu[];
   analyticsMenu: Menu[];
   notificationMenu: Menu[];
+  userAccountMenu: Menu[];
   selectedMenu: String;
   @Input() toggleState: String;
 
@@ -35,6 +36,7 @@ export class MenuComponent implements OnInit {
     this.dataMenu = dataMenu;
     this.analyticsMenu = analyticsMenu;
     this.notificationMenu = notificationMenu;
+    this.userAccountMenu = userAccountMenu;
   }
 
   onMenuClick(menu: Menu) {

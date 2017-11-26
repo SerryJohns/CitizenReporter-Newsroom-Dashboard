@@ -15,3 +15,7 @@ export const analyticsMenu: Menu[] = [
 export const notificationMenu: Menu[] = [
     { id: 1, name: 'Notifications', icon: `${menuIconsPath}envelope_icon.png`, url: '/push-notifications'}
 ];
+
+export const userAccountMenu: Menu[] = [
+    { id: 1, name: 'Create account', icon: `${menuIconsPath}account.png`, url: '/create-account'}
+];

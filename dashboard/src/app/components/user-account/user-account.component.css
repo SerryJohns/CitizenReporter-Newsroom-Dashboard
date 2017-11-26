@@ -1,0 +1,10 @@
+.center-form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.center-button {
+    width: 50%;
+    margin: 0 auto;
+    display: inherit;
+}
