@@ -14,8 +14,6 @@ export class CreateUserService {
     return new Promise<boolean>((resolve, reject) => {
       query.find().then(
         (roles) => {
-          console.log('Roles');
-          console.log(roles);
           const user = new Parse.User;
           user.set('username', userObj.username);
           user.set('email', userObj.email);
@@ -25,7 +23,6 @@ export class CreateUserService {
           user.set('last_name', userObj.lastname);
           user.signUp(null, {
             success: (result) => {
-              console.log('success 2');
               roles[0].getUsers().add(user);
               roles[0].save();
               resolve(result);
