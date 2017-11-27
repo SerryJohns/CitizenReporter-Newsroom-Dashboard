@@ -83,7 +83,7 @@ httpServer.listen(port, function() {
 ParseServer.createLiveQueryServer(httpServer);
 
 // Serve the Newsroom dashboard
-app.use(forceSSL());
+// app.use(forceSSL());
 app.use(express.static(__dirname + '/dashboard/dist'));
 
 app.get('/*', function(req, res) {
