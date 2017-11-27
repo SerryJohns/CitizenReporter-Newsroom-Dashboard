@@ -21,7 +21,7 @@ export class CreateUserService {
           user.set('name', userObj.name);
           user.set('first_name', userObj.firstname);
           user.set('last_name', userObj.lastname);
-          user.signUp(null, {
+          user.save(null, {
             success: (result) => {
               roles[0].getUsers().add(user);
               roles[0].save();

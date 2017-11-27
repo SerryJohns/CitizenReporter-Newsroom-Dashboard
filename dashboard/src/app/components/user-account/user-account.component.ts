@@ -53,9 +53,9 @@ export class UserAccountComponent implements OnInit {
     };
     this.createUserService.CreateUser(user).then(
       (result) => {
-        console.log(result);
         this.msg = 'Account created successfully.';
         this.success = true;
+        this.name = this.email = this.username = this.role = this.password = this.confirmPassword = null;
       }
     ).catch((err) => {
       console.log(err);
