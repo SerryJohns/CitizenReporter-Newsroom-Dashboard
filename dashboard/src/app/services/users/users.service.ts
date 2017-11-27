@@ -6,8 +6,8 @@ import { User } from '../../models/user.model';
 @Injectable()
 export class UsersService {
 
-  countStories(): Promise<number> {
-    const userObj: any = Parse.User;
+  countUsers(): Promise<number> {
+    const userObj: any = Parse.Object.extend('User');
     const query: any = new Parse.Query(userObj);
     return new Promise((resolve, reject) => {
       query.count({
@@ -25,13 +25,11 @@ export class UsersService {
     query.limit(limit);
     return Observable.create(
       observer => {
-        query.find().then((stories) => {
-          stories.map(user => observer.next(this.toUser(user)))
+        query.find().then((users) => {
+          users.map(user => observer.next(this.toUser(user)))
           .catch(err => observer.error(`Error: ${err}`));
           observer.complete();
-        }, (error) => {
-          observer.error(`Error: ${error}`);
-        });
+        }, (error) => observer.error(`Error: ${error}`));
       }
     );
   }
@@ -43,10 +41,9 @@ export class UsersService {
       firstname: user.get('first_name'),
       lastname: user.get('last_name'),
       username: user.get('username'),
-      email: user.get('email'),
+      email: user.getEmail(),
       emailVerified: user.get('emailVerified'),
       createdAt: <Date>user.get('createdAt')
     });
   }
-
 }

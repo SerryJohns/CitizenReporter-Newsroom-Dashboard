@@ -22,9 +22,8 @@
             <tr class="table-header text-white">
               <th> Name </th>
               <th> First name </th>
+              <th> Last name </th>
               <th> Username </th>
-              <th> Email </th>
-              <th> Email Verified </th>
               <th> Creation Date </th>
             </tr>
             <tr class="story-row"
@@ -33,10 +32,9 @@
               [class.selected-row]="selectedUser === user">
               <td> {{ user.name }} </td>
               <td> {{ user.firstname }} </td>
+              <td> {{ user.lastname }} </td>
               <td> {{ user.username }} </td>
-              <td> {{ user.email }} </td>
-              <td> {{ user.emailVerified | date: 'dd/MM/yyyy' }} </td>
-              <td> {{ user.createdAt }} </td>
+              <td> {{ user.createdAt | date: 'dd/MM/yyyy' }} </td>
             </tr>
           </table>
         </div>
