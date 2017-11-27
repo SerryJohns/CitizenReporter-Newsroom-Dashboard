@@ -41,6 +41,12 @@ export class UserAccountComponent implements OnInit {
       this.success = false;
       return;
     }
+
+    if (!this.validateEmail(this.email)) {
+      this.msg = 'Invalid Email!';
+      this.success = false;
+      return;
+    }
     const nameArr: String[] = this.name.split(' ');
     const user: User = <User> {
       name: this.name,
@@ -62,7 +68,13 @@ export class UserAccountComponent implements OnInit {
       this.msg = err;
       this.success = false;
     });
+  }
 
+  validateEmail(email) {
+   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return true;
+   }
+   return false;
   }
 
   closeAlert(): void {
