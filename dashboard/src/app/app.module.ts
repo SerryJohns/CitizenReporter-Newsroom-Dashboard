@@ -28,6 +28,8 @@ import {AuthGuard} from './guards/authentication/authentication.guard';
 import {AuthenticationService} from './services/authentication/authentication.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+import { UsersComponent } from './components/users/users.component';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     CircularSpinnerComponent,
     LoginComponent,
     ProfileComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

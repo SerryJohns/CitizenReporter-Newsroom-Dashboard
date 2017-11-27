@@ -1,0 +1,35 @@
+.table-header {
+    background-color: #484A69 !important;
+    color: #A6A8B9 !important;
+    text-align: center;
+}
+
+.selected-row {
+    background-color:#E9ECEF !important;
+    cursor: pointer;
+}
+
+.selected-page {
+    background-color: #E9ECEF !important;
+}
+
+.filter-icon {
+    width: 20px;
+    opacity: 0.46;
+}
+
+.content-scroll {
+    max-height: 650px;
+    overflow: scroll;
+}
+
+.left-15 {
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.even-z-index {
+    z-index: 0;
+}

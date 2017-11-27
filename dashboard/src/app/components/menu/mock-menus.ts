@@ -17,5 +17,6 @@ export const notificationMenu: Menu[] = [
 ];
 
 export const userAccountMenu: Menu[] = [
-    { id: 1, name: 'Create account', icon: `${menuIconsPath}account.png`, url: '/create-account'}
+    { id: 1, name: 'Create account', icon: `${menuIconsPath}account.png`, url: '/create-account'},
+    { id: 2, name: 'Users list', icon: `${menuIconsPath}users.png`, url: '/users'},
 ];
