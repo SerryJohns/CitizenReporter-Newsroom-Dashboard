@@ -2,7 +2,6 @@ FROM node:boron
 
 RUN mkdir -p  /opt/app
 WORKDIR /opt/app
-RUN npm install -g @angular/cli@1.3.0
 
 COPY package*.json ./
 
