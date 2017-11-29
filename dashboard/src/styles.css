@@ -2,7 +2,7 @@
 #app-body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #1D1D1D;
-  background-color: #DEE9EE;
+  background-color: #DEEEE8;
   font-size: 14px;
 }
 
@@ -68,19 +68,19 @@ pre {
 }
 
 .bg-blue {
-  background-color: #46A9D4;
+  background-color: #36A495;
 }
 
 .bg-light-blue {
-  background-color: #ABE6FF;
+  background-color: #DEEEE8;
 }
 
 .text-blue {
-  color: #46A9D4;
+  color: #36A495;
 }
 
 .bg-purple {
-  background-color: #505275
+  background-color: #3B4255
 }
 
 .bg-purple li {
@@ -88,7 +88,7 @@ pre {
 }
 
 .bg-dark-purple {
-  background-color: #484A69;
+  background-color: #3B4255;
 }
 
 .bg-red {

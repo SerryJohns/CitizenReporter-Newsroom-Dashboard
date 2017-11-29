@@ -74,7 +74,7 @@
 
 /* Change color of dropdown links on hover */
 .dropdown-content span:hover {
-  background-color: #484A69;
+  background-color: #3B4255;
   color: white;
   font-weight: bold;
 }
