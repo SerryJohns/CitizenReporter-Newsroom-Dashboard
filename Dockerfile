@@ -3,8 +3,11 @@ FROM node:carbon
 RUN mkdir -p  /opt/app
 WORKDIR /opt/app
 
-RUN npm config get prefix
-RUN chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+RUN mkdir ~/.npm-global
+RUN npm config set prefix '~/.npm-global'
+RUN export PATH=~/.npm-global/bin:$PATH
+RUN source ~/.profile
+RUN npm install -g jshint
 
 # RUN npm install -g @angular/cli@1.3.0
 
