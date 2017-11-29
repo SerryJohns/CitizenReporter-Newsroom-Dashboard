@@ -6,6 +6,8 @@ WORKDIR /opt/app
 RUN node --version
 RUN npm --version
 
+RUN npm install -g @angular/cli@1.3.0
+
 COPY package*.json ./
 
 RUN npm install --only=production
