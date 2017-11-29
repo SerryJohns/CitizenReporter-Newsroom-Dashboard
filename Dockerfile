@@ -4,6 +4,7 @@ RUN mkdir -p  /opt/app
 WORKDIR /opt/app
 
 RUN npm config get prefix
+RUN chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
 # RUN npm install -g @angular/cli@1.3.0
 
