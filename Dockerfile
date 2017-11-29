@@ -3,25 +3,25 @@ FROM node:carbon
 RUN mkdir -p  /opt/app
 WORKDIR /opt/app
 
-RUN node --version
-RUN npm --version
+RUN npm config get prefix
 
-# COPY package*.json ./
-COPY package.json .
+# RUN npm install -g @angular/cli@1.3.0
 
-RUN npm install --save @angular/cli@1.3.0
+# COPY package.json .
 
-RUN npm install --only=production
+# RUN npm install --save @angular/cli@1.3.0
 
-COPY .angular-cli.json .
-COPY . .
+# RUN npm install --only=production
 
-RUN ng build --aot -prod
+# COPY .angular-cli.json .
+# COPY . .
 
-ENV APP_ID setYourAppId
-ENV MASTER_KEY setYourMasterKey
-ENV DATABASE_URI setMongoDBURI
+# RUN ng build --aot -prod
 
-EXPOSE 1337
+# ENV APP_ID setYourAppId
+# ENV MASTER_KEY setYourMasterKey
+# ENV DATABASE_URI setMongoDBURI
+
+# EXPOSE 1337
 
 CMD ["npm", "start"]
