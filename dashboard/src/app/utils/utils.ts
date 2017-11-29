@@ -59,7 +59,7 @@ export function getDayOfTheWeek(day: number) {
     return 'Fri';
   } else if (day === 5) {
     return 'Sat';
-  } else{
+  } else {
     return 'Sun';
   }
 }
