@@ -29,6 +29,8 @@
                   </div>
               </div>
           </div>
+          <br><br><br>
+          <h1 class="text-warning" *ngIf="paginatedData.length === 0">No event data to display at the moment</h1>
           <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
          <div *ngIf="paginatedData.length === 0 && searchString !== ''">
             <h1 id="empty-message-description">No events match the search query entered.</h1>

@@ -83,6 +83,9 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
         this.extrapolateValuesBasedOnDate(dictionary);
       }
       this.single = this.entries;
+    } else {
+      this.extrapolateValuesBasedOnDate(dictionary);
+      this.single = this.entries;
     }
     if (!(this.single.length === 0)) {
       this.showProgressBar = false;

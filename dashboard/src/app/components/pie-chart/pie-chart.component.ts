@@ -68,5 +68,4 @@ export class PieChartComponent implements OnInit, OnChanges {
     ];
   }
 
-
 }

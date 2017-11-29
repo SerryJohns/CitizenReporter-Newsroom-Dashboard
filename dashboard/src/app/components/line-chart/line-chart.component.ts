@@ -95,9 +95,10 @@ export class LineChartComponent implements OnInit, OnChanges {
         }
       }
     }
-    if (!(this.multi.length === 0)) {
-      this.showProgressBar = false;
+    if ((this.multi.length === 0)) {
+      this.multi = [];
     }
+    this.showProgressBar = false;
   }
 
   public populateBarGraphData(appSummary: any) {

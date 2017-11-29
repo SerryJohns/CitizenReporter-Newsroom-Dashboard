@@ -48,12 +48,12 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
   public getEventsAnalyticsData () {
     this._eventsAnalyticsService.getEventsSummary()
       .subscribe((data) => {
+      this.showProgressBar = false;
       if (data.rows.length === 0) {
         console.log('There is no event data');
       } else {
         this.analyticsSummary = [];
         this.populateEventsData(data, this.analyticsSummary);
-        this.showProgressBar = false;
         this.paginator = this._paginateService.paginateData(this.analyticsSummary.length, this.limit, this.offset);
         this.currentPage = this.paginator.currentPage;
         this.pages = this.paginator.pages;
@@ -71,7 +71,7 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
     this._eventsAnalyticsService.getWeeklyEvents()
       .subscribe((data) => {
       if (data.rows.length === 0) {
-        console.log('There is no event data');
+        console.log('There is no weekly analytics event data');
       } else {
         this.weeklyEvents = [];
         this.populateEventsData(data, this.weeklyEvents);
@@ -86,7 +86,7 @@ export class EventsAnalyticsComponent implements OnInit, AfterViewInit {
     this._eventsAnalyticsService.getMonthlyEvents()
       .subscribe((data) => {
       if (data.rows.length === 0) {
-        console.log('There is no event data');
+        console.log('There is no monthly analytics event data');
       } else {
         this.monthlyEvents = [];
         this.populateEventsData(data, this.monthlyEvents);
