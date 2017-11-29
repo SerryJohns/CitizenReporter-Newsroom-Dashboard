@@ -23,7 +23,7 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
-var allowInsecureHTTP = true
+var allowInsecureHTTP = { allowInsecureHTTP: true };
 
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
@@ -73,7 +73,7 @@ app.get('/test', function(req, res) {
     res.sendFile(path.join(__dirname, '/parseServer/public/test.html'));
 });
 
-var port = process.env.PORT || 1337;
+var port = process.env.PORT || 80;
 var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
     console.log('parse-server-example running on port ' + port + '.');
