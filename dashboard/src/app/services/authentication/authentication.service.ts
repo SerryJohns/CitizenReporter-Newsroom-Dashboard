@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-
   public showDashboardEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router) {}
