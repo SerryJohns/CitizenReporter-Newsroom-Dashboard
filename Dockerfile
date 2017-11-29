@@ -6,7 +6,8 @@ WORKDIR /opt/app
 RUN node --version
 RUN npm --version
 
-COPY package*.json ./
+# COPY package*.json ./
+COPY COPY package.json .
 
 RUN npm install --save @angular/cli@1.3.0
 
