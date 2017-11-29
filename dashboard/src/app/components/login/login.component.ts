@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     const self = this;
     this.errorMsg = null;
     this._authenticationService.logIn(username, password, function(){
-          console.log('User logged in through email');
           self._authenticationService.toggleAuthentication();
           self.loading = false;
           self.redirect();

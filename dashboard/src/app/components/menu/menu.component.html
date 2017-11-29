@@ -45,3 +45,19 @@
     </a>
   </li>
 </ul>
+
+<div *ngIf="admin" class="menu-header">
+  <h2 class="menu-title"> User Accounts </h2>
+</div>
+
+<ul *ngIf="admin">
+  <li *ngFor="let menu of userAccountMenu" [class.active]="selectedMenu === menu.name" (click)="onMenuClick(menu)">
+    <a routerLink="{{ menu.url }}">
+      <span><img src="{{ menu.icon }}" class="menu-icon"/></span>
+      {{ menu.name }}
+      <span class="right-icon" [@showSideIcons]="toggleState">
+          <img src="{{ menu.icon }}" class="menu-icon"/>
+      </span>
+    </a>
+  </li>
+</ul>

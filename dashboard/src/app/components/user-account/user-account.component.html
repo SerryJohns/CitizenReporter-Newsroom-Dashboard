@@ -1,0 +1,78 @@
+<div *ngIf="admin" class="row">
+    <div class="col-md-12 col-12">
+      <div class="card min-card-width">
+        <div class="card-header bg-blue text-white text-center">
+          <img class="card-menu-icon" src="./../../assets/images/icons/menu.png">
+          <h1>Create Account</h1>
+        </div>
+        <div class="card-block">
+          <div class="card-body content-scroll">
+      
+            <div *ngIf="msg"
+              [class.alert-success]="success"
+              [class.alert-danger]="!success"
+              class="col-lg-8 center-form alert alert-dismissible fade show"
+              role="alert">
+              <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{ msg }}
+            </div>
+
+            <form class="form-horizontal center-form" role="form" name="savePersonalDetails">
+              <div class="form-group">
+                <label class="col-lg-4 control-label">Name:</label>
+                <div class="col-lg-12">
+                  <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-4 control-label">Email:</label>
+                <div class="col-lg-12">
+                  <input class="form-control" type="text" [(ngModel)]="email" name="email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label">Username:</label>
+                <div class="col-md-12">
+                  <input class="form-control" type="text" [(ngModel)]="username" name="username" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="role">Role: </label>
+                <div class="col-md-12">
+                  <select [(ngModel)]="role" name="role" id="role" class="form-control">
+                    <option value="Administrator">Administrator</option>
+                    <option value="Editor">Editor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label">Password:</label>
+                <div class="col-md-12">
+                  <input class="form-control" type="password" [(ngModel)]="password" name="password" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label">Confirm password:</label>
+                <div class="col-md-12">
+                  <input class="form-control" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-12">
+                  <input type="submit" (click)="createAccount()" class="btn btn-lg-custom btn-outline-info center-button" value="Create Account">
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="!admin" class="jumbotron">
+  You are not allowed to access this page!
+</div>
