@@ -3,10 +3,7 @@ FROM node:carbon
 RUN mkdir -p  /opt/app
 WORKDIR /opt/app
 
-# RUN mkdir ~/.npm-global
-# RUN npm config set prefix '~/.npm-global'
-# RUN export PATH=~/.npm-global/bin:$PATH
-
+RUN export USER=root
 RUN npm install -g @angular/cli@1.3.0
 
 COPY package.json .
