@@ -6,7 +6,7 @@ WORKDIR /opt/app
 RUN mkdir ~/.npm-global
 RUN npm config set prefix '~/.npm-global'
 RUN export PATH=~/.npm-global/bin:$PATH
-RUN source ~/.profile
+# RUN source ~/.profile
 RUN npm install -g jshint
 
 # RUN npm install -g @angular/cli@1.3.0
