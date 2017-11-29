@@ -6,13 +6,9 @@ WORKDIR /opt/app
 RUN npm config get prefix
 RUN chown -R $(whoami) $(npm config get prefix)/lib/node_modules
 
-# RUN npm install -g node-gyp
 RUN npm install -g --unsafe-perm @angular/cli
-# RUN npm install -g @angular/cli@1.3.0
 
 COPY package.json .
-
-RUN npm install --save @angular/cli@1.3.0
 
 RUN npm install --only=production
 
