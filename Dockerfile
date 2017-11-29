@@ -1,7 +1,10 @@
-FROM node:boron
+FROM node:carbon
 
 RUN mkdir -p  /opt/app
 WORKDIR /opt/app
+
+RUN node --version
+RUN npm --version
 
 COPY package*.json ./
 
