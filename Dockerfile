@@ -4,7 +4,7 @@ RUN mkdir -p  /opt/app
 WORKDIR /opt/app
 
 RUN npm config get prefix
-RUN chmod -R 777 $(whoami) $(npm config get prefix)/lib/node_modules
+RUN chmod -R 777 $(npm config get prefix)/lib/node_modules
 
 RUN npm install -g @angular/cli@1.3.0
 
