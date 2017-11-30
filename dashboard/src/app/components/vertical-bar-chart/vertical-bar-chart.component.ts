@@ -19,9 +19,9 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   @Input() data: AppAnalyticsSummary[];
   @Input() chart: string;
   @Input() osOrCountryChart: string;
+  @Input() loaded: boolean;
   entries: Entry[] = [];
   showLegend = false;
-  showProgressBar = true;
 
   // options
   showXAxis = true;
@@ -63,7 +63,6 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       const simpleChange = changes[propName];
       if (propName === 'data') {
         this.populateWeeklyBarGraphData(simpleChange.currentValue);
-        console.log('');
       }
     }
   }
@@ -84,11 +83,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       }
       this.single = this.entries;
     } else {
-      this.extrapolateValuesBasedOnDate(dictionary);
-      this.single = this.entries;
-    }
-    if (!(this.single.length === 0)) {
-      this.showProgressBar = false;
+      this.single = [];
     }
   }
 
@@ -122,5 +117,4 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
         getDayOfTheWeek(dayKey), dictionary[dayKey]));
     }
   }
-
 }

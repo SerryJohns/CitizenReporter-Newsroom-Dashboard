@@ -21,7 +21,7 @@
                 <h3 class="green-text">{{totalDownloads}} </h3>
                 <h3 class="gray-text">Total <br>Downloads</h3>
               </div>
-              <app-vertical-bar-chart [width]="width" [height]="height" [data]="weeklyAnalytics" [chart]="weeklyDownloadsChart"></app-vertical-bar-chart>
+              <app-vertical-bar-chart [width]="width" [height]="height" [data]="weeklyAnalytics" [chart]="weeklyDownloadsChart" [loaded]="weeklyStatisticsLoaded"></app-vertical-bar-chart>
             </div>
 
             <!-- Downloads today -->
@@ -39,7 +39,7 @@
                 <h3 class="users-orange-text">{{totalUsers}} </h3>
                 <h3 class="gray-text">Total <br>Users</h3>
               </div>
-              <app-vertical-bar-chart [width]="width" [height]="height" [data]="weeklyAnalytics" [chart]="weeklyUsersChart"></app-vertical-bar-chart>
+              <app-vertical-bar-chart [width]="width" [height]="height" [data]="weeklyAnalytics" [chart]="weeklyUsersChart" [loaded]="weeklyStatisticsLoaded"></app-vertical-bar-chart>
             </div>
 
             <!-- Users today -->
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="general-statistics">
-          <app-vertical-bar-chart [width]="500" [height]="300" [data]="countryAnalytics" [chart]="countryChart" [osOrCountryChart]="countryChart"></app-vertical-bar-chart>
+          <app-vertical-bar-chart [width]="500" [height]="300" [data]="countryAnalytics" [chart]="countryChart" [osOrCountryChart]="countryChart" [loaded]="countryStatisticsLoaded"></app-vertical-bar-chart>
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="general-statistics">
-          <app-vertical-bar-chart [width]="500" [height]="300" [data]="osAnalytics" [chart]="osChart" [osOrCountryChart]="osChart"></app-vertical-bar-chart>
+          <app-vertical-bar-chart [width]="500" [height]="300" [data]="osAnalytics" [chart]="osChart" [osOrCountryChart]="osChart" [loaded]="osStatisticssLoaded"></app-vertical-bar-chart>
         </div>
       </div>
     </div>

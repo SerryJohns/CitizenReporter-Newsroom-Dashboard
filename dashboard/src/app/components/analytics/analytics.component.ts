@@ -3,6 +3,7 @@ import { AudienceAnalyticsService } from '../../services/audience-analytics/audi
 import {
   AppAnalyticsSummary
 } from './AppAnalyticsSummary.model';
+import {buildMonths} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-tools";
 
 @Component({
   selector: 'app-analytics',
@@ -25,6 +26,9 @@ export class AnalyticsComponent implements OnInit {
   downloadsToday: number;
   countryChart = 'CountryChart';
   osChart = 'OsChart';
+  weeklyStatisticsLoaded = false;
+  osStatisticssLoaded = false;
+  countryStatisticsLoaded = false;
 
   appAnalyticsSummary: AppAnalyticsSummary;
   weeklyAnalytics: AppAnalyticsSummary[];
@@ -80,6 +84,7 @@ export class AnalyticsComponent implements OnInit {
   private getWeeklyStatistics () {
     this._audienceAnalyticsService.getWeeklyStatistics()
       .subscribe((data) => {
+      this.weeklyStatisticsLoaded = true;
       if (data.rows.length === 0) {
         console.log('Weekly statistics are not available at the moment');
       } else {
@@ -94,6 +99,7 @@ export class AnalyticsComponent implements OnInit {
   private getCountryStatistics () {
     this._audienceAnalyticsService.getCountryStatistics()
       .subscribe((data) => {
+      this.countryStatisticsLoaded = true;
       if (data.rows.length === 0) {
         console.log('Country statistics are not available at the moment');
       } else {
@@ -109,6 +115,7 @@ export class AnalyticsComponent implements OnInit {
   private getOsVersionStatistics () {
     this._audienceAnalyticsService.getOsVersionStatistics()
       .subscribe((data) => {
+      this.osStatisticssLoaded = true;
       if (data.rows.length === 0) {
         console.log('Os version statistics are not available at the moment');
       } else {
