@@ -21,12 +21,10 @@ export class AudienceAnalyticsService {
   public countryStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/data/' +
     'appUsage/hour/country?metrics=activeDevices,newDevices&' +
     'dateTime=2017-10-01/' + formatDate(new Date());
-  // public appVersionStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/' +
-  //   'data/technical/day/app/osVersion?metrics=activeDevices,newDevices,' +
-  //   'timeSpent,averageTimePerDevice,averageTimePerSession&' +
-  //   'dateTime=2017-10-01/' + formatDate(new Date());
-
-  public appVersionStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/data/appUsage/day/app?metrics=activeDevices,newDevices&dateTime=2017-11-23/2017-11-25';
+  public appVersionStatisticsUrl = 'https://api-metrics.flurry.com/public/v1/' +
+    'data/technical/day/app/osVersion?metrics=activeDevices,newDevices,' +
+    'timeSpent,averageTimePerDevice,averageTimePerSession&' +
+    'dateTime=2017-10-01/' + formatDate(new Date());
 
   constructor(private http: Http) {
   }
