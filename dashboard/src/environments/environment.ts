@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  APP_ID: 11235813,
-  MASTER_KEY: 11235813,
-  SERVER_URL:  'https://creporter-server.herokuapp.com/parse'
+  APP_ID: '4WcYqncsbH',
+  MASTER_KEY: 'aQUDcnUysD',
+  SERVER_URL:  'http://creporter-mfa.52.213.44.121/parse'
 };
