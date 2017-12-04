@@ -1,4 +1,4 @@
-FROM node:boron
+FROM node:carbon
 
 RUN mkdir -p  /opt/app
 WORKDIR /opt/app
