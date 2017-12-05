@@ -5,6 +5,7 @@ import {
   Headers,
   Http
 } from '@angular/http';
+import { environment } from './../../environments/environment';
 
 export function formatDate(date: Date) {
   let dd: any = date.getDate();
@@ -20,7 +21,7 @@ export function formatDate(date: Date) {
 }
 
 export function getHeaders() {
-  const token = 'eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW4iLCJpYXQiOjE1MTE5NjA1NDQsImV4cCI6MzMwNjg4NjkzNDQsInN1YiI6IjQwOTc4NyIsImF1ZCI6IjQiLCJ0eXBlIjo0LCJqdGkiOiIyODE1In0.tjwrc23z1-kc3jQXR8bLzUYGvm3De6ms4VZWYatFSnU';
+  const token = environment.FLURRY_APP_ANALYTICS_TOKEN;
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('Access-Control-Allow-Origin', '*');
