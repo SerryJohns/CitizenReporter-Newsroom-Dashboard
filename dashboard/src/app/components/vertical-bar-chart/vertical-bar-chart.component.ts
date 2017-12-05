@@ -56,6 +56,9 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       this.yAxisLabel = 'Number';
       this.showLegend = false;
     }
+    if (this.chart === 'WeeklyUsers') {
+      this.yAxisLabel = 'Users';
+    }
   }
 
   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
