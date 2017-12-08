@@ -19,9 +19,9 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   @Input() data: AppAnalyticsSummary[];
   @Input() chart: string;
   @Input() osOrCountryChart: string;
+  @Input() loaded: boolean;
   entries: Entry[] = [];
   showLegend = false;
-  showProgressBar = true;
 
   // options
   showXAxis = true;
@@ -31,13 +31,7 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
   xAxisLabel = 'Day';
   showYAxisLabel = true;
   yAxisLabel = 'Downloads';
-  colors = [
-    '#5AA454', '#A10A28', '#D8B42C', '#AAAAAA', '#784D78', '#56F2F1',
-    '#87DDFF', '#D8BFD8', '#9ACD32', '#B0E0E6', '#663399', '#1E90FF',
-    '#9932CC', '#ED684A', '#556B2F', '#000000', '#0000FF', '#8A2BE2',
-    '#a8385d', '#7aa3e5', '#a27ea8', '#aae3f5', '#adcded', '#a95963',
-    '#8796c0', '#7ed3ed', '#50abcc', '#ad6886'
-  ];
+  colors = ['#C6E8DB'];
 
   colorScheme = {
     domain: shuffleColors(this.colors)
@@ -62,6 +56,9 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       this.yAxisLabel = 'Number';
       this.showLegend = false;
     }
+    if (this.chart === 'WeeklyUsers') {
+      this.yAxisLabel = 'Users';
+    }
   }
 
   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
@@ -69,7 +66,6 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
       const simpleChange = changes[propName];
       if (propName === 'data') {
         this.populateWeeklyBarGraphData(simpleChange.currentValue);
-        console.log('');
       }
     }
   }
@@ -89,9 +85,8 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
         this.extrapolateValuesBasedOnDate(dictionary);
       }
       this.single = this.entries;
-    }
-    if (!(this.single.length === 0)) {
-      this.showProgressBar = false;
+    } else {
+      this.single = [];
     }
   }
 
@@ -125,5 +120,4 @@ export class VerticalBarChartComponent implements OnInit, OnChanges {
         getDayOfTheWeek(dayKey), dictionary[dayKey]));
     }
   }
-
 }

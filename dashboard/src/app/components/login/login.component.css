@@ -45,7 +45,7 @@ input {
 }
 
 #login h2 {
-	background-color: #46A9D4;
+	background-color: #36A495;
 	-webkit-border-radius: 20px 20px 0 0;
 	-moz-border-radius: 20px 20px 0 0;
 	border-radius: 20px 20px 0 0;
@@ -83,14 +83,14 @@ input {
 
 #login fieldset input[type="text"], #login fieldset input[type="password"] {
 	background-color: #eee;
-	color: #505174;
+	color: #000;
 	padding: 4px 10px;
 	width: 328px;
   font-size: 20px;
 }
 
 #login fieldset input[type="submit"] {
-	background-color: #505275;
+	background-color: #3B4255;
 	color: #fff;
   font-size: 20px;
 	display: block;
@@ -101,7 +101,7 @@ input {
 }
 
 #login fieldset input[type="submit"]:hover {
-	background-color: #46A9D4;
+	background-color: #36A495;
   cursor: pointer;
 }
 
@@ -118,7 +118,7 @@ input {
   animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
-  color: #46A9D4;
+  color: #36A495;
   font-size: 10px;
   margin: 20px auto;
   position: relative;
@@ -174,4 +174,7 @@ input {
 #app-login-name {
   font-weight: bold;
   font-size: 20px;
+}
+#username{
+  color: #000;
 }

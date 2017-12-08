@@ -1,6 +1,6 @@
 <div class="container">
-  <app-circular-spinner *ngIf="showProgressBar"></app-circular-spinner>
-  <div *ngIf="!showProgressBar">
+  <app-circular-spinner *ngIf="!loaded"></app-circular-spinner>
+  <div *ngIf="loaded">
     <ngx-charts-bar-vertical
       [view]="[width, height]"
       [scheme]="colorScheme"
